@@ -7,26 +7,30 @@
 </label>
 <p></p>
 <form method="POST" action="IConductores.php">
-    <label for="">ID Conductor</label>
-    <input type="number" id="IDConductor" name="IDConductor" disabled="0">
+    <label for="">Fotografia</label>
+    <input type="text" id="Fotografia" name="Fotografia" required>
     <br>
     <label for="">Nombre</label>
-    <input type="text" id="Nombre" name="Nombre">
+    <input type="text" id="Nombre" name="Nombre" required>
     <br>
     <label for="">Apellido Paterno</label>
-    <input type="text" id="ApellidoPatereno" name="ApellidoPaterno">
+    <input type="text" id="ApellidoPaterno" name="ApellidoPaterno">
     <br>
     <label for="">Apellido Materno</label>
     <input type="text" id="ApellidoMaterno" name="ApellidoMaterno">
     <br>
-    <label for="">Domicilio</label>
-    <input type="text" id="Domicilio" name="Domicilio">
-    <br>
     <label for="">FechaNacimiento</label>
-    <input type="date" id="FechaNacimiento" name="FechaNacimiento">
+    <input type="date" id="FechaNacimiento" name="FechaNacimiento" required>
+    <br>
+    <label for="">Firma</label>
+    <input type="text" id="Firma" name="Firma" required>
+    <br>
+    <label for="">Domicilio</label>
+    <input type="text" id="Domicilio" name="Domicilio" maxlength="100" size="50" required>
     <br>
     <label for="">GrupoSanguineo</label>
-    <select id="GrupoSanguineo" name="GrupoSanguineo">
+    <select id="GrupoSanguineo" name="GrupoSanguineo" required>
+        <option value=""></option>
         <option value="A+">A+</option>
         <option value="A-">A-</option>
         <option value="B+">B+</option>
@@ -38,30 +42,26 @@
     </select>
     <br>
     <label for="">Donador</label>
-    <input type="radio" id="Donador" name="Donador" value="Si"> Si
-    <input type="radio" id="Donador" name="Donador" value="Si"> No
-    <br>
-    <label for="">Firma</label>
-    <input type="text" id="Firma" name="Firma">
-    <br>
-    <label for="">Foto</label>
-    <input type="text" id="Foto" name="Foto">
-    <br>
-    <label for="">Antiguedad</label>
-    <input type="date" id="Antiguedad" name="Antiguedad">
+    <input type="radio" id="Donador" name="Donador" value="Si" required> Si
+    <input type="radio" id="Donador" name="Donador" value="No" required> No
     <br>
     <label for="">Número Emergencia</label>
-    <input type="tel" id="NumEmergencia" name="NumEmergencia">
+    <input type="phone" id="NumEmergencia" name="NumEmergencia" placeholder="123-425-457-8901"
+        pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+    <small>Formato: 000-123-456-7890</small>
     <br>
     <label for="">Sexo</label>
-    <input type="radio" id="Sexo" name="Sexo" value="Hombre"> Hombre
-    <input type="radio" id="Sexo" name="Sexo" value="Mujer"> Mujer
-    <input type="radio" id="Sexo" name="Sexo" value="Indistinto"> Indistinto
+    <input type="radio" id="Sexo" name="Sexo" value="Hombre" required>Hombre
+    <input type="radio" id="Sexo" name="Sexo" value="Mujer" required>Mujer
     <br>
-    <label for="">Restriccion</label>
-    <input type="text" id="Restriccion" name="Restriccion">
+    <label for="">Antiguedad</label>
+    <input type="number" id="Antiguedad" name="Antiguedad" min="0" max="99" size="10">
     <br>
-    <input type="submit" value="Enviar">
+    <label for="">Observaciones</label>
+    <br>
+    <textarea id="Observaciones" name="Observaciones" cols="25" rows="4"> </textarea>
+    <br><br>
+    <input type="submit" value="enviar">
 </form>
 
 </html>

@@ -1,3 +1,4 @@
+
 <?php
 
     $databases = ["controlvehicular31"];
@@ -17,3 +18,7 @@
         exec("C:/xampp/mysql/bin/mysqldump --user=$user --password=$password --host=$host $database --result-file=$folder", $output);
 
     }
+    
+    print("Backup realizado con éxito\n");
+
+?>
