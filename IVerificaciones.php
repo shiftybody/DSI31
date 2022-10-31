@@ -1,22 +1,27 @@
 <?php
 
-    $IDVerificaciones = $_REQUEST['IDVerificacion'];
     $IDTarjeta = $_REQUEST['IDTarjeta'];
     $EntidadFederativa = $_REQUEST['EntidadFederativa'];
     $Municipio = $_REQUEST['Municipio'];
-    $NumVerificacion = $_REQUEST['NumVerificacion'];
-    $IDTecnicoVerif = $_REQUEST['IDTecnicoVerif'];
-    $NumCentroVerificacion = $_REQUEST['NumCentroVerificacion'];
+    $NumCentro = $_REQUEST['NumCentro'];
+    $NumLinea = $_REQUEST['NumLinea'];
+    $NombreTecnico = $_REQUEST['NombreTecnico'];
     $FechaExpedicion = $_REQUEST['FechaExpedicion'];
+    $FechaVencimiento = $_REQUEST['FechaVencimiento'];
+    $MotivoVerificacion = $_REQUEST['MotivoVerificacion'];
     $HoraEntrada = $_REQUEST['HoraEntrada'];
     $HoraSalida = $_REQUEST['HoraSalida'];
-    $Motivo = $_REQUEST['Motivo'];
-    $FolioVerificacion = $_REQUEST['FolioVerificacion'];
     $Semestre = $_REQUEST['Semestre'];
-    $FechaVencimiento = $_REQUEST['FechaVencimiento'];
+    $Dictamen = $_REQUEST['Dictamen'];
+    $Holograma = $_REQUEST['Holograma'];
 
 
-    $SQL = "INSERT INTO verificacion(IDVerificacion, IDTarjeta, EntidadFederativa, Municipio, NumVerificacion, IDTecnicoVerif, NumCentroVerificacion, FechaExpedicion, HoraEntrada, HoraSalida, Motivo, FolioVerificacion, Semestre, FechaVencimiento) VALUES ('$IDVerificaciones', '$IDTarjeta', '$EntidadFederativa', '$Municipio', '$NumVerificacion', '$IDTecnicoVerif', '$NumCentroVerificacion', '$FechaExpedicion', '$HoraEntrada', '$HoraSalida', '$Motivo', '$FolioVerificacion', '$Semestre', '$FechaVencimiento')";
+    $SQL = "INSERT INTO verificaciones(IDTarjeta, EntidadFederativa, Municipio, 
+    NumCentro, NumLinea, NombreTecnico, FechaExpedicion, FechaVencimiento, HoraEntrada,
+     HoraSalida, MotivoVerificacion, Semestre, Dictamen,Holograma) 
+     VALUES ( '$IDTarjeta', '$EntidadFederativa', '$Municipio', '$NumCentro', 
+     '$NumLinea', '$NombreTecnico', '$FechaExpedicion', '$FechaVencimiento',
+     '$HoraEntrada', '$HoraSalida', '$MotivoVerificacion', '$Semestre', '$Dictamen', '$Holograma')";
 
     include("conexion.php");
     $Con = Conectar();

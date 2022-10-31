@@ -1,7 +1,6 @@
 <?php
     header('Content-Type: text/html; charset=UTF-8');
 
-
     $Fotografia = $_POST['Fotografia'];
     $Nombre = $_POST['Nombre'];
     $ApellidoPaterno = $_POST['ApellidoPaterno'];
@@ -27,14 +26,11 @@
     $Result = Ejecutar($Con, $SQL) or die ("Error al insertar datos".mysqli_error($Con));
     if ($Result) {
         
-        // return the id of the inserted row 
+        // Mostrar el ID del conductor
         $last_id = mysqli_insert_id($Con);
-        //transform fist 2 numbers of the id to ascii
         $ascii = substr($last_id, 0, 2);
         $ascii = chr($ascii);
-        //concatenate the ascii with the rest of the id
         $id = $ascii."-".substr($last_id, 2);
-        //return the id
 
         print("Conductor registrado con éxito. ID: " . $id );
 

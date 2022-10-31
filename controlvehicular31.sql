@@ -47,7 +47,7 @@ CREATE TABLE `conductores` (
 
 LOCK TABLES `conductores` WRITE;
 /*!40000 ALTER TABLE `conductores` DISABLE KEYS */;
-INSERT INTO `conductores` VALUES (6700000001,'foto.png','David Emmanuel','Cano','Cabrera','2001-10-15','firma.png','Av. Bandera Nacional 185 Col San Agustin','A+','Si','000-418-129-3358','H',1,'Ninguna'),(6700000011,'foto.png','','Cano','Cabrera','2001-10-15','firma.png','Av. Bandera Nacional 185 Col San Agustin','A+','Si','000-418-129-3358','H',1,'Ninguna'),(6700000012,'hola.png','davidcano','','','3215-12-10','hola','','A+','Si','000-000-000-0000','H',0,' ');
+INSERT INTO `conductores` VALUES (6700000001,'foto.png','David Emmanuel','Cano','Cabrera','2001-10-15','firma.png','Av. Bandera Nacional 185 Col San Agustin','A+','Si','000-418-129-3358','H',1,'Ninguna');
 /*!40000 ALTER TABLE `conductores` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -60,14 +60,16 @@ DROP TABLE IF EXISTS `licencias`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `licencias` (
   `IDLicencia` bigint(10) unsigned NOT NULL AUTO_INCREMENT,
-  `IDConductor` int(10) unsigned NOT NULL,
+  `IDConductor` bigint(10) unsigned zerofill NOT NULL,
   `TipoLicencia` char(2) NOT NULL,
-  `FechaExpedicion` date NOT NULL DEFAULT current_timestamp(),
+  `FechaExpedicion` date NOT NULL,
   `FechaVencimiento` date DEFAULT NULL,
-  `AtributoDesconocido` bigint(11) NOT NULL,
-  `Observaciones` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`IDLicencia`)
-) ENGINE=InnoDB AUTO_INCREMENT=8111035489 DEFAULT CHARSET=utf8mb4;
+  `AtributoD` bigint(11) NOT NULL,
+  `Restricciones` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`IDLicencia`),
+  KEY `IDConductor` (`IDConductor`),
+  CONSTRAINT `licencias_ibfk_1` FOREIGN KEY (`IDConductor`) REFERENCES `conductores` (`IDconductor`)
+) ENGINE=InnoDB AUTO_INCREMENT=8111035537 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -76,6 +78,7 @@ CREATE TABLE `licencias` (
 
 LOCK TABLES `licencias` WRITE;
 /*!40000 ALTER TABLE `licencias` DISABLE KEYS */;
+INSERT INTO `licencias` VALUES (8111035536,6700000001,'B','2022-10-31','2027-10-31',65123456789,' ');
 /*!40000 ALTER TABLE `licencias` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -88,32 +91,36 @@ DROP TABLE IF EXISTS `multas`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `multas` (
   `IDMulta` int(8) NOT NULL,
-  `FechaHora` datetime NOT NULL DEFAULT current_timestamp(),
-  `ReporteSeccion` int(11) NOT NULL,
-  `NombreVia` int(11) NOT NULL,
-  `Kilometro` int(11) NOT NULL,
-  `Sentido` int(11) NOT NULL,
-  `Referencia` int(11) NOT NULL,
-  `Municipio` int(11) NOT NULL,
-  `Articulo` int(11) NOT NULL,
-  `Motivo` int(11) NOT NULL,
-  `GarantiaRetenida` int(11) NOT NULL,
-  `NoParteAccidente` int(11) NOT NULL,
-  `Convenio` int(11) NOT NULL,
-  `PuestaDisposicion` int(11) NOT NULL,
-  `Deposito` int(11) NOT NULL,
-  `ObservacionConductor` int(11) NOT NULL,
-  `ObservacionOficial` int(11) NOT NULL,
-  `CalificacionBoleta` int(11) NOT NULL,
-  `IDLicencia` int(11) NOT NULL,
-  `IDVehiculo` int(11) NOT NULL,
-  `IDTarjeta` int(11) NOT NULL,
-  `IDOficial` int(11) NOT NULL,
+  `FechaHora` datetime NOT NULL,
+  `ReporteSeccion` varchar(50) NOT NULL,
+  `NombreVia` varchar(25) NOT NULL,
+  `Kilometro` smallint(4) unsigned NOT NULL,
+  `Sentido` varchar(5) NOT NULL,
+  `Referencia` varchar(30) NOT NULL,
+  `Municipio` varchar(20) NOT NULL,
+  `Articulo` tinyint(3) NOT NULL,
+  `Motivo` varchar(150) NOT NULL,
+  `GarantiaRetenida` varchar(20) NOT NULL,
+  `NoParteAccidente` tinyint(2) DEFAULT NULL,
+  `Convenio` char(2) NOT NULL,
+  `PuestaDisposicion` char(2) NOT NULL,
+  `Deposito` mediumtext DEFAULT NULL,
+  `ObservacionConductor` varchar(100) DEFAULT NULL,
+  `ObservacionOficial` varchar(100) NOT NULL,
+  `CalificacionBoleta` varchar(100) DEFAULT NULL,
+  `IDLicencia` bigint(10) unsigned DEFAULT NULL,
+  `IDVehiculo` bigint(10) unsigned zerofill DEFAULT NULL,
+  `IDTarjeta` bigint(9) unsigned DEFAULT NULL,
+  `IDOficial` smallint(4) unsigned zerofill DEFAULT NULL,
   PRIMARY KEY (`IDMulta`),
   UNIQUE KEY `IDLicencia` (`IDLicencia`),
   UNIQUE KEY `IDVehiculo` (`IDVehiculo`),
   UNIQUE KEY `IDTarjeta` (`IDTarjeta`),
-  UNIQUE KEY `IDOficial` (`IDOficial`)
+  UNIQUE KEY `IDOficial` (`IDOficial`),
+  CONSTRAINT `multas_ibfk_1` FOREIGN KEY (`IDOficial`) REFERENCES `oficiales` (`IDOficial`),
+  CONSTRAINT `multas_ibfk_2` FOREIGN KEY (`IDLicencia`) REFERENCES `licencias` (`IDLicencia`),
+  CONSTRAINT `multas_ibfk_3` FOREIGN KEY (`IDVehiculo`) REFERENCES `vehiculos` (`IDVehiculo`),
+  CONSTRAINT `multas_ibfk_4` FOREIGN KEY (`IDTarjeta`) REFERENCES `tarjetas` (`IDTarjeta`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -134,14 +141,14 @@ DROP TABLE IF EXISTS `oficiales`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `oficiales` (
-  `IDOficial` smallint(4) unsigned NOT NULL AUTO_INCREMENT,
+  `IDOficial` smallint(4) unsigned zerofill NOT NULL AUTO_INCREMENT,
   `Nombre` varchar(50) NOT NULL,
   `ApellidoPaterno` varchar(25) NOT NULL,
   `ApelidoMaterno` varchar(25) NOT NULL,
-  `Grupo` int(50) NOT NULL,
+  `Grupo` varchar(25) NOT NULL,
   `Firma` varchar(50) NOT NULL,
   PRIMARY KEY (`IDOficial`)
-) ENGINE=InnoDB AUTO_INCREMENT=8000 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=8002 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -150,6 +157,7 @@ CREATE TABLE `oficiales` (
 
 LOCK TABLES `oficiales` WRITE;
 /*!40000 ALTER TABLE `oficiales` DISABLE KEYS */;
+INSERT INTO `oficiales` VALUES (8001,'David','Cano','Perez','5ta division ','firma.png');
 /*!40000 ALTER TABLE `oficiales` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -161,7 +169,7 @@ DROP TABLE IF EXISTS `propietarios`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `propietarios` (
-  `IDPropietario` int(10) unsigned zerofill NOT NULL AUTO_INCREMENT,
+  `IDPropietario` bigint(10) unsigned zerofill NOT NULL AUTO_INCREMENT,
   `RFC` varchar(13) NOT NULL,
   `Localidad` varchar(50) NOT NULL,
   `Municipio` varchar(50) NOT NULL,
@@ -170,7 +178,7 @@ CREATE TABLE `propietarios` (
   `ApellidoMaterno` varchar(25) NOT NULL,
   PRIMARY KEY (`IDPropietario`),
   UNIQUE KEY `RFC` (`RFC`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -179,6 +187,7 @@ CREATE TABLE `propietarios` (
 
 LOCK TABLES `propietarios` WRITE;
 /*!40000 ALTER TABLE `propietarios` DISABLE KEYS */;
+INSERT INTO `propietarios` VALUES (0000000003,'CACD011015hgt','Guanajuato','Dolores','David','Emmanuel','Cano');
 /*!40000 ALTER TABLE `propietarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -190,24 +199,30 @@ DROP TABLE IF EXISTS `tarjetas`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tarjetas` (
-  `IDTarjeta` int(11) NOT NULL,
-  `TipoServicio` int(11) NOT NULL,
+  `IDTarjeta` bigint(9) unsigned NOT NULL AUTO_INCREMENT,
+  `TipoServicio` varchar(20) NOT NULL,
   `Folio` int(11) NOT NULL,
   `Vigencia` date DEFAULT NULL,
-  `Placa` int(11) NOT NULL,
-  `IDPropietario` int(11) NOT NULL,
-  `IDVehiculo` int(11) NOT NULL,
-  `Operacion` int(11) NOT NULL,
-  `PlacaAnterior` int(11) NOT NULL,
-  `NCI` int(11) NOT NULL,
-  `Uso` int(11) NOT NULL,
-  `Rfa` int(11) NOT NULL,
-  `CVE` int(11) NOT NULL,
-  `OficinaExpedidora` int(11) NOT NULL,
-  `Movimiento` int(11) NOT NULL,
-  `FechaExpedicion` int(11) NOT NULL,
-  `QR` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `Placa` varchar(12) NOT NULL,
+  `IDPropietario` bigint(10) unsigned zerofill NOT NULL,
+  `IDVehiculo` bigint(10) unsigned zerofill NOT NULL,
+  `Operacion` varchar(12) NOT NULL,
+  `PlacaAnterior` varchar(12) DEFAULT NULL,
+  `NCI` varchar(8) DEFAULT NULL,
+  `Uso` varchar(25) NOT NULL,
+  `Rfa` varchar(20) DEFAULT NULL,
+  `CVE` int(7) NOT NULL,
+  `OficinaExpedidora` tinyint(2) NOT NULL,
+  `Movimiento` varchar(30) NOT NULL,
+  `FechaExpedicion` date NOT NULL,
+  `QR` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`IDTarjeta`),
+  UNIQUE KEY `Folio` (`Folio`),
+  KEY `IDPropietario` (`IDPropietario`),
+  KEY `IDVehiculo` (`IDVehiculo`),
+  CONSTRAINT `tarjetas_ibfk_1` FOREIGN KEY (`IDPropietario`) REFERENCES `propietarios` (`IDPropietario`),
+  CONSTRAINT `tarjetas_ibfk_2` FOREIGN KEY (`IDVehiculo`) REFERENCES `vehiculos` (`IDVehiculo`)
+) ENGINE=InnoDB AUTO_INCREMENT=650000007 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -216,6 +231,7 @@ CREATE TABLE `tarjetas` (
 
 LOCK TABLES `tarjetas` WRITE;
 /*!40000 ALTER TABLE `tarjetas` DISABLE KEYS */;
+INSERT INTO `tarjetas` VALUES (650000005,'Particular',2147483647,'2022-09-05','2008/UPX017B',0000000003,0000000009,'2022/1211308','2022/1211308','12354687','','xd',123547,9,'REFRENDO CON CANJE DE PLACAS','2022-10-31',NULL);
 /*!40000 ALTER TABLE `tarjetas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -227,27 +243,27 @@ DROP TABLE IF EXISTS `vehiculos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `vehiculos` (
-  `IDVehiculo` int(10) unsigned zerofill NOT NULL AUTO_INCREMENT,
+  `IDVehiculo` bigint(10) unsigned zerofill NOT NULL AUTO_INCREMENT,
   `NIV` char(17) NOT NULL,
   `Modelo` smallint(5) unsigned NOT NULL,
   `Marca` varchar(25) NOT NULL,
   `Linea` varchar(25) NOT NULL,
-  `Sublinea` varchar(25) NOT NULL,
+  `Sublinea` varchar(25) DEFAULT NULL,
   `Origen` varchar(20) NOT NULL,
   `Color` varchar(25) NOT NULL,
   `Clase` varchar(20) NOT NULL,
-  `Tipo` varchar(20) NOT NULL,
-  `NumCilindros` tinyint(2) unsigned NOT NULL,
-  `Capacidad` tinyint(3) unsigned NOT NULL,
-  `NumPuertas` tinyint(3) unsigned DEFAULT NULL,
-  `NumAsientos` tinyint(3) unsigned NOT NULL,
+  `TipoVehiculo` varchar(20) NOT NULL,
+  `NumCilindros` tinyint(2) NOT NULL,
+  `Capacidad` tinyint(3) NOT NULL,
+  `NumPuertas` tinyint(3) DEFAULT NULL,
+  `NumAsientos` tinyint(3) NOT NULL,
   `Combustible` varchar(15) NOT NULL,
   `Transmision` varchar(15) NOT NULL,
   `NumMotor` char(11) NOT NULL,
-  `NumSerie` char(17) NOT NULL,
+  `NumSerie` varchar(17) DEFAULT NULL,
   PRIMARY KEY (`IDVehiculo`),
   UNIQUE KEY `NIV` (`NIV`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -256,6 +272,7 @@ CREATE TABLE `vehiculos` (
 
 LOCK TABLES `vehiculos` WRITE;
 /*!40000 ALTER TABLE `vehiculos` DISABLE KEYS */;
+INSERT INTO `vehiculos` VALUES (0000000009,'00000000000000001',2021,'NISSAN','s','d','Nacional','purpura','A','',1,1,2,3,'Gas LP','Automatica','12345678981','123545688789'),(0000000011,'00000000000000002',2018,'NISSAN','d','s','Nacional','d','f','s',1,3,3,1,'Gasolina','Automatica','12345678945','123456789123');
 /*!40000 ALTER TABLE `vehiculos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -268,20 +285,22 @@ DROP TABLE IF EXISTS `verificaciones`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `verificaciones` (
   `FolioVerificacion` int(10) unsigned NOT NULL,
-  `IDTarjeta` int(11) NOT NULL,
-  `EntidadFederativa` int(11) NOT NULL,
-  `Municipio` int(11) NOT NULL,
+  `IDTarjeta` bigint(9) unsigned NOT NULL,
+  `EntidadFederativa` varchar(20) NOT NULL,
+  `Municipio` varchar(50) NOT NULL,
   `NumCentro` varchar(30) NOT NULL,
-  `NumLinea` tinyint(4) NOT NULL,
-  `NombreTecnico` int(11) NOT NULL,
-  `FechaExpedicion` int(11) NOT NULL,
-  `FechaVencimiento` int(11) NOT NULL,
+  `NumLinea` tinyint(2) NOT NULL,
+  `NombreTecnico` varchar(50) NOT NULL,
+  `FechaExpedicion` date NOT NULL,
+  `FechaVencimiento` date DEFAULT NULL,
   `HoraEntrada` time NOT NULL,
   `HoraSalida` time NOT NULL,
-  `MotivoVerificacion` int(11) NOT NULL,
-  `Semestre` int(11) NOT NULL,
-  `Dictamen` int(11) NOT NULL,
-  `Holograma` int(11) NOT NULL
+  `MotivoVerificacion` varchar(100) NOT NULL,
+  `Semestre` char(1) NOT NULL,
+  `Dictamen` varchar(10) DEFAULT NULL,
+  `Holograma` tinyint(2) unsigned zerofill NOT NULL,
+  KEY `IDTarjeta` (`IDTarjeta`),
+  CONSTRAINT `verificaciones_ibfk_1` FOREIGN KEY (`IDTarjeta`) REFERENCES `tarjetas` (`IDTarjeta`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -303,4 +322,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-10-28 23:57:09
+-- Dump completed on 2022-10-31  6:10:56

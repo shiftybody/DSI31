@@ -6,25 +6,22 @@
     </label>
     <p></p>
     <form method="GET" action="IOficiales.php">
-        <!-- Generate label and input for IDOficial, Nombre, ApellidoPaterno, ApellidoMaterno, Grupo, Firma -->
-        <label for="">IDOficial</label>
-        <input type="text" id="IDOficial" name="IDOficial">
-        <br>
+
         <label for="">Nombre</label>
-        <input type="text" id="Nombre" name="Nombre">
+        <input type="text" id="Nombre" name="Nombre" required maxlength="50">
         <br>
         <label for="">ApellidoPaterno</label>
-        <input type="text" id="ApellidoPaterno" name="ApellidoPaterno">
+        <input type="text" id="ApellidoPaterno" name="ApellidoPaterno" required >
         <br>
         <label for="">ApellidoMaterno</label>
-        <input type="text" id="ApellidoMaterno" name="ApellidoMaterno">
+        <input type="text" id="ApellidoMaterno" name="ApellidoMaterno" required >
         <br>
         <label for="">Grupo</label>
-        <input type="text" id="Grupo" name="Grupo">
+        <input type="text" id="Grupo" name="Grupo" required >
         <br>
         <label for="">Firma</label>
-        <input type="text" id="Firma" name="Firma">
+        <input type="text" id="Firma" name="Firma" required >
         <br>
-        <input type="submit" value="Submit">
+        <input type="submit" value="Enviar">
     </form>
 </html>

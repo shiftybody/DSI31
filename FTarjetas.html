@@ -6,51 +6,58 @@
     </label>
     <p></p>
     <form method="POST" action="ITarjetas.php">
-        <label for="">IDTarjeta</label>
-        <input type="text" id="IDTarjeta" name="IDTarjeta">
+        <label for="">TipoServicio</label>
+        <select id="TipoServicio" name="TipoServicio" required>
+            <script>
+                let tipos = ["","Particular", "Publico", "Federal", "Otro"];
+                for (let i = 0; i < tipos.length; i++) {
+                    document.write("<option value='" + tipos[i] + "'>" + tipos[i] + "</option>");
+                }
+            </script>
+        </select>
         <br>
-        <label for="">TipoSerivicio</label>
-        <input type="text" id="TipoSerivicio" name="TipoServicio">
+        <label for="">Vigencia</label>
+        <input type="date" id="Vigencia" name="Vigencia" >
+        <br>
+        <label for="">Placa</label>
+        <input type="text" id="Placa" name="Placa" required>
         <br>
         <label for="">IDVehiculo</label>
-        <input type="number" id="IDVehiculo" name="IDVehiculo">
+        <input type="text" id="IDVehiculo" name="IDVehiculo" required>
         <br>
         <label for="">IDPropietario</label>
-        <input type="number" id="IDPropietario" name="IDPropietario">
+        <input type="text" id="IDPropietario" name="IDPropietario" required>
         <br>
-        <label for="">Numero de Constancia de Inscripcion</label>
-        <input type="text" id="NumConstanciaInscripcion" name="NumConstanciaInscripcion">
+        <label for="">Operacion</label required>
+        <input type="text" id="Operacion" name="Operacion" required>
         <br>
-        <label for="">Servicio</label>
-        <input type="text" id="Servicio" name="Servicio">
+        <label for="">Placa Anterior</label>
+        <input type="text" id="PlacaAnterior" name="PlacaAnterior" >
         <br>
-        <label for="">Origen</label>
-        <input type="text" id="Origen" name="Origen">
-        <br>
-        <label for="">Folio</label>
-        <input type="text" id="Folio" name="Folio">
-        <br>
-        <label for="">Fecha de Vencimiento</label>
-        <input type="date" id="FechaVencimiento" name="FechaVencimiento">
-        <br>
-        <label for="">CVE Vehiculo</label>
-        <input type="number" id="CVEVehiculo" name="CVEVehiculo">
+        <label for="">NCI</label>
+        <input type="text" id="NCI" name="NCI" minlength="8">
         <br>
         <label for="">Uso</label>
-        <input type="number" id="Uso" name="Uso">
+        <input type="text" id="Uso" name="Uso" required>
         <br>
-        <label for="">Operacion</label>
-        <input type="text" id="Operacion" name="Operacion">
+        <label for="">Rfa</label>
+        <input type="text" id="Rfa" name="Rfa" >
         <br>
-        <label for="">Oficina Operacion</label>
-        <input type="number" id="OficinaOperacion" name="OficinaOperacion">
+        <label for="">CVE</label>
+        <input type="text" id="CVE" name="CVE" minlength="7" required>
+        <br>
+        <label for="">OficinaExpedidora</label>
+        <input type="number" id="OficinaExpedidora" name="OficinaExpedidora" min="1" max="99" required>
         <br>
         <label for="">Movimiento</label>
-        <input type="text" id="Movimiento" name="Movimiento">
-        <br>
-        <label for="">RFA</label>
-        <input type="text" id="RFA" name="RFA">
+        <input type="text" id="Movimiento" name="Movimiento" required>
+        <br>    
+        <label for="">FechaExpedicion</label>
+        <input type="date" id="FechaExpedicion" name="FechaExpedicion" readonly>
         <br>
         <input type="submit" value="Enviar">
     </form>
+    <script>
+        document.getElementById('FechaExpedicion').valueAsDate = new Date();
+    </script>
 </html>

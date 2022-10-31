@@ -1,29 +1,48 @@
 <html>
-    <label for="">
-        <h1>
-            Licencias 
-        </h1>
-    </label>
-    <p></p>
+<meta charset="utf-8">
+<label for="">
+    <h1>
+        Licencias
+    </h1>
+</label>
+<p></p>
     <form method="GET" action="ILicencias.php">
-        <label for="">No. Licencia</label>
-        <input type="text" id="NoLicencia" name="NoLicencia">
+        <label for="">ID Conductor</label>
+        <input type="text" id="IDConductor" name="IDConductor" required>
+        <br>
+        <label for="">Tipo de Licencia</label>
+        <select id="TipoLicencia" name="TipoLicencia" required>
+            <option value=""></option>
+            <option value="A">AUTOMOVILISTA</option>
+            <option value="B">CHOFER PARTICULAR</option>
+            <option value="Cc">CHOFER CARGA</option>
+            <option value="Co">CHOFER COLECTIVO</option>
+            <option value="Ct">CHOFER TAXI</option>
+            <option value="D">MOTOCICLETA</option>
+            <option value="PM">PERMISO MENOR</option>
+        </select>
         <br>
         <label for="">Fecha Expedicion</label>
-        <input type="date" id="FechaExpedicion" name="FechaExpedicion">
+        <input type="date" id="fechaExpedicion" name="FechaExpedicion"  required readonly>
         <br>
-        <label for="">ID Conductor</label>
-        <input type="text" id="IDConductor" name="IDConductor">
+        <label for="">Vigencia</label>
+        <select id="Vigencia" name="Vigencia" required>
+            <script>
+                for (var i = 1; i <= 10; i++) {
+                    document.write("<option value='" + i + "'>" + i + "</option>");
+                }
+            </script>
+        </select>
+        <label for=""> años </label>
         <br>
-        <label for="">Atributo Desconocido</label>
-        <input type="text" id="AtributoD" name="AtributoD">
+        <label for="">Restricciones</label>
         <br>
-        <label for="">Fecha de Vencimiento</label>
-        <input type="date" id="FechaVencimiento" name="FechaVencimiento">
-        <br>
-        <label for="">Observacion</label>
-        <input type="text" id="Observacion" name="Observacion">
-        <br>
-        <input type="submit" value="Enviar">
+        <textarea id="Restricciones" name="Restricciones" cols="25" rows="4"> </textarea>
+        <br><br>
+        <input type="submit" value="enviar">
     </form>
+    <!-- js code -->
+    <script>
+        document.getElementById('fechaExpedicion').valueAsDate = new Date();
+    </script>
 </html>
