@@ -28,7 +28,7 @@
     $Con = Conectar();
     $Result = Ejecutar($Con, $SQL) or die ("Error al insertar datos".mysqli_error($Con));
     if ($Result) {
-        print("Vehiculo con NIV: " . $NIV . " agregado correctamente");
+        print("Vehiculo con NIV: <strong>" . $NIV . " </strong> agregado correctamente");
     }else{
         print("Registro No insertado");
     }

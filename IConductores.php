@@ -26,13 +26,7 @@
     $Result = Ejecutar($Con, $SQL) or die ("Error al insertar datos".mysqli_error($Con));
     if ($Result) {
         
-        // Mostrar el ID del conductor
-        $last_id = mysqli_insert_id($Con);
-        $ascii = substr($last_id, 0, 2);
-        $ascii = chr($ascii);
-        $id = $ascii."-".substr($last_id, 2);
-
-        print("Conductor registrado con éxito. ID: " . $id );
+        print("Conductor registrado con éxito");
 
     }else{
         print("Registro No insertado");

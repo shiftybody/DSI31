@@ -1,29 +1,34 @@
--- MariaDB dump 10.19  Distrib 10.4.25-MariaDB, for Win64 (AMD64)
+-- phpMyAdmin SQL Dump
+-- version 5.2.0
+-- https://www.phpmyadmin.net/
 --
--- Host: localhost    Database: controlvehicular31
--- ------------------------------------------------------
--- Server version	10.4.25-MariaDB
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 09-11-2022 a las 06:39:14
+-- Versión del servidor: 10.4.25-MariaDB
+-- Versión de PHP: 8.1.10
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-/*!40103 SET TIME_ZONE='+00:00' */;
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `conductores`
+-- Base de datos: `controlvehicular31`
 --
 
-DROP TABLE IF EXISTS `conductores`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `conductores`
+--
+
 CREATE TABLE `conductores` (
-  `IDconductor` bigint(10) unsigned zerofill NOT NULL AUTO_INCREMENT,
+  `IDconductor` bigint(10) UNSIGNED NOT NULL,
   `Fotografia` varchar(50) NOT NULL,
   `Nombre` varchar(50) NOT NULL,
   `ApellidoPaterno` varchar(25) DEFAULT NULL,
@@ -36,65 +41,51 @@ CREATE TABLE `conductores` (
   `NumEmergencia` char(16) NOT NULL,
   `Sexo` char(1) NOT NULL,
   `Antiguedad` tinyint(2) DEFAULT NULL,
-  `Observaciones` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`IDconductor`)
-) ENGINE=InnoDB AUTO_INCREMENT=6700000013 DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `Observaciones` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `conductores`
+-- Volcado de datos para la tabla `conductores`
 --
 
-LOCK TABLES `conductores` WRITE;
-/*!40000 ALTER TABLE `conductores` DISABLE KEYS */;
-INSERT INTO `conductores` VALUES (6700000001,'foto.png','David Emmanuel','Cano','Cabrera','2001-10-15','firma.png','Av. Bandera Nacional 185 Col San Agustin','A+','Si','000-418-129-3358','H',1,'Ninguna');
-/*!40000 ALTER TABLE `conductores` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `conductores` (`IDconductor`, `Fotografia`, `Nombre`, `ApellidoPaterno`, `ApellidoMaterno`, `FechaNacimiento`, `Firma`, `Domicilio`, `GrupoSanguineo`, `Donador`, `NumEmergencia`, `Sexo`, `Antiguedad`, `Observaciones`) VALUES
+(4, 'foto.png', 'David', 'Cano', 'Cabrera', '2001-12-10', 'firma.png', 'Av. Bandera Nacional 185 Col San Agustin', 'B+', 'Si', '000-418-129-3358', 'H', 2, '');
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `licencias`
+-- Estructura de tabla para la tabla `licencias`
 --
 
-DROP TABLE IF EXISTS `licencias`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `licencias` (
-  `IDLicencia` bigint(10) unsigned NOT NULL AUTO_INCREMENT,
-  `IDConductor` bigint(10) unsigned zerofill NOT NULL,
+  `IDLicencia` bigint(10) UNSIGNED NOT NULL,
+  `IDConductor` bigint(10) UNSIGNED ZEROFILL NOT NULL,
   `TipoLicencia` char(2) NOT NULL,
   `FechaExpedicion` date NOT NULL,
   `FechaVencimiento` date DEFAULT NULL,
   `AtributoD` bigint(11) NOT NULL,
-  `Restricciones` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`IDLicencia`),
-  KEY `IDConductor` (`IDConductor`),
-  CONSTRAINT `licencias_ibfk_1` FOREIGN KEY (`IDConductor`) REFERENCES `conductores` (`IDconductor`)
-) ENGINE=InnoDB AUTO_INCREMENT=8111035537 DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `Restricciones` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `licencias`
+-- Volcado de datos para la tabla `licencias`
 --
 
-LOCK TABLES `licencias` WRITE;
-/*!40000 ALTER TABLE `licencias` DISABLE KEYS */;
-INSERT INTO `licencias` VALUES (8111035536,6700000001,'B','2022-10-31','2027-10-31',65123456789,' ');
-/*!40000 ALTER TABLE `licencias` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `licencias` (`IDLicencia`, `IDConductor`, `TipoLicencia`, `FechaExpedicion`, `FechaVencimiento`, `AtributoD`, `Restricciones`) VALUES
+(8111035545, 0000000004, 'A', '2022-11-09', '2023-11-09', 12345678987, ' ');
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `multas`
+-- Estructura de tabla para la tabla `multas`
 --
 
-DROP TABLE IF EXISTS `multas`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `multas` (
   `IDMulta` int(8) NOT NULL,
   `FechaHora` datetime NOT NULL,
   `ReporteSeccion` varchar(50) NOT NULL,
   `NombreVia` varchar(25) NOT NULL,
-  `Kilometro` smallint(4) unsigned NOT NULL,
+  `Kilometro` smallint(4) UNSIGNED NOT NULL,
   `Sentido` varchar(5) NOT NULL,
   `Referencia` varchar(30) NOT NULL,
   `Municipio` varchar(20) NOT NULL,
@@ -108,104 +99,71 @@ CREATE TABLE `multas` (
   `ObservacionConductor` varchar(100) DEFAULT NULL,
   `ObservacionOficial` varchar(100) NOT NULL,
   `CalificacionBoleta` varchar(100) DEFAULT NULL,
-  `IDLicencia` bigint(10) unsigned DEFAULT NULL,
-  `IDVehiculo` bigint(10) unsigned zerofill DEFAULT NULL,
-  `IDTarjeta` bigint(9) unsigned DEFAULT NULL,
-  `IDOficial` smallint(4) unsigned zerofill DEFAULT NULL,
-  PRIMARY KEY (`IDMulta`),
-  UNIQUE KEY `IDLicencia` (`IDLicencia`),
-  UNIQUE KEY `IDVehiculo` (`IDVehiculo`),
-  UNIQUE KEY `IDTarjeta` (`IDTarjeta`),
-  UNIQUE KEY `IDOficial` (`IDOficial`),
-  CONSTRAINT `multas_ibfk_1` FOREIGN KEY (`IDOficial`) REFERENCES `oficiales` (`IDOficial`),
-  CONSTRAINT `multas_ibfk_2` FOREIGN KEY (`IDLicencia`) REFERENCES `licencias` (`IDLicencia`),
-  CONSTRAINT `multas_ibfk_3` FOREIGN KEY (`IDVehiculo`) REFERENCES `vehiculos` (`IDVehiculo`),
-  CONSTRAINT `multas_ibfk_4` FOREIGN KEY (`IDTarjeta`) REFERENCES `tarjetas` (`IDTarjeta`)
+  `IDLicencia` bigint(10) UNSIGNED DEFAULT NULL,
+  `IDVehiculo` bigint(10) UNSIGNED ZEROFILL DEFAULT NULL,
+  `IDTarjeta` bigint(9) UNSIGNED DEFAULT NULL,
+  `IDOficial` smallint(4) UNSIGNED ZEROFILL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `multas`
+-- Estructura de tabla para la tabla `oficiales`
 --
 
-LOCK TABLES `multas` WRITE;
-/*!40000 ALTER TABLE `multas` DISABLE KEYS */;
-/*!40000 ALTER TABLE `multas` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `oficiales`
---
-
-DROP TABLE IF EXISTS `oficiales`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `oficiales` (
-  `IDOficial` smallint(4) unsigned zerofill NOT NULL AUTO_INCREMENT,
+  `IDOficial` smallint(4) UNSIGNED ZEROFILL NOT NULL,
   `Nombre` varchar(50) NOT NULL,
   `ApellidoPaterno` varchar(25) NOT NULL,
   `ApelidoMaterno` varchar(25) NOT NULL,
   `Grupo` varchar(25) NOT NULL,
-  `Firma` varchar(50) NOT NULL,
-  PRIMARY KEY (`IDOficial`)
-) ENGINE=InnoDB AUTO_INCREMENT=8002 DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `Firma` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `oficiales`
+-- Volcado de datos para la tabla `oficiales`
 --
 
-LOCK TABLES `oficiales` WRITE;
-/*!40000 ALTER TABLE `oficiales` DISABLE KEYS */;
-INSERT INTO `oficiales` VALUES (8001,'David','Cano','Perez','5ta division ','firma.png');
-/*!40000 ALTER TABLE `oficiales` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `oficiales` (`IDOficial`, `Nombre`, `ApellidoPaterno`, `ApelidoMaterno`, `Grupo`, `Firma`) VALUES
+(8002, 'Jacobed', 'Maria', 'Cabrera', 'Divison III', 'firma.png');
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `propietarios`
+-- Estructura de tabla para la tabla `propietarios`
 --
 
-DROP TABLE IF EXISTS `propietarios`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `propietarios` (
-  `IDPropietario` bigint(10) unsigned zerofill NOT NULL AUTO_INCREMENT,
+  `IDPropietario` bigint(10) UNSIGNED NOT NULL,
   `RFC` varchar(13) NOT NULL,
   `Localidad` varchar(50) NOT NULL,
   `Municipio` varchar(50) NOT NULL,
   `Nombre` varchar(50) NOT NULL,
   `ApellidoPaterno` varchar(25) NOT NULL,
-  `ApellidoMaterno` varchar(25) NOT NULL,
-  PRIMARY KEY (`IDPropietario`),
-  UNIQUE KEY `RFC` (`RFC`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `ApellidoMaterno` varchar(25) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `propietarios`
+-- Volcado de datos para la tabla `propietarios`
 --
 
-LOCK TABLES `propietarios` WRITE;
-/*!40000 ALTER TABLE `propietarios` DISABLE KEYS */;
-INSERT INTO `propietarios` VALUES (0000000003,'CACD011015hgt','Guanajuato','Dolores','David','Emmanuel','Cano');
-/*!40000 ALTER TABLE `propietarios` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `propietarios` (`IDPropietario`, `RFC`, `Localidad`, `Municipio`, `Nombre`, `ApellidoPaterno`, `ApellidoMaterno`) VALUES
+(4, 'CACD011015HGT', 'El Llanito', 'Dolores Hidalgo', 'David', 'Cano', 'Perez');
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `tarjetas`
+-- Estructura de tabla para la tabla `tarjetas`
 --
 
-DROP TABLE IF EXISTS `tarjetas`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tarjetas` (
-  `IDTarjeta` bigint(9) unsigned NOT NULL AUTO_INCREMENT,
+  `IDTarjeta` bigint(9) UNSIGNED NOT NULL,
   `TipoServicio` varchar(20) NOT NULL,
   `Folio` int(11) NOT NULL,
   `Vigencia` date DEFAULT NULL,
   `Placa` varchar(12) NOT NULL,
-  `IDPropietario` bigint(10) unsigned zerofill NOT NULL,
-  `IDVehiculo` bigint(10) unsigned zerofill NOT NULL,
+  `IDPropietario` bigint(10) UNSIGNED NOT NULL,
+  `IDVehiculo` bigint(10) UNSIGNED NOT NULL,
   `Operacion` varchar(12) NOT NULL,
   `PlacaAnterior` varchar(12) DEFAULT NULL,
   `NCI` varchar(8) DEFAULT NULL,
@@ -215,37 +173,26 @@ CREATE TABLE `tarjetas` (
   `OficinaExpedidora` tinyint(2) NOT NULL,
   `Movimiento` varchar(30) NOT NULL,
   `FechaExpedicion` date NOT NULL,
-  `QR` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`IDTarjeta`),
-  UNIQUE KEY `Folio` (`Folio`),
-  KEY `IDPropietario` (`IDPropietario`),
-  KEY `IDVehiculo` (`IDVehiculo`),
-  CONSTRAINT `tarjetas_ibfk_1` FOREIGN KEY (`IDPropietario`) REFERENCES `propietarios` (`IDPropietario`),
-  CONSTRAINT `tarjetas_ibfk_2` FOREIGN KEY (`IDVehiculo`) REFERENCES `vehiculos` (`IDVehiculo`)
-) ENGINE=InnoDB AUTO_INCREMENT=650000007 DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `QR` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tarjetas`
+-- Volcado de datos para la tabla `tarjetas`
 --
 
-LOCK TABLES `tarjetas` WRITE;
-/*!40000 ALTER TABLE `tarjetas` DISABLE KEYS */;
-INSERT INTO `tarjetas` VALUES (650000005,'Particular',2147483647,'2022-09-05','2008/UPX017B',0000000003,0000000009,'2022/1211308','2022/1211308','12354687','','xd',123547,9,'REFRENDO CON CANJE DE PLACAS','2022-10-31',NULL);
-/*!40000 ALTER TABLE `tarjetas` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `tarjetas` (`IDTarjeta`, `TipoServicio`, `Folio`, `Vigencia`, `Placa`, `IDPropietario`, `IDVehiculo`, `Operacion`, `PlacaAnterior`, `NCI`, `Uso`, `Rfa`, `CVE`, `OficinaExpedidora`, `Movimiento`, `FechaExpedicion`, `QR`) VALUES
+(650000007, 'Particular', 123456790, '2022-11-17', '2008/UPX017B', 4, 14, '2022/1211308', '', '12354687', '', 'xd', 123547, 1, 'REFRENDO CON CANJE DE PLACAS', '2022-11-09', NULL);
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `vehiculos`
+-- Estructura de tabla para la tabla `vehiculos`
 --
 
-DROP TABLE IF EXISTS `vehiculos`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `vehiculos` (
-  `IDVehiculo` bigint(10) unsigned zerofill NOT NULL AUTO_INCREMENT,
+  `IDVehiculo` bigint(10) UNSIGNED NOT NULL,
   `NIV` char(17) NOT NULL,
-  `Modelo` smallint(5) unsigned NOT NULL,
+  `Modelo` smallint(5) UNSIGNED NOT NULL,
   `Marca` varchar(25) NOT NULL,
   `Linea` varchar(25) NOT NULL,
   `Sublinea` varchar(25) DEFAULT NULL,
@@ -260,32 +207,25 @@ CREATE TABLE `vehiculos` (
   `Combustible` varchar(15) NOT NULL,
   `Transmision` varchar(15) NOT NULL,
   `NumMotor` char(11) NOT NULL,
-  `NumSerie` varchar(17) DEFAULT NULL,
-  PRIMARY KEY (`IDVehiculo`),
-  UNIQUE KEY `NIV` (`NIV`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `NumSerie` varchar(17) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `vehiculos`
+-- Volcado de datos para la tabla `vehiculos`
 --
 
-LOCK TABLES `vehiculos` WRITE;
-/*!40000 ALTER TABLE `vehiculos` DISABLE KEYS */;
-INSERT INTO `vehiculos` VALUES (0000000009,'00000000000000001',2021,'NISSAN','s','d','Nacional','purpura','A','',1,1,2,3,'Gas LP','Automatica','12345678981','123545688789'),(0000000011,'00000000000000002',2018,'NISSAN','d','s','Nacional','d','f','s',1,3,3,1,'Gasolina','Automatica','12345678945','123456789123');
-/*!40000 ALTER TABLE `vehiculos` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `vehiculos` (`IDVehiculo`, `NIV`, `Modelo`, `Marca`, `Linea`, `Sublinea`, `Origen`, `Color`, `Clase`, `TipoVehiculo`, `NumCilindros`, `Capacidad`, `NumPuertas`, `NumAsientos`, `Combustible`, `Transmision`, `NumMotor`, `NumSerie`) VALUES
+(14, '1GNCS12Z6M0246591', 2022, 'NISSAN', 'Versa', '', 'Nacional', 'negro', 'Automovil', 'S', 1, 4, 3, 2, 'Gas Natural', 'Automatica', '12345678945', '123545688789');
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `verificaciones`
+-- Estructura de tabla para la tabla `verificaciones`
 --
 
-DROP TABLE IF EXISTS `verificaciones`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `verificaciones` (
-  `FolioVerificacion` int(10) unsigned NOT NULL,
-  `IDTarjeta` bigint(9) unsigned NOT NULL,
+  `FolioVerificacion` int(10) UNSIGNED NOT NULL,
+  `IDTarjeta` bigint(9) UNSIGNED NOT NULL,
   `EntidadFederativa` varchar(20) NOT NULL,
   `Municipio` varchar(50) NOT NULL,
   `NumCentro` varchar(30) NOT NULL,
@@ -298,28 +238,164 @@ CREATE TABLE `verificaciones` (
   `MotivoVerificacion` varchar(100) NOT NULL,
   `Semestre` char(1) NOT NULL,
   `Dictamen` varchar(10) DEFAULT NULL,
-  `Holograma` tinyint(2) unsigned zerofill NOT NULL,
-  KEY `IDTarjeta` (`IDTarjeta`),
-  CONSTRAINT `verificaciones_ibfk_1` FOREIGN KEY (`IDTarjeta`) REFERENCES `tarjetas` (`IDTarjeta`)
+  `Holograma` tinyint(2) UNSIGNED ZEROFILL NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `verificaciones`
+-- Volcado de datos para la tabla `verificaciones`
 --
 
-LOCK TABLES `verificaciones` WRITE;
-/*!40000 ALTER TABLE `verificaciones` DISABLE KEYS */;
-/*!40000 ALTER TABLE `verificaciones` ENABLE KEYS */;
-UNLOCK TABLES;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+INSERT INTO `verificaciones` (`FolioVerificacion`, `IDTarjeta`, `EntidadFederativa`, `Municipio`, `NumCentro`, `NumLinea`, `NombreTecnico`, `FechaExpedicion`, `FechaVencimiento`, `HoraEntrada`, `HoraSalida`, `MotivoVerificacion`, `Semestre`, `Dictamen`, `Holograma`) VALUES
+(1, 650000007, 'Campeche', 'Dolores Hidalgo', 'dsajlfjsuhgiwefjds', 0, 'Fernando Ochoa', '2022-11-09', '2022-11-02', '23:36:00', '23:37:00', 'Vehiculo Nuevo', '2', 'RECHAZADO', 01);
 
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `conductores`
+--
+ALTER TABLE `conductores`
+  ADD PRIMARY KEY (`IDconductor`);
+
+--
+-- Indices de la tabla `licencias`
+--
+ALTER TABLE `licencias`
+  ADD PRIMARY KEY (`IDLicencia`),
+  ADD KEY `IDConductor` (`IDConductor`);
+
+--
+-- Indices de la tabla `multas`
+--
+ALTER TABLE `multas`
+  ADD PRIMARY KEY (`IDMulta`),
+  ADD UNIQUE KEY `IDLicencia` (`IDLicencia`),
+  ADD UNIQUE KEY `IDVehiculo` (`IDVehiculo`),
+  ADD UNIQUE KEY `IDTarjeta` (`IDTarjeta`),
+  ADD UNIQUE KEY `IDOficial` (`IDOficial`);
+
+--
+-- Indices de la tabla `oficiales`
+--
+ALTER TABLE `oficiales`
+  ADD PRIMARY KEY (`IDOficial`);
+
+--
+-- Indices de la tabla `propietarios`
+--
+ALTER TABLE `propietarios`
+  ADD PRIMARY KEY (`IDPropietario`),
+  ADD UNIQUE KEY `RFC` (`RFC`);
+
+--
+-- Indices de la tabla `tarjetas`
+--
+ALTER TABLE `tarjetas`
+  ADD PRIMARY KEY (`IDTarjeta`),
+  ADD UNIQUE KEY `Folio` (`Folio`),
+  ADD KEY `IDPropietario` (`IDPropietario`),
+  ADD KEY `IDVehiculo` (`IDVehiculo`);
+
+--
+-- Indices de la tabla `vehiculos`
+--
+ALTER TABLE `vehiculos`
+  ADD PRIMARY KEY (`IDVehiculo`),
+  ADD UNIQUE KEY `NIV` (`NIV`);
+
+--
+-- Indices de la tabla `verificaciones`
+--
+ALTER TABLE `verificaciones`
+  ADD PRIMARY KEY (`FolioVerificacion`),
+  ADD KEY `IDTarjeta` (`IDTarjeta`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `conductores`
+--
+ALTER TABLE `conductores`
+  MODIFY `IDconductor` bigint(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT de la tabla `licencias`
+--
+ALTER TABLE `licencias`
+  MODIFY `IDLicencia` bigint(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8111035546;
+
+--
+-- AUTO_INCREMENT de la tabla `multas`
+--
+ALTER TABLE `multas`
+  MODIFY `IDMulta` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `oficiales`
+--
+ALTER TABLE `oficiales`
+  MODIFY `IDOficial` smallint(4) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8004;
+
+--
+-- AUTO_INCREMENT de la tabla `propietarios`
+--
+ALTER TABLE `propietarios`
+  MODIFY `IDPropietario` bigint(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT de la tabla `tarjetas`
+--
+ALTER TABLE `tarjetas`
+  MODIFY `IDTarjeta` bigint(9) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=650000008;
+
+--
+-- AUTO_INCREMENT de la tabla `vehiculos`
+--
+ALTER TABLE `vehiculos`
+  MODIFY `IDVehiculo` bigint(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- AUTO_INCREMENT de la tabla `verificaciones`
+--
+ALTER TABLE `verificaciones`
+  MODIFY `FolioVerificacion` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `licencias`
+--
+ALTER TABLE `licencias`
+  ADD CONSTRAINT `licencias_ibfk_1` FOREIGN KEY (`IDConductor`) REFERENCES `conductores` (`IDconductor`);
+
+--
+-- Filtros para la tabla `multas`
+--
+ALTER TABLE `multas`
+  ADD CONSTRAINT `multas_ibfk_1` FOREIGN KEY (`IDOficial`) REFERENCES `oficiales` (`IDOficial`),
+  ADD CONSTRAINT `multas_ibfk_2` FOREIGN KEY (`IDLicencia`) REFERENCES `licencias` (`IDLicencia`),
+  ADD CONSTRAINT `multas_ibfk_3` FOREIGN KEY (`IDVehiculo`) REFERENCES `vehiculos` (`IDVehiculo`),
+  ADD CONSTRAINT `multas_ibfk_4` FOREIGN KEY (`IDTarjeta`) REFERENCES `tarjetas` (`IDTarjeta`);
+
+--
+-- Filtros para la tabla `tarjetas`
+--
+ALTER TABLE `tarjetas`
+  ADD CONSTRAINT `tarjetas_ibfk_1` FOREIGN KEY (`IDPropietario`) REFERENCES `propietarios` (`IDPropietario`),
+  ADD CONSTRAINT `tarjetas_ibfk_2` FOREIGN KEY (`IDVehiculo`) REFERENCES `vehiculos` (`IDVehiculo`);
+
+--
+-- Filtros para la tabla `verificaciones`
+--
+ALTER TABLE `verificaciones`
+  ADD CONSTRAINT `verificaciones_ibfk_1` FOREIGN KEY (`IDTarjeta`) REFERENCES `tarjetas` (`IDTarjeta`);
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
-
--- Dump completed on 2022-10-31  6:10:56

@@ -1,7 +1,5 @@
 <?php
 
-
-
 $TipoServicio = $_POST['TipoServicio'];
 $Vigencia = $_POST['Vigencia'];
 $Placa = $_POST['Placa'];
@@ -16,8 +14,6 @@ $CVE = $_POST['CVE'];
 $OficinaExpedidora = $_POST['OficinaExpedidora'];
 $Movimiento = $_POST['Movimiento'];
 $FechaExpedicion = $_POST['FechaExpedicion'];
-
-
 $Folio = "123456790";
 
 

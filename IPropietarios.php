@@ -5,7 +5,8 @@
     $ApellidoMaterno = $_REQUEST['ApellidoMaterno'];
     $Localidad = $_REQUEST['Localidad'];
     $Municipio = $_REQUEST['Municipio'];
-    $RFC = $_REQUEST['RFC'];
+    // request the RFC to uppercase
+    $RFC = strtoupper($_REQUEST['RFC']);
 
     $SQL = "INSERT INTO propietarios(IDPropietario,Nombre,ApellidoPaterno,ApellidoMaterno,Localidad,Municipio,RFC) 
     VALUES ('','$Nombre','$ApellidoPaterno','$ApellidoMaterno','$Localidad','$Municipio','$RFC')";
@@ -14,7 +15,6 @@
     $Con = Conectar();
     $Result = Ejecutar($Con, $SQL) or die ("Error al insertar datos".mysqli_error($Con));
     if ($Result) {
-    
         print("El propietario con RFC: " . $RFC . " ha sido registrado con exito");
     }else{
         print("Registro No insertado");

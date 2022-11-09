@@ -16,7 +16,7 @@
     if ($Result) {
 
         $last_sql_id = mysqli_insert_id($Con);
-        print("Oficial agregado correctamente ID: " . $last_sql_id);
+        print("Oficial agregado correctamente ID: <strong> " . $last_sql_id . "</strong>");
 
     }else{
         print("Registro No insertado");
