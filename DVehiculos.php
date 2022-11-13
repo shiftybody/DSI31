@@ -1,8 +1,11 @@
 <html>
 <!-- Solicitar a traves de un formulario el NIV -->
     <form method="GET" action="DVehiculos.php">
-        <label> RFC del propietario </label>
-        <input type="text" name="NIV" id="NIV" placeholder="1GNCS12Z6M0246591">
+        <label> NIV del Vehiculo </label>
+        <input type="text"
+            name="NIV" 
+            id="NIV" 
+            placeholder="1GNCS12Z6M0246591">
         <input type="submit" value="Enviar">
     </form>
 </html>

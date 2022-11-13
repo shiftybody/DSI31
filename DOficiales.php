@@ -1,7 +1,7 @@
 <html>
 <!-- Solicitar a traves de un formulario el IDconductor -->
     <form method="GET" action="DOficiales.php">
-        <label> ID Conductor </label>
+        <label> ID Oficial </label>
         <input type="text" name="IDOficial" id="IDOficial" placeholder="8409">
         <input type="submit" value="Enviar">
     </form>

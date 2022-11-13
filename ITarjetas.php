@@ -17,6 +17,8 @@ $FechaExpedicion = $_POST['FechaExpedicion'];
 $Folio = "123456790";
 
 
+
+
 $SQL = "INSERT INTO tarjetas(TipoServicio,
     Folio ,Vigencia,Placa,IDPropietario ,IDVehiculo ,
     Operacion,PlacaAnterior,NCI,Rfa,CVE,OficinaExpedidora,Movimiento,FechaExpedicion) 
