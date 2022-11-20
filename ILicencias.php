@@ -24,7 +24,7 @@ if ($Result) {
     $ascii = chr(substr($last_sql_id, 0, 2));
     $id = $ascii . substr($last_sql_id, 2, 6) . "-" . substr($last_sql_id, 8);
 
-    print("Licencia registrada con éxito con el ID: <strong>" . $id . "</strong>");
+    print("Licencia registrada con éxito. Tú número de licencia es: <strong>" . $id . "</strong>");
 } else {
     print("Registro No insertado");
 }

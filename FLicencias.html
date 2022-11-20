@@ -1,11 +1,20 @@
-<html>
-<meta charset="utf-8">
-<label for="">
-    <h1>
-        Licencias
-    </h1>
-</label>
-<p></p>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Licencias</title>
+</head>
+
+<body>
+    <label for="">
+        <h1>
+            Licencias
+        </h1>
+    </label>
+    <p></p>
     <form method="GET" action="ILicencias.php">
         <label for="">ID Conductor</label>
         <input type="text" id="IDConductor" name="IDConductor" required>
@@ -26,7 +35,7 @@
         <input type="text" id="AtributoDesconocido" name="AtributoDesconocido" maxlength="11" required>
         <br>
         <label for="">Fecha Expedicion</label>
-        <input type="date" id="fechaExpedicion" name="FechaExpedicion"  required readonly>
+        <input type="date" id="fechaExpedicion" name="FechaExpedicion" required readonly>
         <br>
         <label for="">Vigencia</label>
         <select id="Vigencia" name="Vigencia" required>
@@ -48,4 +57,6 @@
     <script>
         document.getElementById('fechaExpedicion').valueAsDate = new Date();
     </script>
+</body>
+
 </html>

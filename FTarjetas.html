@@ -1,4 +1,14 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarjetas</title>
+</head>
+
+<body>
     <label for="">
         <h1>
             Tarjetas
@@ -9,7 +19,7 @@
         <label for="">TipoServicio</label>
         <select id="TipoServicio" name="TipoServicio" required>
             <script>
-                let tipos = ["","Particular", "Publico", "Federal", "Otro"];
+                let tipos = ["", "Particular", "Publico", "Federal", "Otro"];
                 for (let i = 0; i < tipos.length; i++) {
                     document.write("<option value='" + tipos[i] + "'>" + tipos[i] + "</option>");
                 }
@@ -17,7 +27,15 @@
         </select>
         <br>
         <label for="">Vigencia</label>
-        <input type="date" id="Vigencia" name="Vigencia" >
+        <select id="Vigencia" name="Vigencia" required >
+            <script>
+                document.write("<option value=''></option>")
+                document.write("<option value='INDEFINIDA'>INDEFINIDA</option>")
+                for (var i = 1; i <= 10; i++) {
+                    document.write("<option value='" + i + "'>" + i + "</option>");
+                }
+            </script> 
+        </select> años
         <br>
         <label for="">Placa</label>
         <input type="text" id="Placa" name="Placa" required>
@@ -32,7 +50,7 @@
         <input type="text" id="Operacion" name="Operacion" required>
         <br>
         <label for="">Placa Anterior</label>
-        <input type="text" id="PlacaAnterior" name="PlacaAnterior" >
+        <input type="text" id="PlacaAnterior" name="PlacaAnterior">
         <br>
         <label for="">NCI</label>
         <input type="text" id="NCI" name="NCI" minlength="8">
@@ -41,7 +59,7 @@
         <input type="text" id="Uso" name="Uso" required>
         <br>
         <label for="">Rfa</label>
-        <input type="text" id="Rfa" name="Rfa" >
+        <input type="text" id="Rfa" name="Rfa">
         <br>
         <label for="">CVE</label>
         <input type="text" id="CVE" name="CVE" minlength="7" required>
@@ -51,7 +69,7 @@
         <br>
         <label for="">Movimiento</label>
         <input type="text" id="Movimiento" name="Movimiento" required>
-        <br>    
+        <br>
         <label for="">FechaExpedicion</label>
         <input type="date" id="FechaExpedicion" name="FechaExpedicion" readonly>
         <br>
@@ -60,4 +78,6 @@
     <script>
         document.getElementById('FechaExpedicion').valueAsDate = new Date();
     </script>
+</body>
+
 </html>

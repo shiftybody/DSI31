@@ -25,8 +25,8 @@
     $Con = Conectar();
     $Result = Ejecutar($Con, $SQL) or die ("Error al insertar datos".mysqli_error($Con));
     if ($Result) {
-        
-        print("Conductor registrado con éxito");
+               
+        print("Conductor registrado exitosamente con id: <strong>" . mysqli_insert_id($Con) . " </strong>");
 
     }else{
         print("Registro No insertado");

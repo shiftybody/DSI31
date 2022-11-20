@@ -14,15 +14,11 @@ $CVE = $_POST['CVE'];
 $OficinaExpedidora = $_POST['OficinaExpedidora'];
 $Movimiento = $_POST['Movimiento'];
 $FechaExpedicion = $_POST['FechaExpedicion'];
-$Folio = "123456790";
+// check for folio number auto increment
 
-
-
-
-$SQL = "INSERT INTO tarjetas(TipoServicio,
-    Folio ,Vigencia,Placa,IDPropietario ,IDVehiculo ,
+$SQL = "INSERT INTO tarjetas(TipoServicio,Vigencia,Placa,IDPropietario ,IDVehiculo ,
     Operacion,PlacaAnterior,NCI,Rfa,CVE,OficinaExpedidora,Movimiento,FechaExpedicion) 
-    VALUES ( '$TipoServicio', '$Folio', '$Vigencia', '$Placa', '$IDPropietario', 
+    VALUES ( '$TipoServicio', '$Vigencia', '$Placa', '$IDPropietario', 
     '$IDVehiculo', '$Operacion', '$PlacaAnterior', '$NCI', '$Rfa', '$CVE', 
     '$OficinaExpedidora', '$Movimiento', '$FechaExpedicion')";
 
@@ -31,12 +27,7 @@ $Con = Conectar();
 $Result = Ejecutar($Con, $SQL) or die("Error al insertar datos" . mysqli_error($Con));
 if ($Result) {
 
-    // leer el ultimo Folio de la tabla Tarjetas
-    $last_sql_id = mysqli_insert_id($Con);
-    $ascii = chr(substr($last_sql_id, 0, 2));
-    // agregar ascii al resto del folio
-    $Folio = $ascii . substr($last_sql_id, 2, 9);
-    print("Tarjeta registrada con éxito. folio: " . $Folio );
+    print("Tarjeta registrada con éxito. Folio: " . "<strong>" . mysqli_insert_id($Con) . "</strong>");
 
 } else {
     print("Registro No insertado");

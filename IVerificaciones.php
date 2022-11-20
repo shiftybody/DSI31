@@ -27,7 +27,7 @@
     $Con = Conectar();
     $Result = Ejecutar($Con, $SQL) or die ("Error al insertar datos".mysqli_error($Con));
     if ($Result) {
-        print("Registro insertado correctamente");
+        print("Registro insertado correctamente con Folio: <strong>" . mysqli_insert_id($Con) . "</strong>");
     }else{
         print("Registro No insertado");
     }

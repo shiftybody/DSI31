@@ -10,12 +10,11 @@
 <?php 
 
 // Eliminar el registro de la tabla conductores 
-if(isset($_GET['FolioVerificacion'])){
+if(isset($_GET['FolioVerificacion']) && !empty($_GET['FolioVerificacion'])){
 
     $Folio = $_GET['FolioVerificacion'];
 
     $SQL = "DELETE FROM verificaciones WHERE FolioVerificacion = '$Folio'";
-    print("<br>".$SQL);
 
     //enviar al dbms
     include("conexion.php");
@@ -26,6 +25,8 @@ if(isset($_GET['FolioVerificacion'])){
     print("<br> Numero de Filas Eliminadas:" . $FilasAfectadas);
 
     Cerrar($Con);
+} else {
+    print("No se ha recibido el Folio");
 }
 
 ?>

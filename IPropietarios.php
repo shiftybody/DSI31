@@ -15,7 +15,7 @@
     $Con = Conectar();
     $Result = Ejecutar($Con, $SQL) or die ("Error al insertar datos".mysqli_error($Con));
     if ($Result) {
-        print("El propietario con RFC: " . $RFC . " ha sido registrado con exito");
+        print("El propietario con RFC: <strong>" . $RFC . " </strong> ha sido registrado con exito");
     }else{
         print("Registro No insertado");
     }

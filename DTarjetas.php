@@ -1,24 +1,30 @@
-<html>
-<!-- Solicitar a traves de un formulario el Folio de la tarjeta de circulacion-->
-    <form method="GET" action="DVehiculos.php">
-        <label> NIV del Vehiculo </label>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eliminar Tarjeta de Circulacion</title>
+</head>
+<body>
+        <form method="GET" action="DTarjetas.php">
+        <label> Folio:  </label>
         <input type="text"
-            name="NIV" 
-            id="NIV" 
-            placeholder="1GNCS12Z6M0246591">
+            name="IDTarjeta" 
+            id="IDTarjeta" >
         <input type="submit" value="Enviar">
     </form>
+</body>
 </html>
 
 <?php 
 
 // Eliminar el registro de la tabla oficiales 
-if(isset($_GET['NIV'])){
+if(isset($_GET['IDTarjeta']) && !empty($_GET['IDTarjeta'])){
 
-    $NIV = $_GET['NIV'];
+    $IDTarjeta = $_GET['IDTarjeta'];
 
-    $SQL = "DELETE FROM vehiculos WHERE NIV = '$NIV'";
-    print("<br>".$SQL);
+    $SQL = "DELETE FROM tarjetas WHERE IDTarjeta = '$IDTarjeta'";
 
     //enviar al dbms
     include("conexion.php");
@@ -29,6 +35,8 @@ if(isset($_GET['NIV'])){
     print("<br> Numero de Filas Eliminadas:" . $FilasAfectadas);
 
     Cerrar($Con);
+} else {
+   print("<br> No se recibio el ID de la Tarjeta");
 }
 
 ?>
