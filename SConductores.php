@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Buscar Conductor</title>
 </head>
+
 <body>
-        <!-- filtrar los datos -->
+    <!-- filtrar los datos -->
     <form action="SConductores.php" method="POST">
         <label for="">Criterio</label>
         <input type="text" name="Criterio" id="Criterio" required>
@@ -33,6 +35,7 @@
     </form>
     <br>
 </body>
+
 </html>
 
 <?php
@@ -64,9 +67,11 @@ if (isset($_POST['Criterio']) && !empty($_POST['Criterio']) && isset($_POST['Atr
     echo "<th>Sexo</th>";
     echo "<th>Antiguedad</th>";
     echo "<th>Observaciones</th>";
+    echo "<th>Eliminar</th>";
+    echo "<th>Actualizar</th>";
     echo "</tr>";
 
-    for($i = 0; $i < $Rows; $i++){
+    for ($i = 0; $i < $Rows; $i++) {
         echo "<tr>";
         echo "<td>" . $Fila[0] . "</td>";
         echo "<td>" . $Fila[1] . "</td>";
@@ -82,6 +87,23 @@ if (isset($_POST['Criterio']) && !empty($_POST['Criterio']) && isset($_POST['Atr
         echo "<td>" . $Fila[11] . "</td>";
         echo "<td>" . $Fila[12] . "</td>";
         echo "<td>" . $Fila[13] . "</td>";
+
+        echo '<td>' . '<a href="DConductores.php?IDConductor=' . $Fila[0] . '">Eliminar</a>' . '</td>';
+        echo '<td>' . '<a href="UConductores.php' .
+            '?IDConductor=' . $Fila[0] .
+            '&Fotografia=' . $Fila[1] .
+            '&Nombre=' . $Fila[2] .
+            '&ApellidoPaterno=' . $Fila[3] .
+            '&ApellidoMaterno=' . $Fila[4] .
+            '&FechaNacimiento=' . $Fila[5] .
+            '&Firma=' . $Fila[6] .
+            '&Domicilio=' . $Fila[7] .
+            '&GrupoSanguineo=' . $Fila[8] .
+            '&Donador=' . $Fila[9] .
+            '&NumEmergenica=' . $Fila[10] .
+            '&Sexo=' . $Fila[11] .
+            '&Antiguedad=' . $Fila[12] .
+            '&Observaciones=' . $Fila[13] . '">Actualizar</a>' . '</td>';
         echo "</tr>";
         $Fila = mysqli_fetch_row($Result);
     }

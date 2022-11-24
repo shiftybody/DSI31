@@ -17,28 +17,28 @@
     <p></p>
     <form method="POST" action="UConductores.php">
         <label for=""><strong> Ingrese el ID del conductor</strong></label>
-        <input type="text" name="IDConductor" id="IDConductor" required>
+        <input type="text" name="IDConductor" id="IDConductor" value="<?php print($_GET['IDConductor']);?>" readonly>
         <br>
         <label for="">Fotografia</label>
-        <input type="text" id="Fotografia" name="Fotografia" required>
+        <input type="text" id="Fotografia" name="Fotografia" value="<?php print($_GET['Fotografia']);?>" required>
         <br>
         <label for="">Nombre</label>
-        <input type="text" id="Nombre" name="Nombre" required>
+        <input type="text" id="Nombre" name="Nombre" value="<?php print($_GET['Nombre'])?>" required>
         <br>
         <label for="">Apellido Paterno</label>
-        <input type="text" id="ApellidoPaterno" name="ApellidoPaterno">
+        <input type="text" id="ApellidoPaterno" name="ApellidoPaterno" value="<?php print($_GET['ApellidoPaterno'])?>">
         <br>
         <label for="">Apellido Materno</label>
-        <input type="text" id="ApellidoMaterno" name="ApellidoMaterno">
+        <input type="text" id="ApellidoMaterno" name="ApellidoMaterno" value="<?php print($_GET['ApellidoMaterno'])?>">
         <br>
         <label for="">FechaNacimiento</label>
-        <input type="date" id="FechaNacimiento" name="FechaNacimiento" required>
+        <input type="date" id="FechaNacimiento" name="FechaNacimiento" value="<?php print($_GET['FechaNacimiento'])?>" required>
         <br>
         <label for="">Firma</label>
-        <input type="text" id="Firma" name="Firma" required>
+        <input type="text" id="Firma" name="Firma" value="<?php print($_GET['Firma'])?>" required>
         <br>
         <label for="">Domicilio</label>
-        <input type="text" id="Domicilio" name="Domicilio" maxlength="100" size="50" required>
+        <input type="text" id="Domicilio" name="Domicilio" maxlength="100" size="50" value="<?php print($_GET['Domicilio'])?>" required>
         <br>
         <label for="">GrupoSanguineo</label>
         <select id="GrupoSanguineo" name="GrupoSanguineo" required>
@@ -54,13 +54,14 @@
         </select>
         <br>
         <label for="">Donador</label>
-        <input type="radio" id="Donador" name="Donador" value="Si" required> Si
+        <input type="radio" id="Donador" name="Donador" value="Si"  required> Si
         <input type="radio" id="Donador" name="Donador" value="No" required> No
         <br>
         <label for="">Número Emergencia</label>
         <input type="phone" id="NumEmergencia" name="NumEmergencia" 
             placeholder="123-425-457-8901"
-            pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}-[0-9]{4}" 
+            pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}-[0-9]{4}"
+            value="<?php print($_GET['NumEmergenica'])?>"
             required>
         <br>
         <label for="">Sexo</label>
@@ -68,7 +69,7 @@
         <input type="radio" id="Sexo" name="Sexo" value="M" required> Mujer
         <br>
         <label for="">Antiguedad</label>
-        <input type="number" id="Antiguedad" name="Antiguedad" min="0" max="99" size="10">
+        <input type="number" id="Antiguedad" name="Antiguedad" value="<?php print($_GET['Antiguedad'])?>" min="0" max="99" size="10">
         <br>
         <label for="">Observaciones</label>
         <br>
