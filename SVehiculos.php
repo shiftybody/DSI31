@@ -23,6 +23,8 @@
             <option value="Color">Color</option>
             <option value="Clase">Clase</option>
             <option value="TipoVehiculo">TipoVehiculo</option>
+            <option value="NumCilindros">Numero de Cilindros</option>
+            <option value="Capacidad" >Capacidad</option>
             <option value="NumPuertas">Numero de Puertas</option>
             <option value="NumAsientos">Num de Asientos</option>]
             <option value="Combustible">Combustible</option>
@@ -64,12 +66,16 @@ if(isset($_POST['Criterio']) && isset($_POST['Atributo'])){
         echo "<th>Color</th>";
         echo "<th>Clase</th>";
         echo "<th>Tipo Vehiculo</th>";
+        echo "<th>Numero de Cilindros</th>";
+        echo "<th>Capacidad</th>";
         echo "<th>Numero de Puertas</th>";
         echo "<th>Numero de Asientos</th>";
         echo "<th>Combustible</th>";
         echo "<th>Transmision</th>";
         echo "<th>Numero de Motor</th>";
         echo "<th>Numero de Serie</th>";
+        echo "<th>Eliminar</th>";
+        echo "<th>Actualizar</th>";
         echo "</tr>";
 
 
@@ -85,12 +91,34 @@ if(isset($_POST['Criterio']) && isset($_POST['Atributo'])){
             echo "<td>".$Filas['Color']."</td>";
             echo "<td>".$Filas['Clase']."</td>";
             echo "<td>".$Filas['TipoVehiculo']."</td>";
+            echo "<td>".$Filas['NumCilindros']."</td>";
+            echo "<td>".$Filas['Capacidad']."</td>";
             echo "<td>".$Filas['NumPuertas']."</td>";
             echo "<td>".$Filas['NumAsientos']."</td>";
             echo "<td>".$Filas['Combustible']."</td>";
             echo "<td>".$Filas['Transmision']."</td>";
             echo "<td>".$Filas['NumMotor']."</td>";
             echo "<td>".$Filas['NumSerie']."</td>";
+            echo "<td><a href='DVehiculos.php?NIV=".$Filas['NIV']."'>Eliminar</a></td>";
+            echo "<td><a href='UVehiculos.php?IDVehiculo=".$Filas['IDVehiculo'] .
+                "&NIV=".$Filas['NIV'] .
+                "&Modelo=".$Filas['Modelo'] .
+                "&Marca=".$Filas['Marca'] .
+                "&Linea=".$Filas['Linea'] .
+                "&Sublinea=".$Filas['Sublinea'] .
+                "&Origen=".$Filas['Origen'] .
+                "&Color=".$Filas['Color'] .
+                "&Clase=".$Filas['Clase'] .
+                "&TipoVehiculo=".$Filas['TipoVehiculo'] .
+                "&NumCilindros=".$Filas['NumCilindros'] .
+                "&Capacidad=".$Filas['Capacidad'] .
+                "&NumPuertas=".$Filas['NumPuertas'] .
+                "&NumAsientos=".$Filas['NumAsientos'] .
+                "&Combustible=".$Filas['Combustible'] .
+                "&Transmision=".$Filas['Transmision'] .
+                "&NumMotor=".$Filas['NumMotor'] .
+                "&NumSerie=".$Filas['NumSerie'] .
+                "'>Actualizar</a></td>";
             echo "</tr>";
 
             
@@ -98,8 +126,6 @@ if(isset($_POST['Criterio']) && isset($_POST['Atributo'])){
         }
         echo "</table>";
     }
-} else {
-    echo "No se han recibido datos";
 }
 
 ?>

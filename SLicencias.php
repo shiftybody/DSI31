@@ -15,7 +15,7 @@
         <label for=""> Atributos </label>
         <select name="Atributo" class="Atributo" required>
             <option value="">Selecciona un atributo</option>
-            <option value="IDlicencia">ID Licencia</option>
+            <option value="IDLicencia">ID Licencia</option>
             <option value="IDConductor">ID Conductor</option>
             <option value="TipoLicencia">Tipo de Licencia</option>
             <option value="FechaExpedicion">Fecha de Expedicion</option>
@@ -51,6 +51,8 @@ if (isset($_POST['Criterio']) && isset($_POST['Atributo'])) {
         // eliminar el guion
         $Criterio = str_replace("-", "", $Criterio);
     }
+    
+
 
     $SQL = "SELECT * FROM licencias WHERE $Atributo LIKE '%$Criterio%'";
     include("conexion.php");
@@ -70,20 +72,34 @@ if (isset($_POST['Criterio']) && isset($_POST['Atributo'])) {
     echo "<th>Fecha de Vencimiento</th>";
     echo "<th>Atributo Desconocido</th>";
     echo "<th>Restricciones</th>";
+    echo "<th>Eliminar</th>";
+    echo "<th>Actualizar</th>";
+
     echo "</tr>";
     for ($i = 0; $i < $Rows; $i++) {
         echo "<tr>";
-        echo "<td>" . $Fila[0] . "</td>";
+        echo "<td>" . ParseID($Fila[0]) . "</td>";
         echo "<td>" . $Fila[1] . "</td>";
         echo "<td>" . $Fila[2] . "</td>";
         echo "<td>" . $Fila[3] . "</td>";
         echo "<td>" . $Fila[4] . "</td>";
         echo "<td>" . $Fila[5] . "</td>";
         echo "<td>" . $Fila[6] . "</td>";
+        echo "<td><a href='DLicencias.php?IDLicencia=" . ParseID($Fila[0]) . "'>Eliminar</a></td>";
+        echo "<td><a href='ULicencias.php?IDLicencia=" . ParseID($Fila[0]) .
+            "&IDConductor=" . $Fila[1] .
+            "&TipoLicencia=" . $Fila[2] .
+            "&FechaExpedicion=" . $Fila[3] .
+            "&FechaVencimiento=" . $Fila[4] .
+            "&AtributoD=" . $Fila[5] .
+            "&Restricciones=" . $Fila[6] .
+            "'>Actualizar</a></td>";
         echo "</tr>";
+
         $Fila = mysqli_fetch_row($Result);
     }
     echo "</table>";
+
 }
 
 ?>

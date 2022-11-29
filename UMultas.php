@@ -17,22 +17,22 @@
     </label>
     <p></p>
     <form method="GET" action="UMultas.php">
-        <label for=""><strong> Ingrese el Folio de la multa</strong></label>
-        <input type="text" name="IDMulta" id="IDMulta" required>
+        <label for=""><strong> Folio </strong></label>
+        <input type="text" name="IDMulta" id="IDMulta" value="<?php print($_GET['IDMulta']) ?>" readonly>
         <br>
         <label for="">Fecha</label>
-        <input type="date" id="Fecha" name="Fecha" >
+        <input type="date" id="Fecha" name="Fecha" value="<?php print($_GET['Fecha'])?>">
         <label for="">Hora</label>
-        <input type="time" id="Hora" name="Hora">
+        <input type="time" id="Hora" name="Hora" value="<?php print($_GET['Hora'])?>">
         <br>
         <label for="">Reporte de Seccion II</label>
-        <input type="text" id="ReporteSeccion" name="ReporteSeccion" maxlength="50" required>
+        <input type="text" id="ReporteSeccion" name="ReporteSeccion" maxlength="50" value="<?php print($_GET['ReporteSeccion']) ?>" required>
         <br>
         <label for="">Nombre de la via</label>
-        <input type="text" id="NombreVia" name="NombreVia" required>
+        <input type="text" id="NombreVia" name="NombreVia" value="<?php print($_GET['NombreVia']) ?>" required>
         <br>
         <label for="">Kilometro o número</label>
-        <input type="number" id="Kilometro" name="Kilometro" min="0" max="999" size="10" required>
+        <input type="number" id="Kilometro" name="Kilometro" min="0" max="999" size="10" value="<?php print($_GET['Kilometro']) ?>" required>
         <br>
         <label for="">Direccion o Sentido</label>
         <select name="DireccionSentido" id="DireccionSentido" required>
@@ -44,26 +44,26 @@
         </select>
         <br>
         <label for="">Referencia del Lugar</label>
-        <input type="text" id="ReferenciaLugar" name="ReferenciaLugar" maxlength="30" required>
+        <input type="text" id="Referencia" name="Referencia" maxlength="30" value="<?php print($_GET['Referencia']) ?>" required>
         <br>
         <label for="">Municipio</label>
-        <input type="text" id="Municipio" name="Municipio" required>
+        <input type="text" id="Municipio" name="Municipio" value="<?php print($_GET['Municipio']) ?>" required>
         <br>
         <label for="">NoLicencia</label>
-        <input type="text" id="NoLicencia" name="NoLicencia" maxlength="10" placeholder="Q123456-78">
+        <input type="text" id="IDLicencia" name="IDLicencia" maxlength="10" placeholder="Q123456-78" value="<?php print($_GET['IDLicencia']) ?>">
         <br>
         <label for="">IDVehiculo</label>
-        <input type="text" id="IDVehiculo" name="IDVehiculo" maxlength="17" size="20">
+        <input type="text" id="IDVehiculo" name="IDVehiculo" value="<?php print($_GET['IDVehiculo']) ?>" maxlength="17" size="20">
         <br>
         <label for="">ID Tarjeta de Ciruclación</label>
-        <input type="text" id="IDTarjeta" name="IDTarjeta" maxlength="9" size="10">
+        <input type="text" id="IDTarjeta" name="IDTarjeta" value="<?php print($_GET['IDTarjeta']) ?>" maxlength="9" size="10">
         <br>
-        <label for="">ArticuloFundamento</label>
-        <input type="text" id="ArticuloFundamento" name="ArticuloFundamento" required>
+        <label for="">Articulo Fundamento</label>
+        <input type="text" id="Articulo" name="Articulo" value="<?php print($_GET['Articulo']) ?>" required>
         <br>
         <label for="">Motivo</label>
         <br>
-        <textarea id="Motivo" name="Motivo" cols="50" rows="3" maxlength="150" required></textarea>
+        <textarea id="Motivo" name="Motivo" cols="50" rows="3" maxlength="150" required><?php print($_GET['Motivo']) ?></textarea>
         <br>
         <label for="">Garantia Retenida</label>
         <select name="GarantiaRetenida" id="GarantiaRetenida" required>
@@ -75,36 +75,43 @@
         </select>
         <br>
         <label for="">No. Partes Accidente</label>
-        <input type="number" id="NumeroParteAccidente" name="NumeroParteAccidente" min="0" max="10">
+        <input type="number" id="NoParteAccidente" name="NoParteAccidente" value="<?php print($_GET['NoParteAccidente']) ?>" min="0" max="10">
         <br>
         <laber for="">Convenio</laber>
-        <input type="radio" id="Convenio" name="Convenio" value="SI">Si
-        <input type="radio" id="Convenio" name="Convenio" value="NO">No
+        <input type="radio" id="Convenio" name="Convenio" value="SI" <?php if ($_GET['Convenio'] == "SI") echo ' checked' ?>>Si
+        <input type="radio" id="Convenio" name="Convenio" value="NO" <?php if ($_GET['Convenio'] == "NO") echo ' checked' ?>>No
         <br>
         <label for="">PuestoADisposicion</label>
-        <input type="radio" id="PuestoADisposicion" name="PuestoADisposicion" value="SI" required>Si
-        <input type="radio" id="PuestoADisposicion" name="PuestoADisposicion" value="NO" required>No
+        <input type="radio" id="PuestaDisposicion" name="PuestaDisposicion" value="SI" <?php if($_GET['Convenio'] == "SI") echo 'checked' ?>  required>Si
+        <input type="radio" id="PuestaDisposicion" name="PuestaDisposicion" value="NO" <?php if($_GET['Convenio'] == "NO") echo 'checked' ?> required>No
         <br>
         <label for="">DepositoOficial</label>
-        <input type="number" id="DepositoOficial" name="DepositoOficial">
+        <input type="number" id="Deposito" name="Deposito" value="<?php print($_GET['Deposito']) ?>">
         <br>
         <label for="">ID Oficial</label>
-        <input type="number" id="IDOficial" name="IDOficial" min="0" max="9999" required>
+        <input type="number" id="IDOficial" name="IDOficial" value="<?php print($_GET['IDOficial']) ?>" min="0" max="9999" required>
         <br>
         <label for="">Observaciones del Personal Operativo</label>
         <br>
-        <textarea id="ObservacionesP" name="ObservacionesP" cols="50" rows="2" maxlength="100"></textarea>
+        <textarea id="ObservacionOficial" name="ObservacionOficial" value="" cols="50" rows="2" maxlength="100"><?php print($_GET['ObservacionOficial']) ?></textarea>
         <br>
         <label for="">Calificacion de la boleta de infracción </label>
         <br>
-        <textarea id="CalificacionBoleta" name="CalificacionBoleta" cols="50" rows="2" maxlength="100"></textarea>
+        <textarea id="CalificacionBoleta" name="CalificacionBoleta" value="" cols="50" rows="2" maxlength="100"><?php print($_GET['CalificacionBoleta']) ?></textarea>
         <br>
         <label for="">Observaciones del Conductor</label>
         <br>
-        <textarea id="ObservacionesC" name="ObservacionesC" cols="50" rows="2" maxlength="100"></textarea>
+        <textarea id="ObservacionConductor" name="ObservacionConductor" cols="50" rows="2" maxlength="100"><?php print($_GET['ObservacionConductor']) ?></textarea>
         <br>
         <input type="submit" value="Enviar">
     </form>
+    <script>
+        let direccionSentido = document.getElementById('DireccionSentido');
+        direccionSentido.value = "<?php print($_GET['DireccionSentido']) ?>";
+
+        let garantiaRetenida = document.getElementById('GarantiaRetenida');
+        garantiaRetenida.value = "<?php print($_GET['GarantiaRetenida']) ?>";
+    </script>
 </body>
 
 </html>
@@ -114,55 +121,56 @@ if (isset($_REQUEST['IDMulta'])) {
 
     $IDMulta = $_REQUEST['IDMulta'];
     $Fecha = $_REQUEST['Fecha'];
-    $IDTarjeta = $_REQUEST['IDTarjeta'];
-    $IDVehiculo = $_REQUEST['IDVehiculo'];
-    $IDOficial = $_REQUEST['IDOficial'];
-    $NoLicencia = $_REQUEST['NoLicencia'];
-
-    $ascii = ord(substr($NoLicencia, 0, 1));
-    $NoLicencia = $ascii . substr($NoLicencia, 1);
-    $NoLicencia = str_replace("-", "", $NoLicencia);
-
     $Hora = $_REQUEST['Hora'];
+    // create datetime from date and time
+    $FechaHora = date('Y-m-d H:i:s', strtotime($Fecha . ' ' . $Hora));
     $ReporteSeccion = $_REQUEST['ReporteSeccion'];
     $NombreVia = $_REQUEST['NombreVia'];
     $Kilometro = $_REQUEST['Kilometro'];
     $DireccionSentido = $_REQUEST['DireccionSentido'];
+    $Referencia = $_REQUEST['Referencia'];
     $Municipio = $_REQUEST['Municipio'];
-    $ReferenciaLugar = $_REQUEST['ReferenciaLugar'];
-    $CalificacionBoleta = $_REQUEST['CalificacionBoleta'];
-    $ArticuloFundamento = $_REQUEST['ArticuloFundamento'];
+    $IDLicencia = $_REQUEST['IDLicencia'];
+        //convertir el primer caracter ascii a numero
+        $ascii = ord(substr($IDLicencia, 0, 1));
+        // concatenar el primer caracter ascii con el resto del id
+        $IDLicencia = $ascii . substr($IDLicencia, 1);
+        // eliminar el guion
+        $IDLicencia = str_replace("-", "", $IDLicencia);
+    $IDVehiculo = $_REQUEST['IDVehiculo'];
+    $IDTarjeta = $_REQUEST['IDTarjeta'];
+    $Articulo = $_REQUEST['Articulo'];
     $Motivo = $_REQUEST['Motivo'];
     $GarantiaRetenida = $_REQUEST['GarantiaRetenida'];
-    $NumeroParteAccidente = $_REQUEST['NumeroParteAccidente'];
+    $NoParteAccidente = $_REQUEST['NoParteAccidente'];
     $Convenio = $_REQUEST['Convenio'];
-    $PuestoADisposicion = $_REQUEST['PuestoADisposicion'];
-    $ObservacionesP = $_REQUEST['ObservacionesP'];
-    $DepositoOficial = $_REQUEST['DepositoOficial'];
-    $ObservacionesC = $_REQUEST['ObservacionesC'];
+    $PuestaDisposicion = $_REQUEST['PuestaDisposicion'];
+    $Deposito = $_REQUEST['Deposito'];
+    $IDOficial = $_REQUEST['IDOficial'];
+    $ObservacionOficial = $_REQUEST['ObservacionOficial'];
+    $CalificacionBoleta = $_REQUEST['CalificacionBoleta'];
+    $ObservacionConductor = $_REQUEST['ObservacionConductor'];
 
-    // create datetime from date and time
-    $FechaHora = date('Y-m-d H:i:s', strtotime($Fecha . ' ' . $Hora));
 
     $SQL = "UPDATE multas SET FechaHora = '$FechaHora', IDTarjeta = '$IDTarjeta', 
-    IDVehiculo = '$IDVehiculo', IDOficial = '$IDOficial', IDLicencia = '$NoLicencia', 
-    ReporteSeccion = '$ReporteSeccion', NombreVia = '$NombreVia', Kilometro = '$Kilometro', 
+    IDVehiculo = '$IDVehiculo', IDOficial = '$IDOficial', IDLicencia = '$IDLicencia', 
+    ReporteSeccion = '$Referencia', NombreVia = '$NombreVia', Kilometro = '$Kilometro', 
     Sentido = '$DireccionSentido', Municipio = '$Municipio', 
-    Referencia = '$ReferenciaLugar', CalificacionBoleta = '$CalificacionBoleta', 
-    Articulo = '$ArticuloFundamento', Motivo = '$Motivo', 
-    GarantiaRetenida = '$GarantiaRetenida', NoParteAccidente = '$NumeroParteAccidente', 
-    Convenio = '$Convenio', PuestaDisposicion = '$PuestoADisposicion', 
-    ObservacionOficial = '$ObservacionesP', Deposito = '$DepositoOficial', 
-    ObservacionConductor = '$ObservacionesC' WHERE IDMulta = '$IDMulta'";
+    Referencia = '$Referencia', CalificacionBoleta = '$CalificacionBoleta', 
+    Articulo = '$Articulo', Motivo = '$Motivo', 
+    GarantiaRetenida = '$GarantiaRetenida', NoParteAccidente = '$NoParteAccidente', 
+    Convenio = '$Convenio', PuestaDisposicion = '$PuestaDisposicion', 
+    ObservacionOficial = '$ObservacionOficial', Deposito = '$Deposito', 
+    ObservacionConductor = '$ObservacionConductor' WHERE IDMulta = '$IDMulta'";
 
     include("conexion.php");
+
     $Con = Conectar();
     $Result = Ejecutar($Con, $SQL);
     $FilasAfectadas = mysqli_affected_rows($Con);
+
     if ($FilasAfectadas > 0) {
         echo "Se actualizaron $FilasAfectadas registros";
-    } else {
-        echo "No se actualizaron registros";
     }
     Cerrar($Con);
 }

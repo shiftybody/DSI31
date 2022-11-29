@@ -48,6 +48,8 @@ if(isset($_GET['Criterio']) && isset($_GET['Atributo'])){
         echo "<th>Apellido Materno</th>";
         echo "<th>Grupo</th>";
         echo "<th>Firma</th>";
+        echo "<th>Eliminar</th>";
+        echo "<th>Actualizar</th>";
         echo "</tr>";
     
         for($i = 0; $i < $Rows; $i++){
@@ -58,12 +60,20 @@ if(isset($_GET['Criterio']) && isset($_GET['Atributo'])){
             echo "<td>" . $Filas['ApellidoMaterno'] . "</td>";
             echo "<td>" . $Filas['Grupo'] . "</td>";
             echo "<td>" . $Filas['Firma'] . "</td>";
+            echo "<td><a href='DOficiales.php?IDOficial=" . $Filas['IDOficial'] . "'>Eliminar</a></td>";
+            echo "<td><a href='UOficiales.php?IDOficial=" . $Filas['IDOficial'] . 
+                "&Nombre=" . $Filas['Nombre'] .
+                "&ApellidoPaterno=" . $Filas['ApellidoPaterno'] .
+                "&ApellidoMaterno=" . $Filas['ApellidoMaterno'] .
+                "&Grupo=" . $Filas['Grupo'] .
+                "&Firma=" . $Filas['Firma'] . 
+                "'>Actualizar</a></td>";
             echo "</tr>";
+
             $Filas = mysqli_fetch_array($Result);
         }
         
     }
 
-} else {
-    echo "No se recibieron datos";
 }
+?>

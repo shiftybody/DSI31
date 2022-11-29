@@ -17,23 +17,23 @@
     <p></p>
     <form method="GET" action="UOficiales.php">
 
-        <label for=""><strong> Ingrese el ID del Oficial</strong></label>
-        <input type="text" name="IDOficial" id="IDOficial" required>
+        <label for=""><strong> ID del Oficial</strong></label>
+        <input type="text" name="IDOficial" id="IDOficial" value="<?php print($_GET['IDOficial']) ?>" readonly>
         <br>
         <label for="">Nombre</label>
-        <input type="text" id="Nombre" name="Nombre" required maxlength="50">
+        <input type="text" id="Nombre" name="Nombre" value="<?php print($_GET['Nombre']) ?>" required maxlength="50">
         <br>
         <label for="">ApellidoPaterno</label>
-        <input type="text" id="ApellidoPaterno" name="ApellidoPaterno" required>
+        <input type="text" id="ApellidoPaterno" name="ApellidoPaterno" value="<?php print($_GET['ApellidoPaterno']) ?>" required>
         <br>
         <label for="">ApellidoMaterno</label>
-        <input type="text" id="ApellidoMaterno" name="ApellidoMaterno" required>
+        <input type="text" id="ApellidoMaterno" name="ApellidoMaterno" value="<?php print($_GET['ApellidoMaterno']) ?>" required>
         <br>
         <label for="">Grupo</label>
-        <input type="text" id="Grupo" name="Grupo" required>
+        <input type="text" id="Grupo" name="Grupo" value="<?php print($_GET['Grupo']) ?>" required>
         <br>
         <label for="">Firma</label>
-        <input type="text" id="Firma" name="Firma" required>
+        <input type="text" id="Firma" name="Firma" value="<?php print($_GET['Firma']) ?>" required>
         <br>
         <input type="submit" value="Enviar">
         <br>
@@ -45,7 +45,7 @@
 
 <?php
 
-if(isset($_REQUEST['IDOficial'])){
+if (isset($_REQUEST['IDOficial'])) {
     $IDOficial = $_REQUEST['IDOficial'];
     $Nombre = $_REQUEST['Nombre'];
     $ApellidoPaterno = $_REQUEST['ApellidoPaterno'];
@@ -63,8 +63,6 @@ if(isset($_REQUEST['IDOficial'])){
     $FilasAfectadas = mysqli_affected_rows($Con);
     if ($FilasAfectadas > 0) {
         echo "Se actualizaron $FilasAfectadas registros";
-    } else {
-        echo "No se actualizaron registros";
     }
     Cerrar($Con);
 }

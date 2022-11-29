@@ -26,10 +26,10 @@
             <option value="Articulo">Articulo</option>
             <option value="Motivo">Motivo</option>
             <option value="GarantiaRetenida">Garantia Retenida</option>
-            <option value="NoPartesAccidente">No. de Partes</option>
+            <option value="NoParteAccidente">No. de Partes</option>
             <option value="Convenio">Convenio</option>
             <option value="PuestaDisposicion">Puesto a disposicion</option>
-            <option value="Deposito">ID Agente</option>
+            <option value="Deposito">Deposito</option>
             <option value="ObservacionConductor">Observaciones del Conductor</option>
             <option value="ObservacionOficial">Observaciones del Agente</option>
             <option value="CalificacionBoleta">Calificacion</option>
@@ -70,6 +70,7 @@ if (isset($_GET['Criterio']) && isset($_GET['Atributo'])) {
     }
 
     $SQL = "SELECT * FROM Multas WHERE $Atributo = '$Criterio'";
+
     include("conexion.php");
     $Con = Conectar();
     $Result = Ejecutar($Con, $SQL) or die("Error al insertar datos" . mysqli_error($Con));
@@ -94,14 +95,16 @@ if (isset($_GET['Criterio']) && isset($_GET['Atributo'])) {
     echo "<th>No. de Partes</th>";
     echo "<th>Convenio</th>";
     echo "<th>Puesto a disposicion</th>";
-    echo "<th>ID Agente</th>";
+    echo "<th>Deposito</th>";
     echo "<th>Observaciones del Conductor</th>";
-    echo "<th>Observaciones del Agente</th>";
-    echo "<th>Calificacion</th>";
-    echo "<th>IDConductor</th>";
-    echo "<th>IDAgente</th>";
-    echo "<th>IDVehiculo</th>";
+    echo "<th>Observaciones del Oficial</th>";
+    echo "<th>Calificacion Boleta</th>";
     echo "<th>IDLicencia</th>";
+    echo "<th>IDVehiculo</th>";
+    echo "<th>IDTarjeta</th>";
+    echo "<th>IDOficial</th>";
+    echo "<th>Eliminar</th>";
+    echo "<th>Actualizar</th>";
     echo "</tr>";
 
     for($i = 0; $i < $Rows; $i++){
@@ -124,10 +127,35 @@ if (isset($_GET['Criterio']) && isset($_GET['Atributo'])) {
         echo "<td>" . $Fila[15] . "</td>";
         echo "<td>" . $Fila[16] . "</td>";
         echo "<td>" . $Fila[17] . "</td>";
-        echo "<td>" . $Fila[18] . "</td>";
+        echo "<td>" . ParseID($Fila[18]) . "</td>";
         echo "<td>" . $Fila[19] . "</td>";
         echo "<td>" . $Fila[20] . "</td>";
         echo "<td>" . $Fila[21] . "</td>";
+        echo "<td><a href='DMultas.php?IDMulta=" . $Fila[0] . "'>Eliminar</a></td>";
+        echo "<td><a href='UMultas.php?IDMulta=" . $Fila[0] .
+            "&Fecha=" . substr($Fila[1], 0, 10) .
+            "&Hora=" . substr($Fila[1], 11, 8) .
+            "&ReporteSeccion=" . $Fila[2] .
+            "&NombreVia=" . $Fila[3] .
+            "&Kilometro=" . $Fila[4] .
+            "&DireccionSentido=" . $Fila[5] .
+            "&Referencia=" . $Fila[6] .
+            "&Municipio=" . $Fila[7] .
+            "&Articulo=" . $Fila[8] .
+            "&Motivo=" . $Fila[9] .
+            "&GarantiaRetenida=" . $Fila[10] .
+            "&NoParteAccidente=" . $Fila[11] .
+            "&Convenio=" . $Fila[12] .
+            "&PuestaDisposicion=" . $Fila[13] .
+            "&Deposito=" . $Fila[14] .
+            "&ObservacionConductor=" . $Fila[15] .
+            "&ObservacionOficial=" . $Fila[16] .
+            "&CalificacionBoleta=" . $Fila[17] .
+            "&IDLicencia=" . ParseID($Fila[18]) .
+            "&IDVehiculo=" . $Fila[19] .
+            "&IDTarjeta=" . $Fila[20] .
+            "&IDOficial=" . $Fila[21] .  
+            "'>Actualizar</a></td>";
         echo "</tr>";
         $Fila = mysqli_fetch_array($Result);
     }

@@ -70,6 +70,8 @@ if(isset($_POST['Criterio']) && isset($_POST['Atributo'])){
         echo "<th>Oficina Expedidora</th>";
         echo "<th>Movimiento</th>";
         echo "<th>Fecha de Expedición</th>";
+        echo "<th>Eliminnar</th>";
+        echo "<th>Actualizar</th>";
         echo "</tr>";
 
 
@@ -91,13 +93,30 @@ if(isset($_POST['Criterio']) && isset($_POST['Atributo'])){
             echo "<td>".$Filas['OficinaExpedidora']."</td>";
             echo "<td>".$Filas['Movimiento']."</td>";
             echo "<td>".$Filas['FechaExpedicion']."</td>";
+            echo "<td><a href='DTarjetas.php?IDTarjeta=" . $Filas['IDTarjeta'] . "'>Eliminar</a></td>";
+            echo "<td><a href='UTarjetas.php?IDTarjeta=" . $Filas['IDTarjeta'] . 
+                "&TipoServicio=" . $Filas['TipoServicio'] .
+                "&Folio=" . $Filas['Folio'] .
+                "&Vigencia=" . $Filas['Vigencia'] .
+                "&Placa=" . $Filas['Placa'] .
+                "&IDPropietario=" . $Filas['IDPropietario'] .
+                "&IDVehiculo=" . $Filas['IDVehiculo'] .
+                "&Operacion=" . $Filas['Operacion'] .
+                "&PlacaAnterior=" . $Filas['PlacaAnterior'] .
+                "&NCI=" . $Filas['NCI'] .
+                "&Uso=" . $Filas['Uso'] .
+                "&Rfa=" . $Filas['Rfa'] .
+                "&CVE=" . $Filas['CVE'] .
+                "&OficinaExpedidora=" . $Filas['OficinaExpedidora'] .
+                "&Movimiento=" . $Filas['Movimiento'] .
+                "&FechaExpedicion=" . $Filas['FechaExpedicion'] .
+                "'>Actualizar</a></td>";
             echo "</tr>";
+
             $Filas = mysqli_fetch_array($Result);
         }
         echo "</table>";
     }
-} else {
-    echo "No se han recibido datos";
-}
+} 
 
 ?>

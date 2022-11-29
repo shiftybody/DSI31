@@ -15,8 +15,8 @@
         </h1>
     </label>
     <p></p>
-    <form method="POST" action="UConductores.php">
-        <label for=""><strong> Ingrese el ID del conductor</strong></label>
+    <form method="GET" action="UConductores.php">
+        <label for=""><strong>  ID del conductor</strong></label>
         <input type="text" name="IDConductor" id="IDConductor" value="<?php print($_GET['IDConductor']);?>" readonly>
         <br>
         <label for="">Fotografia</label>
@@ -54,51 +54,54 @@
         </select>
         <br>
         <label for="">Donador</label>
-        <input type="radio" id="Donador" name="Donador" value="Si"  required> Si
-        <input type="radio" id="Donador" name="Donador" value="No" required> No
+        <input type="radio" id="Donador" name="Donador" value="Si" <?php if($_GET['Donador'] == "Si") echo 'checked' ?> required> Si
+        <input type="radio" id="Donador" name="Donador" value="No" <?php if($_GET['Donador'] == "No") echo 'checked' ?> required> No
         <br>
         <label for="">Número Emergencia</label>
         <input type="phone" id="NumEmergencia" name="NumEmergencia" 
             placeholder="123-425-457-8901"
             pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}-[0-9]{4}"
-            value="<?php print($_GET['NumEmergenica'])?>"
+            value="<?php print($_GET['NumEmergencia'])?>"
             required>
         <br>
         <label for="">Sexo</label>
-        <input type="radio" id="Sexo" name="Sexo" value="H" required> Hombre
-        <input type="radio" id="Sexo" name="Sexo" value="M" required> Mujer
+        <input type="radio" id="Sexo" name="Sexo" value="H" <?php if($_GET['Sexo'] == "H") echo 'checked' ?> required> Hombre
+        <input type="radio" id="Sexo" name="Sexo" value="M" <?php if($_GET['Sexo'] == "M") echo 'checked' ?> required> Mujer
         <br>
         <label for="">Antiguedad</label>
         <input type="number" id="Antiguedad" name="Antiguedad" value="<?php print($_GET['Antiguedad'])?>" min="0" max="99" size="10">
         <br>
         <label for="">Observaciones</label>
         <br>
-        <textarea id="Observaciones" name="Observaciones" cols="25" rows="4"></textarea>
+        <textarea id="Observaciones" name="Observaciones" cols="25" rows="4"><?php print($_GET['Observaciones'])?></textarea>
         <br>
         <input type="submit" value="enviar">
-        <br>
+        <br><br>
     </form>
+    <script>
+        let GrupoSanguineo = document.getElementById("GrupoSanguineo");
+        GrupoSanguineo.value = "<?php print($_GET['GrupoSanguineo'])?>";
+    </script>
 </body>
-
 </html>
 
 <?php
-    if(isset($_POST['IDConductor'])){
+    if(isset($_GET['IDConductor'])){
 
-        $IDConductor = $_POST['IDConductor'];
-        $Fotografia = $_POST['Fotografia'];
-        $Nombre = $_POST['Nombre'];
-        $ApellidoPaterno = $_POST['ApellidoPaterno'];
-        $ApellidoMaterno = $_POST['ApellidoMaterno'];
-        $FechaNacimiento = $_POST['FechaNacimiento'];
-        $Firma = $_POST['Firma'];
-        $Domicilio = $_POST['Domicilio'];
-        $GrupoSanguineo = $_POST['GrupoSanguineo'];
-        $Donador = $_POST['Donador'];
-        $NumEmergencia = $_POST['NumEmergencia'];
-        $Sexo = $_POST['Sexo'];
-        $Antiguedad = $_POST['Antiguedad'];
-        $Observaciones = $_REQUEST['Observaciones'];
+        $IDConductor = $_GET['IDConductor'];
+        $Fotografia = $_GET['Fotografia'];
+        $Nombre = $_GET['Nombre'];
+        $ApellidoPaterno = $_GET['ApellidoPaterno'];
+        $ApellidoMaterno = $_GET['ApellidoMaterno'];
+        $FechaNacimiento = $_GET['FechaNacimiento'];
+        $Firma = $_GET['Firma'];
+        $Domicilio = $_GET['Domicilio'];
+        $GrupoSanguineo = $_GET['GrupoSanguineo'];
+        $Donador = $_GET['Donador'];
+        $NumEmergencia = $_GET['NumEmergencia'];
+        $Sexo = $_GET['Sexo'];
+        $Antiguedad = $_GET['Antiguedad'];
+        $Observaciones = $_GET['Observaciones'];
 
 
         $SQL="UPDATE conductores SET Fotografia='$Fotografia', Nombre='$Nombre', 

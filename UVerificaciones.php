@@ -15,13 +15,14 @@
         </h1>
     </label>
     <p></p>
-    <form method="POST" action="UVerificaciones.php">
+    <!-- from POST to GET -->
+    <form method="GET" action="UVerificaciones.php">
 
-        <label for=""><strong> Ingrese el Folio Verificacion</strong></label>
-        <input type="text" name="FolioVerificacion" id="FolioVerificacion" required>
+        <label for=""><strong> Folio Verificacion</strong></label>
+        <input type="text" name="FolioVerificacion" id="FolioVerificacion" value="<?php print($_GET['FolioVerificacion'])?>" readonly>
         <br>
         <label for="">IDTarjeta</label>
-        <input type="text" id="IDTarjeta" name="IDTarjeta" required>
+        <input type="text" id="IDTarjeta" name="IDTarjeta" value="<?php print($_GET['IDTarjeta'])?>" required>
         <br>
         <label for="">EntidadFederativa</label>
         <select id="EntidadFederativa" name="EntidadFederativa">
@@ -61,35 +62,35 @@
         </select>
         <br>
         <label for="">Municipio</label>
-        <input type="text" id="Municipio" name="Municipio">
+        <input type="text" id="Municipio" name="Municipio" value="<?php print($_GET['Municipio'])?>" >
         <br>
         <label for="">Numero del Centro</label>
-        <input type="text" id="NumCentro" name="NumCentro" required>
+        <input type="text" id="NumCentro" name="NumCentro" value="<?php print($_GET['NumCentro'])?>" required>
         <br>
         <label for="">Numero de Linea</label>
-        <input type="number" id="NumLinea" name="NumLinea" min="0" max="99" required>
+        <input type="number" id="NumLinea" name="NumLinea" value="<?php print($_GET['NumLinea'])?>" min="0" max="99" required>
         <br>
         <label for="">Nombre del Tecnico</label>
-        <input type="text" id="NombreTecnico" name="NombreTecnico" required>
+        <input type="text" id="NombreTecnico" name="NombreTecnico" value="<?php print($_GET['NombreTecnico'])?>" required>
         <br>
         <label for="">Fecha de Expedicion</label>
-        <input type="date" id="FechaExpedicion" name="FechaExpedicion" required>
+        <input type="date" id="FechaExpedicion" name="FechaExpedicion" value="<?php print($_GET['FechaExpedicion'])?>" required>
         <br>
         <label for="">Fecha de Vencimiento</label>
-        <input type="date" id="FechaVencimiento" name="FechaVencimiento">
+        <input type="date" id="FechaVencimiento" name="FechaVencimiento" value="<?php print($_GET['FechaVencimiento'])?>">
         <br>
         <label for="">Motivo de Verificacion</label>
         <br>
-        <textarea name="MotivoVerificacion" id="MotivoVerificacion" cols="25" rows="2" required></textarea>
+        <textarea name="MotivoVerificacion" id="MotivoVerificacion" cols="25" rows="2" required><?php print($_GET['MotivoVerificacion'])?></textarea>
         <br>
         <label for="">Hora de Entrada</label>
-        <input type="time" id="HoraEntrada" name="HoraEntrada" required>
+        <input type="time" id="HoraEntrada" name="HoraEntrada" value="<?php print($_GET['HoraEntrada'])?>" required>
         <br>
         <label for="">Hora de Salida</label>
-        <input type="time" id="HoraSalida" name="HoraSalida" required>
+        <input type="time" id="HoraSalida" name="HoraSalida" value="<?php print($_GET['HoraSalida'])?>" required>
         <br>
         <label for="">Semestre</label>
-        <input type="number" id="Semestre" name="Semestre" min="1" max="2" size="5" required>
+        <input type="number" id="Semestre" name="Semestre" value="<?php print($_GET['Semestre'])?>"value="<?php print($_GET['Municipio'])?>" min="1" max="2" size="5" required>
         <br>
         <label for="">Dictamen</label>
         <select id="Dictamen" name="Dictamen">
@@ -98,6 +99,10 @@
                 for (let i = 0; i < dictamen.length; i++) {
                     document.write("<option value=" + dictamen[i] + ">" + dictamen[i] + "</option>");
                 }
+
+                let Dictamen = "<?php print($_GET['Dictamen'])?>";
+                document.getElementById("Dictamen").value = Dictamen;
+
             </script>
         </select>
         <br>
@@ -108,11 +113,21 @@
                 for (let i = 0; i < hologramas.length; i++) {
                     document.write("<option value='" + hologramas[i] + "'>" + hologramas[i] + "</option>");
                 }
+
+                let Holograma = "<?php print($_GET['Holograma']) ?>";
+                document.getElementById("Holograma").value = Holograma;
+                
             </script>
         </select>
         <br>
         <input type="submit" value="Enviar">
     </form>
+    <script>
+
+        let EntidadFederativa = "<?php print($_GET['EntidadFederativa'])?>";
+        document.getElementById("EntidadFederativa").value = EntidadFederativa;
+
+    </script>
 </body>
 
 </html>
@@ -150,12 +165,8 @@ if(isset($_REQUEST['FolioVerificacion'])){
     $FilasAfectadas = mysqli_affected_rows($Con);
     if ($FilasAfectadas > 0) {
         echo "Se actualizaron $FilasAfectadas registros";
-    } else {
-        echo "No se actualizaron registros";
     }
     Cerrar($Con);
-} else {
-    echo "No se han recibido datos";
 }
 
 ?>

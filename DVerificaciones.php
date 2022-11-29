@@ -1,16 +1,4 @@
-<html>
-<!-- Solicitar a traves de un formulario el FolioVerificacion -->
-    <form method="GET" action="DVerificaciones.php">
-        <label> Folio </label>
-        <input type="text" name="FolioVerificacion" id="FolioVerificacion" placeholder="1">
-        <input type="submit" value="Enviar">
-    </form>
-</html>
-
 <?php 
-
-// Eliminar el registro de la tabla conductores 
-if(isset($_GET['FolioVerificacion']) && !empty($_GET['FolioVerificacion'])){
 
     $Folio = $_GET['FolioVerificacion'];
 
@@ -25,8 +13,5 @@ if(isset($_GET['FolioVerificacion']) && !empty($_GET['FolioVerificacion'])){
     print("<br> Numero de Filas Eliminadas:" . $FilasAfectadas);
 
     Cerrar($Con);
-} else {
-    print("No se ha recibido el Folio");
-}
 
 ?>

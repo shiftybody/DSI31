@@ -68,6 +68,8 @@ if(isset($_POST['Criterio']) && isset($_POST['Atributo'])){
         echo "<th>Semestre</th>";
         echo "<th>Dictamen</th>";
         echo "<th>Holograma</th>";
+        echo "<th>Eliminar</th>";
+        echo "<th>Actualizar</th>";
         echo "</tr>";
 
 
@@ -88,6 +90,23 @@ if(isset($_POST['Criterio']) && isset($_POST['Atributo'])){
             echo "<td>" . $Filas['Semestre'] . "</td>";
             echo "<td>" . $Filas['Dictamen'] . "</td>";
             echo "<td>" . $Filas['Holograma'] . "</td>";
+            echo "<td><a href='DVerificaciones.php?FolioVerificacion=" . $Filas['FolioVerificacion'] . "'>Eliminar</a></td>";
+            echo "<td><a href='UVerificaciones.php?FolioVerificacion=" . $Filas['FolioVerificacion'] . 
+                "&IDTarjeta=" . $Filas['IDTarjeta'] .
+                "&EntidadFederativa=" . $Filas['EntidadFederativa'] .
+                "&Municipio=" . $Filas['Municipio'] .
+                "&NumCentro=" . $Filas['NumCentro'] .
+                "&NumLinea=" . $Filas['NumLinea'] .
+                "&NombreTecnico=" . $Filas['NombreTecnico'] .
+                "&FechaExpedicion=" . $Filas['FechaExpedicion'] .
+                "&FechaVencimiento=" . $Filas['FechaVencimiento'] .
+                "&HoraEntrada=" . $Filas['HoraEntrada'] .
+                "&HoraSalida=" . $Filas['HoraSalida'] .
+                "&MotivoVerificacion=" . $Filas['MotivoVerificacion'] .
+                "&Semestre=" . $Filas['Semestre'] .
+                "&Dictamen=" . $Filas['Dictamen'] .
+                "&Holograma=" . $Filas['Holograma'] . "'>Actualizar</a></td>";
+                "'>Actualizar</a></td>";
             echo "</tr>";
             
             $Filas = mysqli_fetch_array($Result);

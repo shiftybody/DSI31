@@ -15,9 +15,10 @@
         </h1>
     </label>
     <p></p>
-    <form method="POST" action="UTarjetas.php">
-        <label for=""><strong> Ingrese el ID Tarjeta de Circulacion</strong></label>
-        <input type="text" name="IDTarjeta" id="IDTarjeta" required>
+    <!-- Change POST to GET -->
+    <form method="GET" action="UTarjetas.php">
+        <label for=""><strong>ID Tarjeta de Circulacion</strong></label>
+        <input type="text" name="IDTarjeta" id="IDTarjeta" value="<?php print($_GET['IDTarjeta'])?>" readonly>
         <br>
         <label for="">TipoServicio</label>
         <select id="TipoServicio" name="TipoServicio" required>
@@ -26,6 +27,10 @@
                 for (let i = 0; i < tipos.length; i++) {
                     document.write("<option value='" + tipos[i] + "'>" + tipos[i] + "</option>");
                 }
+
+                let tipo = "<?php print($_GET['TipoServicio'])?>";
+                document.getElementById("TipoServicio").value = tipo;
+
             </script>
         </select>
         <br>
@@ -37,44 +42,48 @@
                 for (var i = 1; i <= 10; i++) {
                     document.write("<option value='" + i + "'>" + i + "</option>");
                 }
+
+                let vigencia = "<?php print($_GET['Vigencia'])?>";
+                document.getElementById("Vigencia").value = vigencia;
+
             </script>
         </select> años
         <br>
         <label for="">Placa</label>
-        <input type="text" id="Placa" name="Placa" required>
+        <input type="text" id="Placa" name="Placa" value="<?php print($_GET['Placa'])?>" required>
         <br>
         <label for="">IDVehiculo</label>
-        <input type="text" id="IDVehiculo" name="IDVehiculo" required>
+        <input type="text" id="IDVehiculo" name="IDVehiculo" value="<?php print($_GET['IDVehiculo'])?>" required>
         <br>
         <label for="">IDPropietario</label>
-        <input type="text" id="IDPropietario" name="IDPropietario" required>
+        <input type="text" id="IDPropietario" name="IDPropietario" value="<?php print($_GET['IDPropietario'])?>" required>
         <br>
         <label for="">Operacion</label required>
-        <input type="text" id="Operacion" name="Operacion" required>
+        <input type="text" id="Operacion" name="Operacion" value="<?php print($_GET['Operacion'])?>" required>
         <br>
         <label for="">Placa Anterior</label>
-        <input type="text" id="PlacaAnterior" name="PlacaAnterior">
+        <input type="text" id="PlacaAnterior" name="PlacaAnterior" value="<?php print($_GET['PlacaAnterior'])?>">
         <br>
         <label for="">NCI</label>
-        <input type="text" id="NCI" name="NCI" minlength="8">
+        <input type="text" id="NCI" name="NCI" minlength="8" value="<?php print($_GET['NCI'])?>">
         <br>
         <label for="">Uso</label>
-        <input type="text" id="Uso" name="Uso" required>
+        <input type="text" id="Uso" name="Uso" required value="<?php print($_GET['Uso'])?>">
         <br>
         <label for="">Rfa</label>
-        <input type="text" id="Rfa" name="Rfa">
+        <input type="text" id="Rfa" name="Rfa" value="<?php print($_GET['Rfa'])?>">
         <br>
         <label for="">CVE</label>
-        <input type="text" id="CVE" name="CVE" minlength="7" required>
+        <input type="text" id="CVE" name="CVE" minlength="7" value="<?php print($_GET['CVE'])?>" required >
         <br>
         <label for="">OficinaExpedidora</label>
-        <input type="number" id="OficinaExpedidora" name="OficinaExpedidora" min="1" max="99" required>
+        <input type="number" id="OficinaExpedidora" name="OficinaExpedidora" min="1" max="99" value="<?php print($_GET['OficinaExpedidora'])?>" required>
         <br>
         <label for="">Movimiento</label>
-        <input type="text" id="Movimiento" name="Movimiento" required>
+        <input type="text" id="Movimiento" name="Movimiento" value="<?php print($_GET['Movimiento'])?>" required>
         <br>
         <label for="">FechaExpedicion</label>
-        <input type="date" id="FechaExpedicion" name="FechaExpedicion" >
+        <input type="date" id="FechaExpedicion" name="FechaExpedicion" value="<?php print($_GET['FechaExpedicion'])?>" >
         <br>
         <input type="submit" value="Enviar">
     </form>
@@ -83,42 +92,40 @@
 </html>
 
 <?php
-    if(isset($_POST['IDTarjeta'])){
+    // from POST to REQUEST
+    if(isset($_REQUEST['IDTarjeta'])){
 
-        $IDTarjeta = $_POST['IDTarjeta'];
-        $TipoServicio = $_POST['TipoServicio'];
-        $Vigencia = $_POST['Vigencia'];
-        $Placa = $_POST['Placa'];
-        $IDVehiculo = $_POST['IDVehiculo'];
-        $IDPropietario = $_POST['IDPropietario'];
-        $Operacion = $_POST['Operacion'];
-        $PlacaAnterior = $_POST['PlacaAnterior'];
-        $NCI = $_POST['NCI'];
-        $Uso = $_POST['Uso'];
-        $Rfa = $_POST['Rfa'];
-        $CVE = $_POST['CVE'];
-        $OficinaExpedidora = $_POST['OficinaExpedidora'];
-        $Movimiento = $_POST['Movimiento'];
-        $FechaExpedicion = $_POST['FechaExpedicion'];
+        $IDTarjeta = $_REQUEST['IDTarjeta'];
+        $TipoServicio = $_REQUEST['TipoServicio'];
+        $Vigencia = $_REQUEST['Vigencia'];
+        $Placa = $_REQUEST['Placa'];
+        $IDVehiculo = $_REQUEST['IDVehiculo'];
+        $IDPropietario = $_REQUEST['IDPropietario'];
+        $Operacion = $_REQUEST['Operacion'];
+        $PlacaAnterior = $_REQUEST['PlacaAnterior'];
+        $NCI = $_REQUEST['NCI'];
+        $Uso = $_REQUEST['Uso'];
+        $Rfa = $_REQUEST['Rfa'];
+        $CVE = $_REQUEST['CVE'];
+        $OficinaExpedidora = $_REQUEST['OficinaExpedidora'];
+        $Movimiento = $_REQUEST['Movimiento'];
+        $FechaExpedicion = $_REQUEST['FechaExpedicion'];
+        
 
         $SQL = "UPDATE tarjetas SET TipoServicio = '$TipoServicio', Vigencia = '$Vigencia', 
         Placa = '$Placa', IDVehiculo = '$IDVehiculo', IDPropietario = '$IDPropietario', 
         Operacion = '$Operacion', PlacaAnterior = '$PlacaAnterior', NCI = '$NCI', Uso = '$Uso', 
         Rfa = '$Rfa', CVE = '$CVE', OficinaExpedidora = '$OficinaExpedidora', Movimiento = '$Movimiento', 
         FechaExpedicion = '$FechaExpedicion' WHERE IDTarjeta = '$IDTarjeta'"; 
-        
+    
+
         include("conexion.php");
         $Con = Conectar();
         $Result = Ejecutar($Con, $SQL);
         $FilasAfectadas = mysqli_affected_rows($Con);
         if ($FilasAfectadas > 0) {
             echo "Se actualizaron $FilasAfectadas registros";
-        } else {
-            echo "No se actualizaron registros";
-        }
+        } 
         Cerrar($Con);
-
-    } else {
-        echo "No se han recibido datos";
-    }
+    } 
 ?>

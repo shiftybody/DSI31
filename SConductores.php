@@ -100,15 +100,14 @@ if (isset($_POST['Criterio']) && !empty($_POST['Criterio']) && isset($_POST['Atr
             '&Domicilio=' . $Fila[7] .
             '&GrupoSanguineo=' . $Fila[8] .
             '&Donador=' . $Fila[9] .
-            '&NumEmergenica=' . $Fila[10] .
+            '&NumEmergencia=' . $Fila[10] .
             '&Sexo=' . $Fila[11] .
             '&Antiguedad=' . $Fila[12] .
             '&Observaciones=' . $Fila[13] . '">Actualizar</a>' . '</td>';
         echo "</tr>";
+
         $Fila = mysqli_fetch_row($Result);
     }
-} else {
-    echo "No se ha ingresado ningun criterio";
 }
 
 ?>

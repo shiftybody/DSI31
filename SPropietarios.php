@@ -51,6 +51,8 @@ if(isset($_POST['Criterio']) && isset($_POST['Atributo'])){
         echo "<th>Nombre</th>";
         echo "<th>Apellido Paterno</th>";
         echo "<th>Apellido Materno</th>";
+        echo "<th>Eliminar</th>";
+        echo "<th>Actualizar</th>";
         echo "</tr>";
     
         for($i = 0; $i < $Rows; $i++){
@@ -62,13 +64,21 @@ if(isset($_POST['Criterio']) && isset($_POST['Atributo'])){
             echo "<td>" . $Filas['Nombre'] . "</td>";
             echo "<td>" . $Filas['ApellidoPaterno'] . "</td>";
             echo "<td>" . $Filas['ApellidoMaterno'] . "</td>";
+            echo "<td><a href='DPropietarios.php?RFC=" . $Filas['RFC'] . "'>Eliminar</a></td>";
+            echo "<td><a href='UPropietarios.php?IDPropietario=" . $Filas['IDPropietario'] . 
+                "&RFC=" . $Filas['RFC'] .
+                "&Localidad=" . $Filas['Localidad'] .
+                "&Municipio=" . $Filas['Municipio'] .
+                "&Nombre=" . $Filas['Nombre'] .
+                "&ApellidoPaterno=" . $Filas['ApellidoPaterno'] .
+                "&ApellidoMaterno=" . $Filas['ApellidoMaterno'] .
+                "'>Actualizar</a></td>";
             echo "</tr>";
+
             $Filas = mysqli_fetch_array($Result);
         }
         echo "</table>";
     }
-} else {
-    echo "No se han recibido datos";
 }
 
 ?>
