@@ -1,0 +1,21 @@
+{
+  "name": "dsi31",
+  "version": "1.0.0",
+  "description": "Sistema de Control Vehicular para el curso de diseño y desarrollo de sistemas en internet impartido en la Universidad Autónoma de Querétaro.",
+  "scripts": {
+    "build-css": "tailwindcss -i src/css/styles.css -o public/css/styles.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shiftybody/DSI31.git"
+  },
+  "author": "shiftybody",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/shiftybody/DSI31/issues"
+  },
+  "homepage": "https://github.com/shiftybody/DSI31#readme",
+  "devDependencies": {
+    "tailwindcss": "^3.2.4"
+  }
+}
