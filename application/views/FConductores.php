@@ -1,20 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php include 'MenuA.php' ?>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Conductores</title>
-</head>
-
-<body>
+<div class="conductores">
     <label for="">
         <h1>
             Conductores
         </h1>
     </label>
     <p></p>
+
     <form method="POST" action="IConductores.php">
         <label for="">Fotografia</label>
         <input type="text" id="Fotografia" name="Fotografia" required>
@@ -55,10 +48,7 @@
         <input type="radio" id="Donador" name="Donador" value="No" required> No
         <br>
         <label for="">Número Emergencia</label>
-        <input type="phone" id="NumEmergencia" name="NumEmergencia" 
-            placeholder="123-425-457-8901"
-            pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}-[0-9]{4}" 
-            required>
+        <input type="phone" id="NumEmergencia" name="NumEmergencia" placeholder="123-425-457-8901" pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
         <br>
         <label for="">Sexo</label>
         <input type="radio" id="Sexo" name="Sexo" value="H" required> Hombre
@@ -73,6 +63,8 @@
         <br><br>
         <input type="submit" value="enviar">
     </form>
-</body>
+</div>
 
+</section>
+</body>
 </html>
