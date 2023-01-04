@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en" dir="ltr">
 
 <head>
@@ -194,7 +193,7 @@
 </head>
 
 <body class="h-screen">
-  <nav class="top-0 z-50 w-full flex flex-wrap items-center justify-center px-2 py-[0.915rem] bg-neutral-900 drop-shadow-lg ">
+  <nav class="top-0 absolute z-50 w-full flex flex-wrap items-center justify-center px-2 py-[0.915rem] bg-neutral-900 drop-shadow-lg ">
     <div class="container flex flex-wrap items-center justify-center">
       <div class=" flex w-full relative flex justify-between items-center lg:w-auto lg:static lg:block lg:justify-start">
         <ul class="flex flex-row">
@@ -211,7 +210,7 @@
       <div class="lg:flex flex-grow items-center bg-white lg:bg-transparent lg:shadow-none hidden" id="example-collapse-navbar">
         <ul class="flex flex-col lg:flex-row list-none lg:ml-auto">
           <li class="text-white flex flex-col justify-center items-end px-2">
-            <b class="text-xs">Administrador</b>
+            <b class="text-xs">Usuario</b>
             <p class="text-xs">username</p>
           </li>
           <li class="flex items-center">
@@ -224,6 +223,11 @@
     </div>
   </nav>
 
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24" id="hamburger">
+    <path d="M0 0h24v24H0z" fill="none" />
+    <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+  </svg>
   <div id="overlay"></div>
   <div class="sidebar close rounded" id="sidebar-close">
     <ul class="nav-links drop-shadow:md">
@@ -236,10 +240,6 @@
         </div>
         <ul class="sub-menu">
           <li><a class="link_name" href="FConductores.php">Conductores</a></li>
-          <li><a href="#">Crear</a></li>
-          <li><a href="#">Consultar</a></li>
-          <li><a href="#">Actualizar</a></li>
-          <li><a href="#">Eliminar</a></li>
         </ul>
       </li>
       <li>
@@ -251,10 +251,6 @@
         </div>
         <ul class="sub-menu">
           <li><a class="link_name" href="#">Licencias</a></li>
-          <li><a href="#">Crear</a></li>
-          <li><a href="#">Consultar</a></li>
-          <li><a href="#">Actualizar</a></li>
-          <li><a href="#">Eliminar</a></li>
         </ul>
       </li>
       <li>
@@ -266,10 +262,6 @@
         </div>
         <ul class="sub-menu">
           <li><a class="link_name" href="#">Multas</a></li>
-          <li><a href="#">Crear</a></li>
-          <li><a href="#">Consultar</a></li>
-          <li><a href="#">Actualizar</a></li>
-          <li><a href="#">Eliminar</a></li>
         </ul>
       </li>
       <li>
@@ -281,10 +273,6 @@
         </div>
         <ul class="sub-menu">
           <li><a class="link_name" href="#">Oficiales</a></li>
-          <li><a href="#">Crear</a></li>
-          <li><a href="#">Consultar</a></li>
-          <li><a href="#">Actualizar</a></li>
-          <li><a href="#">Eliminar</a></li>
         </ul>
       </li>
       <li>
@@ -296,10 +284,6 @@
         </div>
         <ul class="sub-menu">
           <li><a class="link_name" href="#">Propietarios</a></li>
-          <li><a href="#">Crear</a></li>
-          <li><a href="#">Consultar</a></li>
-          <li><a href="#">Actualizar</a></li>
-          <li><a href="#">Eliminar</a></li>
         </ul>
       </li>
       <li>
@@ -311,10 +295,6 @@
         </div>
         <ul class="sub-menu">
           <li><a class="link_name" href="#">Tarjetas</a></li>
-          <li><a href="#">Crear</a></li>
-          <li><a href="#">Consultar</a></li>
-          <li><a href="#">Actualizar</a></li>
-          <li><a href="#">Eliminar</a></li>
         </ul>
       </li>
       <li>
@@ -326,10 +306,6 @@
         </div>
         <ul class="sub-menu">
           <li><a class="link_name" href="#">Vehiculos</a></li>
-          <li><a href="#">Crear</a></li>
-          <li><a href="#">Consultar</a></li>
-          <li><a href="#">Actualizar</a></li>
-          <li><a href="#">Eliminar</a></li>
         </ul>
       </li>
       <li>
@@ -341,10 +317,6 @@
         </div>
         <ul class="sub-menu">
           <li><a class="link_name" href="#">Verificaciones</a></li>
-          <li><a href="#">Crear</a></li>
-          <li><a href="#">Consultar</a></li>
-          <li><a href="#">Actualizar</a></li>
-          <li><a href="#">Eliminar</a></li>
         </ul>
       </li>
     </ul>

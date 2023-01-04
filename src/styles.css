@@ -1,3 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    .input-login {
+        @apply border border-neutral-400 px-3 py-3 
+        placeholder-neutral-400 text-neutral-700 bg-white rounded text-sm drop-shadow-lg 
+        hover:shadow-md focus:outline-none focus:border-sky-600 focus:ring-1 focus:ring-sky-600 w-full;
+    }
+    .input-file{
+        @apply block w-full text-sm text-neutral-700 active:file:bg-sky-700 drop-shadow-lg 
+        rounded border border-neutral-400 rounded bg-gray-50 file:mr-4 file:py-3 
+        file:px-4 file:rounded-l file:border-0 file:text-sm file:font-semibold file:bg-neutral-900 
+        file:text-neutral-200 hover:file:bg-black hover:shadow-md focus:outline-none focus:border-sky-600 
+        focus:ring-1 focus:ring-sky-600 focus:file:bg-sky-700 hover:file:text-white w-full;
+    }
+}

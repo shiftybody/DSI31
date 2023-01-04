@@ -1,85 +1,72 @@
-<link rel="stylesheet" type="text/css" href="EForms.css">
-
 <?php
+    $username = $_POST['username'];
+    $password = $_POST['pws'];
 
-session_start();
-$FUserName = $_POST['UserName'];
-$FPassword = $_POST['Password'];
-$FKey = $_POST['Key'];
+    print($username."-----".$password);
 
+    $SQL = "SELECT * FROM cuentas WHERE username = '$username'";
 
-include("Conexion.php");
-$Con = Conectar();
-$SQL = "SELECT * FROM Cuentas WHERE UserName = '$FUserName';";
-$Result = Ejecutar($Con, $SQL);
-$Existe = mysqli_num_rows($Result);
-$Manejador = fopen("$FKey", "r");
+    include("conexion.php");
+    $link = Conectar();
+    $result = Ejecutar($link, $SQL);
 
-for ($i = 0; $i <= !feof($Manejador); $i++) {
-    $Leer = fgets($Manejador);
-}
-?>
-<html>
-<header id="cabecera">
-    <a id="logo" href="FAcceso.html">
-        <span class="site-name">SISTEMA DE CONTROL VEHICULAR</span>
-    </a>
-</header>
-<p>
-    <?php
-    if ($Existe == 1) {
-        print("<label>El usuario existe</label><br>");
-        $Fila = mysqli_fetch_row($Result);
-        if ($Fila[1] == $FPassword) {
-            print("<label>Contraseña correcta</label><br>");
-            if ($Fila[3] == 1) {
-                print("<label>Cuenta activa</label><br>");
-                if ($Fila[4] == 0) {
-                    print("<label>Cuenta sin bloqueo</label><br>");
+    $n = mysqli_num_rows($result);
 
-                    if ($Fila[2] == "A") {
-                        if ($Fila[6] == $Leer) {
-                            print("<label>Key correcta</label><br>");
-                            print("<label>ENTRAR</label><br>");
-                            $_SESSION['Bandera'] = 1;
-                            print('<META HTTP-EQUIV="REFRESH" CONTENT="1;URL=MenuA.php">');
-                        } else {
-                            print("<label>La Key es incorrecta</label><br>");
-                        }
-                    } else {
-                        if ($Fila[2] == "U") {
-                            if ($Fila[6] == $Leer) {
-                                print("<label>Key correcta</label><br>");
-                                print("<label>ENTRAR</label><br>");
-                                $_SESSION['BanderaU'] = 1;
-                                print('<META HTTP-EQUIV="REFRESH" CONTENT="1;URL=MenuU.php">');
-                            } else {
-                                print("<label>La Key es incorrecta</label><br>");
-                            }
-                        } else {
-                            print("<label>Tipo de usuario no valido</label><br>");
-                        }
+    $Fila = mysqli_fetch_row($result);
+
+    if($n == 1)
+    {
+        print("El usuario existe");
+        if($password == $Fila[1])
+        {
+            print("La contraseña es correcta");
+            $SQL4 = "UPDATE cuentas SET intentos = 0 WHERE username = '$username'";
+            Ejecutar($link, $SQL4);
+            if($Fila[3] == 1)
+            {
+                print("Usuario activo");
+                if($Fila[5] == 0)
+                {
+                    print("Usuario desbloqueado");
+                    if($Fila[2] == 'A')
+                    {
+                        print("Eres administrador");
+                        header("Location: MenuA.php");
                     }
-                } else {
-                    print("<label>Cuenta bloqueada</label><br>");
+                    else
+                    {
+                        print("Eres mortal");
+                        header("Location: MenuU.php");
+                    }
                 }
-            } else {
-                print("<label>Cuenta NO activa</label><br>");
+                else
+                {
+                    print("Usuario bloqueado");
+                }
             }
-        } else {
-            print("<label>Contraseña incorrecta</label><br>");
-            if ($Fila[5] < 4) {
-                $SQL1 = "UPDATE Cuentas SET Intentos = Intentos + 1 WHERE UserName = '$FUserName' ";
-                $Result1 = Ejecutar($Con, $SQL1);
-            } else {
-                $SQL2 = "UPDATE Cuentas SET Bloqueado = 1 WHERE UserName = '$FUserName' ";
-                $Result2 = Ejecutar($Con, $SQL2);
-                print("<label>Cuenta bloqueada</label><br>");
+            else
+            {
+                print("Usuario inactivo");
             }
         }
-    } else {
-        print("<label>El usuario NO existe</label><br>");
+        else
+        {
+            print("Contraseña incorrecta");
+            $SQL2 = "UPDATE cuentas SET intentos = intentos + 1 WHERE username = '$username'";
+            Ejecutar($link, $SQL2);
+            if($Fila[4] >= 3)
+            {
+                $SQL3 = "UPDATE cuentas SET bloqueado = 1 WHERE username = '$username'";
+                Ejecutar($link, $SQL3);
+            }
+        }
     }
-    print("</html>");
-    Desconectar($Con);
-    ?>
+    else
+    {
+        print("El usuario no existe");
+    }
+    Cerrar($link);
+
+    header('HTTP/1.1 307 Temporary Redirect');
+    header('Location:../views/FAcceso.html');
+?>

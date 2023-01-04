@@ -1,6 +1,6 @@
 <?php include 'MenuA.php' ?>
 
-<div class="conductores">
+<div class="flex flex-col items-center pt-">
     <label for="">
         <h1>
             Conductores
@@ -65,6 +65,5 @@
     </form>
 </div>
 
-</section>
 </body>
 </html>
