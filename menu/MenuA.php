@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+
+<html lang="en" dir="ltr" style="overflow: overlay;">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" href="../../node_modules/@fortawesome/fontawesome-free/svgs/solid/car-side.svg" />
-  <link rel="stylesheet" href="../../node_modules/@fortawesome/fontawesome-free/css/all.css" />
-  <link rel="stylesheet" href="../../assets/css/styles.css" />
+  <link rel="shortcut icon" href="../node_modules/@fortawesome/fontawesome-free/svgs/solid/car-side.svg" />
+  <link rel="stylesheet" href="../node_modules/@fortawesome/fontawesome-free/css/all.css" />
+  <link rel="stylesheet" href="../assets/css/styles.css" >
   <style>
     #hamburger {
       cursor: pointer;
@@ -18,7 +19,6 @@
       background-color: rgba(0, 0, 0, 0.2);
       backdrop-filter: blur(8px);
       position: fixed;
-      top: 0;
       left: 0;
       z-index: 1;
       display: none;
@@ -193,7 +193,7 @@
 </head>
 
 <body class="h-screen">
-  <nav class="top-0 absolute z-50 w-full flex flex-wrap items-center justify-center px-2 py-[0.915rem] bg-neutral-900 drop-shadow-lg ">
+  <nav class="inherit top-0 z-50 w-full flex flex-wrap items-center justify-center px-2 py-[0.915rem] bg-neutral-900 drop-shadow-lg ">
     <div class="container flex flex-wrap items-center justify-center">
       <div class=" flex w-full relative flex justify-between items-center lg:w-auto lg:static lg:block lg:justify-start">
         <ul class="flex flex-row">
@@ -210,7 +210,7 @@
       <div class="lg:flex flex-grow items-center bg-white lg:bg-transparent lg:shadow-none hidden" id="example-collapse-navbar">
         <ul class="flex flex-col lg:flex-row list-none lg:ml-auto">
           <li class="text-white flex flex-col justify-center items-end px-2">
-            <b class="text-xs">Usuario</b>
+            <b class="text-xs">Administrador</b>
             <p class="text-xs">username</p>
           </li>
           <li class="flex items-center">
@@ -223,11 +223,6 @@
     </div>
   </nav>
 
-
-  <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24" id="hamburger">
-    <path d="M0 0h24v24H0z" fill="none" />
-    <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
-  </svg>
   <div id="overlay"></div>
   <div class="sidebar close rounded" id="sidebar-close">
     <ul class="nav-links drop-shadow:md">
@@ -239,7 +234,11 @@
           </a>
         </div>
         <ul class="sub-menu">
-          <li><a class="link_name" href="FConductores.php">Conductores</a></li>
+          <li><a class="link_name" href="#">Conductores</a></li>
+          <li><a href="../conductores/FConductores.php">Crear</a></li>
+          <li><a href="../conductores/SConductores.php">Consultar</a></li>
+          <li><a href="../conductores/UConductores.php">Actualizar</a></li>
+          <li><a href="../conductores/DConductores.php">Eliminar</a></li>
         </ul>
       </li>
       <li>
@@ -251,6 +250,10 @@
         </div>
         <ul class="sub-menu">
           <li><a class="link_name" href="#">Licencias</a></li>
+          <li><a href="FLicencias.php">Crear</a></li>
+          <li><a href="#">Consultar</a></li>
+          <li><a href="#">Actualizar</a></li>
+          <li><a href="#">Eliminar</a></li>
         </ul>
       </li>
       <li>
@@ -262,6 +265,10 @@
         </div>
         <ul class="sub-menu">
           <li><a class="link_name" href="#">Multas</a></li>
+          <li><a href="FMultas.php">Crear</a></li>
+          <li><a href="#">Consultar</a></li>
+          <li><a href="#">Actualizar</a></li>
+          <li><a href="#">Eliminar</a></li>
         </ul>
       </li>
       <li>
@@ -273,6 +280,10 @@
         </div>
         <ul class="sub-menu">
           <li><a class="link_name" href="#">Oficiales</a></li>
+          <li><a href="FOficiales.php">Crear</a></li>
+          <li><a href="#">Consultar</a></li>
+          <li><a href="#">Actualizar</a></li>
+          <li><a href="#">Eliminar</a></li>
         </ul>
       </li>
       <li>
@@ -284,17 +295,25 @@
         </div>
         <ul class="sub-menu">
           <li><a class="link_name" href="#">Propietarios</a></li>
+          <li><a href="FPropietarios.php">Crear</a></li>
+          <li><a href="#">Consultar</a></li>
+          <li><a href="#">Actualizar</a></li>
+          <li><a href="#">Eliminar</a></li>
         </ul>
       </li>
       <li>
         <div class="iocn-link">
           <a href="#">
-            <i class="fa-solid fa-user"></i>
+            <i class="fa-solid fa-chalkboard"></i>
             <span class="link_name">Tarjetas</span>
           </a>
         </div>
         <ul class="sub-menu">
           <li><a class="link_name" href="#">Tarjetas</a></li>
+          <li><a href="FTarjetas.php">Crear</a></li>
+          <li><a href="#">Consultar</a></li>
+          <li><a href="#">Actualizar</a></li>
+          <li><a href="#">Eliminar</a></li>
         </ul>
       </li>
       <li>
@@ -306,6 +325,10 @@
         </div>
         <ul class="sub-menu">
           <li><a class="link_name" href="#">Vehiculos</a></li>
+          <li><a href="FVehiculos.php">Crear</a></li>
+          <li><a href="#">Consultar</a></li>
+          <li><a href="#">Actualizar</a></li>
+          <li><a href="#">Eliminar</a></li>
         </ul>
       </li>
       <li>
@@ -317,9 +340,13 @@
         </div>
         <ul class="sub-menu">
           <li><a class="link_name" href="#">Verificaciones</a></li>
+          <li><a href="FVerificaciones.php">Crear</a></li>
+          <li><a href="#">Consultar</a></li>
+          <li><a href="#">Actualizar</a></li>
+          <li><a href="#">Eliminar</a></li>
         </ul>
       </li>
     </ul>
   </div>
 
-  <script src="../../assets/js/scripts.js"></script>
+  <script src="../assets/js/scripts.js"></script>

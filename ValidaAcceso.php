@@ -2,7 +2,7 @@
     $username = $_POST['username'];
     $password = $_POST['pws'];
 
-    print($username."-----".$password);
+    print($username." ----- ".$password);
 
     $SQL = "SELECT * FROM cuentas WHERE username = '$username'";
 
@@ -16,27 +16,27 @@
 
     if($n == 1)
     {
-        print("El usuario existe");
+        print(" El usuario existe ");
         if($password == $Fila[1])
         {
-            print("La contraseña es correcta");
+            print(" La contraseña es correcta ");
             $SQL4 = "UPDATE cuentas SET intentos = 0 WHERE username = '$username'";
             Ejecutar($link, $SQL4);
             if($Fila[3] == 1)
             {
-                print("Usuario activo");
+                print(" Usuario activo ");
                 if($Fila[5] == 0)
                 {
-                    print("Usuario desbloqueado");
+                    print(" Usuario desbloqueado ");
                     if($Fila[2] == 'A')
                     {
-                        print("Eres administrador");
-                        header("Location: MenuA.php");
+                        print(" Eres admin ");
+                        header("Location: menu/MenuA.php");
                     }
                     else
                     {
-                        print("Eres mortal");
-                        header("Location: MenuU.php");
+                        print(" Eres user ");
+                        header("Location: menu/MenuU.php");
                     }
                 }
                 else
@@ -66,7 +66,4 @@
         print("El usuario no existe");
     }
     Cerrar($link);
-
-    header('HTTP/1.1 307 Temporary Redirect');
-    header('Location:../views/FAcceso.html');
 ?>

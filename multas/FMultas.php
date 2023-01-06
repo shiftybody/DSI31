@@ -1,14 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Multas</title>
-</head>
-
-<body>
+<?php include 'MenuA.php' ?>
+<div class="flex flex-col items-center pt-">
     <label for="">
         <h1>
             Multas
@@ -19,7 +10,7 @@
         <label for="">Fecha</label>
         <input type="date" id="Fecha" name="Fecha" readonly>
         <label for="">Hora</label>
-        <input type="time" id="Hora" name="Hora" >
+        <input type="time" id="Hora" name="Hora">
         <br>
         <label for="">Reporte de Seccion II</label>
         <input type="text" id="ReporteSeccion" name="ReporteSeccion" maxlength="50" required>
@@ -107,7 +98,7 @@
         document.getElementById('Fecha').valueAsDate = new Date();
         document.getElementById('Hora').value = new Date().getHours() + ":" + new Date().getMinutes();
     </script>
-
+</div>
 </body>
 
 </html>

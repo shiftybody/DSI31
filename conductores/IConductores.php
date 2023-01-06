@@ -1,5 +1,6 @@
+
 <?php
-    header('Content-Type: text/html; charset=UTF-8');
+    include '../conductores/FConductores.php';
 
     $Fotografia = $_POST['Fotografia'];
     $Nombre = $_POST['Nombre'];
@@ -17,16 +18,16 @@
 
     $SQL = "INSERT INTO conductores(IDConductor, Fotografia, Nombre, ApellidoPaterno, 
     ApellidoMaterno, FechaNacimiento, Firma, Domicilio, GrupoSanguineo, Donador,
-    NumEmergencia, Sexo, Antiguedad, Observaciones) VALUES (' ', '$Fotografia', '$Nombre', 
+    NumEmergencia, Sexo, Antiguedad, Observaciones) VALUES (' ', '$Fotografia', '$Nombre',
     '$ApellidoPaterno', '$ApellidoMaterno', '$FechaNacimiento','$Firma', '$Domicilio', 
     '$GrupoSanguineo', '$Donador', '$NumEmergencia', '$Sexo', '$Antiguedad', '$Observaciones')"; 
 
-    include("conexion.php");
+    include("../conexion.php");
     $Con = Conectar();
     $Result = Ejecutar($Con, $SQL) or die ("Error al insertar datos".mysqli_error($Con));
     if ($Result) {
-               
-        print("Conductor registrado exitosamente con id: <strong>" . mysqli_insert_id($Con) . " </strong>");
+
+        print("<h1 style='text-align: center; padding-buttom:2em;'>Conductor registrado exitosamente con id: <strong>" . mysqli_insert_id($Con) . " </strong> </h1>");
 
     }else{
         print("Registro No insertado");

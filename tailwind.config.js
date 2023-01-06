@@ -1,9 +1,12 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    'application/views/Facceso.html',
-    'application/views/MenuA.php',
-    'application/views/FConductores.php'
+    'Facceso.html',
+    'menu/MenuA.php',
+    'menu/MenuU.php',
+    'conductores/FConductores.php',
+    'conductores/SConductores.php',
+    'conductores/UConductores.php'
   ],
   theme: {
     extend: {},

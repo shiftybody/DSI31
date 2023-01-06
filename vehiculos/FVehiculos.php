@@ -1,4 +1,5 @@
-<html>
+<?php include 'MenuA.php' ?>
+<div class="flex flex-col items-center pt-" >
 <label for="">
     <h1>
         Vehiculos
@@ -6,8 +7,6 @@
 </label>
 <p></p>
 <form method="GET" action="IVehiculos.php">
-
-
     <label for="">NIV</label>
     <input type="text" id="NIV" name="NIV" minlength="17" required>
     <br>
@@ -90,4 +89,6 @@
 
 </form>
 
+</div>
+</body>
 </html>

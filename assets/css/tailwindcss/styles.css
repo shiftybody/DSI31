@@ -15,4 +15,12 @@
         file:text-neutral-200 hover:file:bg-black hover:shadow-md focus:outline-none focus:border-sky-600 
         focus:ring-1 focus:ring-sky-600 focus:file:bg-sky-700 hover:file:text-white w-full;
     }
+    .input-form{
+        @apply border border-neutral-400 px-3 py-2 mb-2
+        placeholder-neutral-400 text-neutral-700 bg-white rounded text-sm drop-shadow-lg 
+        hover:shadow-md focus:outline-none focus:border-sky-600 focus:ring-1 focus:ring-sky-600 w-full;
+    }
+    .label-form{
+        @apply block text-gray-700 text-sm font-bold mb-1;
+    }
 }
