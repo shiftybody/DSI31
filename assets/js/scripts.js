@@ -32,4 +32,3 @@ overlay.addEventListener('click', function () {
     menuOpen = false;
   }
 })
-

@@ -1,3 +1,18 @@
+<?php
+
+   session_start();
+
+    if(isset($_SESSION['rol'])){
+      if($_SESSION['rol'] == 'admin'){
+        header("Location: menu/menuA.php");
+      } else if ($_SESSION['rol'] == 'user') {
+        header("Location: menu/menuU.php");
+      } else {
+        session_destroy();
+      }
+    }
+
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -15,7 +30,7 @@
     <div class="container px-4 mx-auto flex flex-wrap items-center justify-between">
       <div class="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
         <a class="text-sm font-bold leading-relaxed inline-block mr-4 px-2 py-2 whitespace-nowrap uppercase text-white"
-          href="javascript:void(0);alert('Ya te encuentras en la pagina principal')">
+          href="">
           Sistema Control Vehicular
         </a>
       </div>
@@ -49,7 +64,7 @@
   <main>
     <section class="absolute w-full h-full">
       <div class="absolute top-0 w-full h-full bg-neutral-900"
-        style="background-image: url(../../assets/img/register_bg_2.png); background-size: 100%; background-repeat: no-repeat;">
+        style="background-image: url(assets/img/register_bg_2.png); background-size: 100%; background-repeat: no-repeat;">
       </div>
       <div class="container mx-auto px-4 h-full">
         <div class="flex content-center items-center justify-center h-full">
@@ -63,19 +78,22 @@
                   </h6>
                 </div>
               </div>
+              <div class="text-rose-600 text-center px-4 lg:px-10 py-2 pt-0 ">
+                <p id="msg" ></p>
+              </div>
               <div class="flex-auto px-4 lg:px-10 py-10 pt-0">
-                <form method="post" action="ValidaAcceso.php" >
+                <form method="post" action="ValidaAcceso.php">
                   <div class="relative w-full mb-3">
                     <label class="block uppercase text-neutral-700 text-xs font-bold mb-2" for="username">Usuario
                     </label>
-                    <input type="text" id="username" name="username" class="input-login"
-                      placeholder="Nombre de usuario" style="transition: all 0.15s ease 0s;" required/>
+                    <input type="text" id="username" name="username" class="input-login" placeholder="Nombre de usuario"
+                      style="transition: all 0.15s ease 0s;" required />
                   </div>
                   <div class="relative w-full mb-3">
                     <label class="block uppercase text-neutral-700 text-xs font-bold mb-2" for="password">Contraseña
                     </label>
-                    <input type="password" id="password" name="pws" class="input-login"
-                      placeholder="••••••••••" style="transition: all 0.15s ease 0s;" required />
+                    <input type="password" id="password" name="pws" class="input-login" placeholder="••••••••••"
+                      style="transition: all 0.15s ease 0s;" required />
                   </div>
                   <!-- <div>
                     <label class="block uppercase text-neutral-700 text-xs font-bold mb-2"
@@ -101,5 +119,6 @@
     </section>
   </main>
 </body>
+<script src="./assets/js/login.js"></script>
 
 </html>

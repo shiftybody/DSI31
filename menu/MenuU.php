@@ -1,3 +1,21 @@
+<?php
+
+  session_start(); 
+
+   if($_SESSION['rol'] == 'admin'){
+      print( $_SESSION['rol'] . " no tienes autorizacion");
+      die();
+
+    } else if ($_SESSION['rol'] == 'user') {
+      // do nothing
+    }
+    else {
+    session_destroy();
+    header("Location: ../index.php");
+ 
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
@@ -210,12 +228,14 @@
         <ul class="flex flex-col lg:flex-row list-none lg:ml-auto">
           <li class="text-white flex flex-col justify-center items-end px-2">
             <b class="text-xs">Usuario</b>
-            <p class="text-xs">username</p>
+            <p class="text-xs"><?php isset($_SESSION['usuario']) ? print($_SESSION['usuario']) : null?></p>
           </li>
           <li class="flex items-center">
-            <button class="bg-white text-neutral-800 active:bg-neutral-100 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3" type="button" style="transition: all 0.15s ease 0s;">
+            <a href="../cerrarSession.php">
+            <button  class="bg-white text-neutral-800 active:bg-neutral-100 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3" type="button" style="transition: all 0.15s ease 0s;">
               Salir <i class="fa-solid fa-right-from-bracket"></i>
             </button>
+            </a>
           </li>
         </ul>
       </div>

@@ -2,6 +2,7 @@
 module.exports = {
   content: [
     'Facceso.html',
+    'ValidaAcceso.php',
     'menu/MenuA.php',
     'menu/MenuU.php',
     'conductores/FConductores.php',
