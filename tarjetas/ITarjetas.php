@@ -22,7 +22,7 @@ $SQL = "INSERT INTO tarjetas(TipoServicio,Vigencia,Placa,IDPropietario ,IDVehicu
     '$IDVehiculo', '$Operacion', '$PlacaAnterior', '$NCI', '$Rfa', '$CVE', 
     '$OficinaExpedidora', '$Movimiento', '$FechaExpedicion')";
 
-include("conexion.php");
+include("../conexion.php");
 $Con = Conectar();
 $Result = Ejecutar($Con, $SQL) or die("Error al insertar datos" . mysqli_error($Con));
 if ($Result) {

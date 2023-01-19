@@ -30,7 +30,7 @@ if(isset($_GET['Criterio']) && isset($_GET['Atributo'])){
     $Criterio = $_GET['Criterio'];
     $Atributo = $_GET['Atributo'];
     $SQL = "SELECT * FROM Oficiales WHERE $Atributo = '$Criterio'";
-    include("conexion.php");
+    include("../conexion.php");
     $Con = Conectar();
     $Result = mysqli_query($Con, $SQL);
     $Rows = mysqli_num_rows($Result);

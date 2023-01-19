@@ -1,5 +1,6 @@
 <?php   
-    header('Content-Type: text/html; charset=UTF-8');
+
+include '../licencias/Flicencias.php';
 
 $IDConductor = $_GET['IDConductor'];
 $TipoLicencia = $_GET['TipoLicencia'];
@@ -14,7 +15,7 @@ $SQL = "INSERT INTO licencias
 VALUES ('', '$IDConductor','$TipoLicencia','$FechaExpedicion',
 '$FechaVencimiento', '$AtributoD', '$Restricciones')";
 
-include("conexion.php");
+include("../conexion.php");
 $Con = Conectar();
 $Result = Ejecutar($Con, $SQL) or die("Error al insertar datos" . mysqli_error($Con));
 if ($Result) {
@@ -24,7 +25,7 @@ if ($Result) {
     $ascii = chr(substr($last_sql_id, 0, 2));
     $id = $ascii . substr($last_sql_id, 2, 6) . "-" . substr($last_sql_id, 8);
 
-    print("Licencia registrada con éxito. Tú número de licencia es: <strong>" . $id . "</strong>");
+    print("<h1 style='text-align: center; padding-buttom:2em;'>Licencia registrada con éxito. Tú número de licencia es: <strong>" . $id . "</strong> </h1>");
 } else {
     print("Registro No insertado");
 }

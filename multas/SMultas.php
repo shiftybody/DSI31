@@ -1,19 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php include '../menu/MenuA.php' ?>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buscar Multa</title>
-</head>
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="stylesheet" href="../node_modules/@fortawesome/fontawesome-free/css/all.css" />
 
-<body>
-    <form action="SMultas.php" method="get">
-        <label for="">Criterio</label>
-        <input type="text" name="Criterio" id="Criterio" required>
-        <label for=""> Atributos </label>
-        <select name="Atributo" class="Atributo" required>
+<div class="flex flex-col items-center">
+    <div class="py-8" >
+<form action="SMultas.php" method="POST" class="flex items-end">
+    <div class="mr-3">
+        <label for="" class="label-form">Criterio</label>
+        <input type="text" name="Criterio" id="Criterio" class="input-form" required></input>
+    </div>
+    <div class="mr-3">
+        <label for="" class="label-form"> Atributos </label>
+        <select name="Atributo" id="Atributo" class="input-form" required>
             <option value="">Selecciona un atributo</option>
             <option value="IDMulta">ID Multa</option>
             <option value="FechaHora"> Fecha y Hora</option>
@@ -37,9 +36,14 @@
             <option value="IDVehiculo">ID Vehiculo</option>
             <option value="IDTarjeta">ID Tarjeta</option>
             <option value="IDOficial">ID Oficial</option>
-            <input type="submit" value="Enviar">
-            <br>
         </select>
+</div>
+    <div classs="mr-3">
+        <input type="submit" value="Enviar" class="bg-neutral-900 hover:bg-black text-neutral-200 active:bg-sky-700 text-sm font-bold uppercase px-6 pt-[0.58rem] pb-[0.58rem] 
+                      rounded drop-shadow-lg hover:shadow-xl outline-none 
+                      focus:outline-none focus-blue-400 focus:bg-sky-700 hover:text-white mr-1 mb-2 w-full
+                      " style="transition: all 0.15s ease 0s;">
+    </div>
     </form>
     <script>
         const selectElement = document.querySelector('.Atributo');
@@ -50,12 +54,9 @@
             }
         });
     </script>
-</body>
-
-</html>
-
-</html>
-
+    </div>
+</div>
+<div class="flex justify-center text-sm" >
 <?php
 if (isset($_GET['Criterio']) && isset($_GET['Atributo'])) {
     $Criterio = $_GET['Criterio'];
@@ -71,7 +72,7 @@ if (isset($_GET['Criterio']) && isset($_GET['Atributo'])) {
 
     $SQL = "SELECT * FROM Multas WHERE $Atributo = '$Criterio'";
 
-    include("conexion.php");
+    include("../conexion.php");
     $Con = Conectar();
     $Result = Ejecutar($Con, $SQL) or die("Error al insertar datos" . mysqli_error($Con));
     $Rows = mysqli_num_rows($Result);
@@ -161,3 +162,7 @@ if (isset($_GET['Criterio']) && isset($_GET['Atributo'])) {
     }
 } 
 ?>
+</div>
+</body>
+
+</html>

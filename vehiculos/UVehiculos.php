@@ -138,7 +138,7 @@ if (isset($_GET['IDVehiculo'])) {
     Combustible = '$Combustible', Transmision = '$Transmision', NumMotor = '$NumMotor', 
     NumSerie = '$NumSerie' WHERE IDVehiculo = '$IDVehiculo'";
 
-    include("conexion.php");
+    include("../conexion.php");
     $Con = Conectar();
     $Result = Ejecutar($Con, $SQL);
     $FilasAfectadas = mysqli_affected_rows($Con);

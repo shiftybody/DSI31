@@ -1,19 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php include '../menu/MenuA.php' ?>
+<link rel="stylesheet" href="../assets/css/styles.css">
+<link rel="stylesheet" href="../node_modules/@fortawesome/fontawesome-free/css/all.css" />
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buscar Licencia</title>
-</head>
-
-<body>
-    <form action="SLicencias.php" method="post">
-        <label for="">Criterio</label>
-        <input type="text" name="Criterio" id="Criterio" required>
-        <label for=""> Atributos </label>
-        <select name="Atributo" class="Atributo" required>
+<div class="flex flex-col items-center">
+    <div class="py-8" >
+    <form action="SLicencias.php" method="POST" class="flex items-end">
+        <div class="mr-3">
+        <label for="" class="label-form">Criterio</label>
+        <input type="text" name="Criterio" id="Criterio" class="input-form" required></input>
+    </div>
+    <div class="mr-3">
+        <label for="" class="label-form"> Atributos </label>
+        <select name="Atributo" id="Atributo" class="input-form" required>
             <option value="">Selecciona un atributo</option>
             <option value="IDLicencia">ID Licencia</option>
             <option value="IDConductor">ID Conductor</option>
@@ -22,8 +20,14 @@
             <option value="FechaVencimiento">Fecha de Vencimiento</option>
             <option value="AtributoD">Atributo Desconocido</option>
             <option value="Restricciones">Restricciones</option>
-            <input type="submit" value="Enviar">
         </select>
+    </div>
+        <div classs="mr-3">
+        <input type="submit" value="Enviar" class="bg-neutral-900 hover:bg-black text-neutral-200 active:bg-sky-700 text-sm font-bold uppercase px-6 pt-[0.58rem] pb-[0.58rem] 
+                      rounded drop-shadow-lg hover:shadow-xl outline-none 
+                      focus:outline-none focus-blue-400 focus:bg-sky-700 hover:text-white mr-1 mb-2 w-full
+                      " style="transition: all 0.15s ease 0s;">
+    </div>
     </form>
     <script>
         const selectElement = document.querySelector('.Atributo');
@@ -34,11 +38,9 @@
             }
         });
     </script>
-    <br>
-</body>
-
-</html>
-
+     </div>
+</div>
+<div class="flex justify-center text-sm" >
 <?php
 if (isset($_POST['Criterio']) && isset($_POST['Atributo'])) {
     $Criterio = $_POST['Criterio'];
@@ -53,9 +55,8 @@ if (isset($_POST['Criterio']) && isset($_POST['Atributo'])) {
     }
     
 
-
     $SQL = "SELECT * FROM licencias WHERE $Atributo LIKE '%$Criterio%'";
-    include("conexion.php");
+    include("../conexion.php");
     $Con = Conectar();
     $Result = Ejecutar($Con, $SQL) or die("Error al insertar datos" . mysqli_error($Con));
     $Rows = mysqli_num_rows($Result);
@@ -63,19 +64,19 @@ if (isset($_POST['Criterio']) && isset($_POST['Atributo'])) {
     $Fila = mysqli_fetch_row($Result);
 
     // show all rows in a table html format
-    echo "<table border='1'>";
+    echo '<table class=" mr-4 ml-4 border-separate border-spacing-2 ">';
     echo "<tr>";
-    echo "<th>ID Licencia</th>";
-    echo "<th>ID Conductor</th>";
-    echo "<th>Tipo de Licencia</th>";
-    echo "<th>Fecha de Expedicion</th>";
-    echo "<th>Fecha de Vencimiento</th>";
-    echo "<th>Atributo Desconocido</th>";
-    echo "<th>Restricciones</th>";
-    echo "<th>Eliminar</th>";
-    echo "<th>Actualizar</th>";
-
+    echo '<th class=" border-b-2 border-neutral-400 drop-shadow-lg" >ID Licencia</th>';
+    echo '<th class=" border-b-2 border-neutral-400 drop-shadow-lg" >ID Conductor</th>';
+    echo '<th class=" border-b-2 border-neutral-400 drop-shadow-lg" >Tipo de Licencia</th>';
+    echo '<th class=" border-b-2 border-neutral-400 drop-shadow-lg" >Fecha de Expedicion</th>';
+    echo '<th class=" border-b-2 border-neutral-400 drop-shadow-lg" >Fecha de Vencimiento</th>';
+    echo '<th class=" border-b-2 border-neutral-400 drop-shadow-lg" >Atributo Desconocido</th>';
+    echo '<th class=" border-b-2 border-neutral-400 drop-shadow-lg" >Restricciones</th>';
+    echo '<th class=" border-b-2 border-neutral-400 drop-shadow-lg" >Eliminar</th>';
+    echo '<th class=" border-b-2 border-neutral-400 drop-shadow-lg" >Actualizar</th>';
     echo "</tr>";
+
     for ($i = 0; $i < $Rows; $i++) {
         echo "<tr>";
         echo "<td>" . ParseID($Fila[0]) . "</td>";
@@ -85,14 +86,14 @@ if (isset($_POST['Criterio']) && isset($_POST['Atributo'])) {
         echo "<td>" . $Fila[4] . "</td>";
         echo "<td>" . $Fila[5] . "</td>";
         echo "<td>" . $Fila[6] . "</td>";
-        echo "<td><a href='DLicencias.php?IDLicencia=" . ParseID($Fila[0]) . "'>Eliminar</a></td>";
-        echo "<td><a href='ULicencias.php?IDLicencia=" . ParseID($Fila[0]) .
+        echo '<td class="icon-center hover:text-red-600" hover:drop-shadow-lg "><a href="DLicencias.php?IDLicencia=' . ParseID($Fila[0]) . '"><i class="fa-solid fa-trash"></i></a></td>';
+        echo '<td class="icon-center hover:text-yellow-500 hover:drop-shadow-lg"><a href="ULicencias.php?IDLicencia=' . ParseID($Fila[0]) .
             "&IDConductor=" . $Fila[1] .
             "&TipoLicencia=" . $Fila[2] .
             "&FechaExpedicion=" . $Fila[3] .
             "&FechaVencimiento=" . $Fila[4] .
             "&AtributoD=" . $Fila[5] .
-            "&Restricciones=" . $Fila[6] .
+            '&Restricciones=' . $Fila[6] . '"><i class="fa-solid fa-pen"></i></a>' . '</td>';
             "'>Actualizar</a></td>";
         echo "</tr>";
 
@@ -103,3 +104,7 @@ if (isset($_POST['Criterio']) && isset($_POST['Atributo'])) {
 }
 
 ?>
+</div>
+</body>
+
+</html>

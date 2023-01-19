@@ -39,7 +39,7 @@
         <ul class="flex flex-col lg:flex-row list-none mr-auto">
           <li class="flex items-center">
             <a class="lg:text-white lg:hover:text-neutral-300 text-neutral-800 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
-              href="https://www.creative-tim.com/learning-lab/tailwind-starter-kit#/login"><i
+              href="https://docs.google.com/document/d/1ArUK2-rRTqGY4pwkMdbyCTsUTteyOKmqg6fqhnPs14A/edit?usp=sharing" target="_blank"><i
                 class="lg:text-neutral-300 text-neutral-500 far fa-file-alt text-lg leading-lg mr-2"></i>
               Documentacion</a>
           </li>
@@ -47,14 +47,15 @@
         <ul class="flex flex-col lg:flex-row list-none lg:ml-auto">
           <li class="flex items-center">
             <a class="lg:text-white lg:hover:text-neutral-300 text-neutral-800 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
-              href="#pablo"><i class="lg:text-neutral-300 text-neutral-500 fab fa-github text-lg leading-lg "></i><span
+              href="https://github.com/shiftybody/DSI31" target="_blank" ><i class="lg:text-neutral-300 text-neutral-500 fab fa-github text-lg leading-lg "></i><span
                 class="lg:hidden inline-block ml-2">Star</span></a>
           </li>
           <li class="flex items-center">
             <button
               class="bg-white text-neutral-800 active:bg-neutral-100 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3"
               type="button" style="transition: all 0.15s ease 0s;">
-              <i class="fas fa-arrow-alt-circle-down"></i> Descargar Código
+              <a href="https://github.com/shiftybody/DSI31/archive/refs/heads/main.zip">
+                <i class="fas fa-arrow-alt-circle-down"></i> Descargar Código</a>
             </button>
           </li>
         </ul>

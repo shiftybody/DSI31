@@ -163,7 +163,7 @@ if (isset($_REQUEST['IDMulta'])) {
     ObservacionOficial = '$ObservacionOficial', Deposito = '$Deposito', 
     ObservacionConductor = '$ObservacionConductor' WHERE IDMulta = '$IDMulta'";
 
-    include("conexion.php");
+    include("../conexion.php");
 
     $Con = Conectar();
     $Result = Ejecutar($Con, $SQL);

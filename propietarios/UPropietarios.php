@@ -61,7 +61,7 @@ if(isset($_REQUEST['IDPropietario'])){
     ApellidoPaterno='$ApellidoPaterno', ApellidoMaterno='$ApellidoMaterno', 
     Localidad='$Localidad', Municipio='$Municipio', RFC='$RFC' WHERE IDPropietario='$IDPropietario'";
 
-    include("conexion.php");
+    include("../conexion.php");
     $Con = Conectar();
     $Result = Ejecutar($Con, $SQL);
     $FilasAfectadas = mysqli_affected_rows($Con);

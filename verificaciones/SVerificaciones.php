@@ -40,7 +40,7 @@ if(isset($_POST['Criterio']) && isset($_POST['Atributo'])){
     $Criterio = $_POST['Criterio'];
     $Atributo = $_POST['Atributo'];
     $SQL = "SELECT * FROM verificaciones WHERE $Atributo = '$Criterio'";
-    include("conexion.php");
+    include("../conexion.php");
     $Con = Conectar();
     $Result = mysqli_query($Con, $SQL);
     $Rows = mysqli_num_rows($Result);

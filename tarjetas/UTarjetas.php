@@ -119,7 +119,7 @@
         FechaExpedicion = '$FechaExpedicion' WHERE IDTarjeta = '$IDTarjeta'"; 
     
 
-        include("conexion.php");
+        include("../conexion.php");
         $Con = Conectar();
         $Result = Ejecutar($Con, $SQL);
         $FilasAfectadas = mysqli_affected_rows($Con);

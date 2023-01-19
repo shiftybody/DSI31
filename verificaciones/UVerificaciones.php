@@ -159,7 +159,7 @@ if(isset($_REQUEST['FolioVerificacion'])){
     HoraSalida = '$HoraSalida', Semestre = '$Semestre', Dictamen = '$Dictamen', 
     Holograma = '$Holograma' WHERE FolioVerificacion = '$FolioVerificacion'";
 
-    include("conexion.php");
+    include("../conexion.php");
     $Con = Conectar();
     $Result = Ejecutar($Con, $SQL);
     $FilasAfectadas = mysqli_affected_rows($Con);

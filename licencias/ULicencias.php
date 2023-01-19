@@ -1,29 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php include '../menu/MenuA.php'; ?>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Licencias</title>
-</head>
+<link rel="stylesheet" href="../assets/css/styles.css">
 
-<body>
-    <label for="">
-        <h1>
-            Licencias
-        </h1>
-    </label>
-    <p></p>
+<div class="flex flex-col items-center">
+    <div class="py-8 uppercase font-bold">
+        <label for="licencias">
+            <h1>
+                Modificar Licencia
+            </h1>
+        </label>
+    </div>
+    <?php
+    if (!(isset($_GET['IDLicencia']))) {
+        echo '<div class="flex justify-center flex-col text-center mb-6">
+        <p>Para asegurarte que la información ingresada</p>
+        <p>coincida con algun registro  favor de</p>
+        <a  class="font-bold text-red-600 hover:drop-shadow-xl" href="./SLicencias.php"> consultar aquí </a>
+    </div>';
+    }
+    ?>
+    
+    <div style="width: 20%;">
     <form method="GET" action="ULicencias.php">
-        <label for=""><strong> Número de licencia</strong></label>
-        <input type="text" name="IDLicencia" id="IDLicencia" value="<?php print($_GET['IDLicencia'])?>" readonly>
+        <label for="" class="label-form">Número de licencia</label>
+        <input type="text" name="IDLicencia"  class="input-form"  id="IDLicencia" value="<?php isset($_GET['IDLicencia']) ? print($_GET['IDLicencia']): null ?>" readonly>
         <br>
-        <label for="">ID Conductor</label>
-        <input type="text" id="IDConductor" name="IDConductor" value="<?php print($_GET['IDConductor'])?>" required>
+        <label for=""  class="label-form">ID Conductor</label>
+        <input type="text" id="IDConductor" name="IDConductor" class="input-form" value="<?php isset($_GET['IDConductor']) ? print($_GET['IDConductor']): null ?>" required>
         <br>
-        <label for="">Tipo de Licencia</label>
-        <select id="TipoLicencia" name="TipoLicencia" required>
+        <label for="" class="label-form">Tipo de Licencia</label>
+        <select id="TipoLicencia" name="TipoLicencia" class="input-form" required>
             <option value=""></option>
             <option value="A">AUTOMOVILISTA</option>
             <option value="B">CHOFER PARTICULAR</option>
@@ -34,32 +40,33 @@
             <option value="PM">PERMISO MENOR</option>
         </select>
         <br>
-        <label for="">Atributo Desconocido</label>
-        <input type="text" id="AtributoD" name="AtributoD" maxlength="11" value="<?php print($_GET['AtributoD'])?>" required>
+        <label for="" class="label-form">Atributo Desconocido</label>
+        <input type="text" id="AtributoD" class="input-form" name="AtributoD" maxlength="11" value="<?php isset($_GET['AtributoD']) ? print($_GET['AtributoD']): null ?>" required>
         <br>
-        <label for="">Fecha Expedicion</label>
-        <input type="date" id="FechaExpedicion" name="FechaExpedicion" value="<?php print($_GET['FechaExpedicion'])?>" required>
+        <label for=""  class="label-form">Fecha Expedicion</label>
+        <input type="text" id="FechaExpedicion" class="input-form" name="FechaExpedicion" value="<?php isset($_GET['FechaExpedicion']) ? print($_GET['FechaExpedicion']): null ?>" required>
         <br>
-        <label for="">Fecha Vencimiento</label>
-        <input type="date" id="FechaVencimiento" name="FechaVencimiento" value="<?php print($_GET['FechaVencimiento'])?>" required>
-        <label for=""> años </label>
+        <label for="" class="label-form">Fecha Vencimiento</label>
+        <input type="text" id="FechaVencimiento" class="input-form" name="FechaVencimiento" value="<?php isset($_GET['FechaVencimiento']) ? print($_GET['FechaVencimiento']): null ?>" readonly required>
         <br>
-        <label for="">Restricciones</label>
+        <label for=""  class="label-form">Restricciones</label>
         <br>
-        <textarea id="Restricciones" name="Restricciones" cols="25" rows="4"><?php print($_GET['Restricciones'])?></textarea>
-        <br>
-        <input type="submit" value="enviar">
-        <br>
+        <textarea id="Restricciones" name="Restricciones"  class="input-form" cols="25" rows="4"><?php isset($_GET['Restricciones']) ? print($_GET['Restricciones']): null ?></textarea>
+        <div class="text-center ">
+            <button type="submit" class="bg-neutral-900 hover:bg-black text-neutral-200 active:bg-sky-700 text-sm font-bold uppercase px-6 py-3 
+                      rounded drop-shadow-lg hover:shadow-xl outline-none 
+                      focus:outline-none focus-blue-400 focus:bg-sky-700 hover:text-white mr-1 mb-1 w-full
+                      " style="transition: all 0.15s ease 0s;">
+                Actualizar
+            </button>
+        </div>
+    </div>
     </form>
     <script>
         let TipoLicencia = document.getElementById("TipoLicencia");
-        TipoLicencia.value = "<?php print($_GET['TipoLicencia'])?>";
+        TipoLicencia.value = "<?php isset($_GET['TipoLicencia']) ? print($_GET['TipoLicencia']): null ?>";
 
     </script>
-</body>
-
-</html>
-
 <?php
 if (isset($_GET['IDLicencia']) ) {
 
@@ -79,7 +86,7 @@ if (isset($_GET['IDLicencia']) ) {
             FechaExpedicion = '$FechaExpedicion', FechaVencimiento = '$FechaVencimiento', 
             Restricciones = '$Restricciones' WHERE IDLicencia = '$IDLicencia'";
 
-    include("conexion.php");
+    include("../conexion.php");
     $Con = Conectar();
     $Result = Ejecutar($Con, $SQL);
     $FilasAfectadas = mysqli_affected_rows($Con);
@@ -90,3 +97,8 @@ if (isset($_GET['IDLicencia']) ) {
     Cerrar($Con);
 }
 ?>
+
+</div>
+</body>
+
+</html>

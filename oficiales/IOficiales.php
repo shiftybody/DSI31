@@ -10,7 +10,7 @@
     $SQL = "INSERT INTO oficiales VALUES ('$','$Nombre','$ApellidoPaterno','$ApellidoMaterno','$Grupo','$Firma')";
 
 
-    include("conexion.php");
+    include("../conexion.php");
     $Con = Conectar();
     $Result = Ejecutar($Con, $SQL) or die ("Error al insertar datos".mysqli_error($Con));
     if ($Result) {

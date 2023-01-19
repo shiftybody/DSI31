@@ -23,4 +23,7 @@
     .label-form{
         @apply block text-gray-700 text-sm font-bold mb-1;
     }
+    .icon-center{
+        @apply text-center;
+    }
 }

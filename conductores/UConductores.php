@@ -1,22 +1,32 @@
 <?php include '../menu/MenuA.php'; ?>
+
 <link rel="stylesheet" href="../assets/css/styles.css">
 
 <div class="flex flex-col items-center">
     <div class="py-8 uppercase font-bold">
         <label for="conductores">
             <h1>
-                Conductores
+                Modificar conductor
             </h1>
         </label>
     </div>
-    <div class="">
-    <form method="GET" action="UConductores.php">
+    <?php
+    if (!(isset($_GET['IDConductor']))) {
+        echo '<div class="flex justify-center flex-col text-center mb-6">
+        <p>Para asegurarte que la información ingresada</p>
+        <p>coincida con algun registro  favor de</p>
+        <a  class="font-bold text-red-600 hover:drop-shadow-xl" href="./SConductores.php"> consultar aquí </a>
+    </div>';
+    }
+    ?>
+    
+    <div >
+    <form method="GET" action="UConductores.php" enctype="multipart/form-data">
         <label for="" class="label-form">ID del conductor</label>
-        <input type="text" class="input-form" name="IDConductor" id="IDConductor" value=" <?php isset($_GET['IDConductor']) ? print($_GET['IDConductor']) : null ?>">
+        <input type="text" class="input-form" name="IDConductor" id="IDConductor" value=" <?php isset($_GET['IDConductor']) ? print($_GET['IDConductor']): null ?>" required readonly>
         <br>
         <label for="" class="label-form">Fotografia</label>
-        <input type="text" class="input-form" id="Fotografia" name="Fotografia" value="<?php isset($_GET['Fotografia']) ? print($_GET['Fotografia']) : null ?>" required>
-        <br>
+        <input type="file" class="input-file mb-2 " id="Fotografia" name="Fotografia" value="<?php isset($_GET['Fotografia']) ? print($_GET['Fotografia']) : null ?>" required>
         <label for="" class="label-form">Nombre</label>
         <input type="text" class="input-form" id="Nombre" name="Nombre" value="<?php isset($_GET['Nombre']) ? print($_GET['Nombre']) : null ?>" required>
         <br>
@@ -30,8 +40,8 @@
         <input type="date" class="input-form" id="FechaNacimiento" name="FechaNacimiento" value="<?php isset($_GET['FechaNacimiento']) ? print($_GET['FechaNacimiento']) : null ?>" required>
         <br>
         <label for="" class="label-form">Firma</label>
-        <input type="text" class="input-form" id="Firma" name="Firma" value="<?php isset($_GET['Firma']) ? print($_GET['Firma']) : null?>" required>
-        <br>
+        <input type="file" class="input-file mb-2 " id="Firma" name="Firma" value="<?php isset($_GET['Firma']) ? print($_GET['Firma']) : null?>" required>
+         
         <label for="" class="label-form">Domicilio</label>
         <input type="text" class="input-form" id="Domicilio" name="Domicilio" maxlength="100" size="50" value="<?php isset($_GET['IDConductor']) ? print($_GET['Domicilio']) : null?>">
         <br>
@@ -119,6 +129,8 @@ if (isset($_REQUEST['IDConductor'])) {
         echo "<h1> Se actualizaron $FilasAfectadas registros </h1>";
     }
     Cerrar($Con);
+} else {
+
 }
 ?>
 

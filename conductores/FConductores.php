@@ -4,15 +4,18 @@
     <div class="py-8 uppercase font-bold">
         <label for="conductores">
             <h1>
-                Conductores
+                ALTA DE CONDUCTOR
             </h1>
         </label>
     </div>
-    <div class="">
-        <form method="POST" action="IConductores.php">
+    <div class="text-rose-600 text-center px-4 lg:px-10 py-2 pt-0 ">
+        <p id="msg"></p>
+    </div>
+    <div class="mb-6">
+        <form method="POST" action="IConductores.php" enctype="multipart/form-data">
             <label for="fotografia" class="label-form">Fotografia</label>
-            <input type="text" id="Fotografia" name="Fotografia" class="input-form" required>
-            <br>
+            <input type="file" id="Fotografia" name="Fotografia" class="input-file mb-2 " accept="image/png, image/gif, image/jpeg" required>
+
             <label for="" class="label-form">Nombre</label>
             <input type="text" id="Nombre" name="Nombre" class="input-form" required>
             <br>
@@ -26,8 +29,8 @@
             <input type="date" id="FechaNacimiento" name="FechaNacimiento" class="input-form" required>
             <br>
             <label for="" class="label-form">Firma</label>
-            <input type="text" id="Firma" name="Firma" class="input-form" required>
-            <br>
+            <input type="file" id="Firma" name="Firma" class="input-file mb-2" accept="image/png, image/gif, image/jpeg" required>
+
             <label for="" class="label-form">Domicilio</label>
             <input type="text" id="Domicilio" name="Domicilio" maxlength="100" size="50" class="input-form" required>
             <br>
@@ -72,5 +75,4 @@
 </div>
 
 </body>
-
 </html>

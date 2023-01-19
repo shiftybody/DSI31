@@ -24,7 +24,7 @@
     '$Color', '$Clase', '$TipoVehiculo', '$NumCilindros', '$Capacidad', '$NumPuertas', 
     '$NumAsientos', '$Combustible', '$Transmision', '$NumMotor', '$NumSerie')";
 
-    include("conexion.php");
+    include("../conexion.php");
     $Con = Conectar();
     $Result = Ejecutar($Con, $SQL) or die ("Error al insertar datos".mysqli_error($Con));
     if ($Result) {

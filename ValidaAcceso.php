@@ -1,10 +1,10 @@
 <?php
 
-    session_start();    
-    
     ob_start();
     include './FAcceso.php';
 
+    session_start();
+    
     $msg = '';
     
     $username = $_POST['username'];
@@ -98,5 +98,6 @@
         echo 'validacion("' . $msg . '");';
         echo "</script>";
 
+    
       
 ?>

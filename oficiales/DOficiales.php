@@ -6,7 +6,7 @@
     $SQL = "DELETE FROM oficiales WHERE IDOficial = '$IDOficial'";
 
     //enviar al dbms
-    include("conexion.php");
+    include("../conexion.php");
     $Con = Conectar();
     $Result = Ejecutar($Con, $SQL) or die("Error al eliminar datos" . mysqli_error($Con));
 
