@@ -1,5 +1,7 @@
 <?php
 
+include '../tarjetas/FTarjetas.php';
+
 $TipoServicio = $_POST['TipoServicio'];
 $Vigencia = $_POST['Vigencia'];
 $Placa = $_POST['Placa'];
@@ -17,9 +19,9 @@ $FechaExpedicion = $_POST['FechaExpedicion'];
 // check for folio number auto increment
 
 $SQL = "INSERT INTO tarjetas(TipoServicio,Vigencia,Placa,IDPropietario ,IDVehiculo ,
-    Operacion,PlacaAnterior,NCI,Rfa,CVE,OficinaExpedidora,Movimiento,FechaExpedicion) 
+    Operacion,PlacaAnterior,NCI,Uso,Rfa,CVE,OficinaExpedidora,Movimiento,FechaExpedicion) 
     VALUES ( '$TipoServicio', '$Vigencia', '$Placa', '$IDPropietario', 
-    '$IDVehiculo', '$Operacion', '$PlacaAnterior', '$NCI', '$Rfa', '$CVE', 
+    '$IDVehiculo', '$Operacion', '$PlacaAnterior', '$NCI', '$Uso', '$Rfa', '$CVE', 
     '$OficinaExpedidora', '$Movimiento', '$FechaExpedicion')";
 
 include("../conexion.php");
@@ -27,7 +29,7 @@ $Con = Conectar();
 $Result = Ejecutar($Con, $SQL) or die("Error al insertar datos" . mysqli_error($Con));
 if ($Result) {
 
-    print("Tarjeta registrada con éxito. Folio: " . "<strong>" . mysqli_insert_id($Con) . "</strong>");
+    print("<h1 style='text-align: center; padding-buttom:2em;'>Tarjeta registrada con éxito. Folio: " . "<strong>" . mysqli_insert_id($Con) . "</strong></h1>");
 
 } else {
     print("Registro No insertado");

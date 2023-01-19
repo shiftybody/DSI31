@@ -1,41 +1,49 @@
-</html>
-<!DOCTYPE html>
-<html lang="en">
+<?php include '../menu/MenuA.php'; ?>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Multas</title>
-</head>
+<link rel="stylesheet" href="../assets/css/styles.css">
 
-<body>
-    <label for="">
-        <h1>
-            Multas
-        </h1>
-    </label>
-    <p></p>
+<div class="flex flex-col items-center">
+    <div class="py-8 uppercase font-bold">
+        <label for="multas">
+            <h1>
+                Modificar Multa
+            </h1>
+        </label>
+    </div>
+    <?php
+    if (!(isset($_GET['IDMulta']))) {
+        echo '<div class="flex justify-center flex-col text-center mb-6" style="    padding: 1.6em;
+    border: 2px solid;
+    border-radius: 5.5px;
+    -webkit-box-shadow: -1px 9px 20px -13px rgb(0 0 0 / 68%);">
+        <p>Para asegurarte que la información ingresada</p>
+        <p>coincida con algun registro  favor de</p>
+        <a  class="font-bold text-red-600 hover:drop-shadow-xl" href="./SMultas.php"> consultar aquí </a>
+    </div>';
+    }
+    ?>
+    
+    <div >
     <form method="GET" action="UMultas.php">
-        <label for=""><strong> Folio </strong></label>
-        <input type="text" name="IDMulta" id="IDMulta" value="<?php print($_GET['IDMulta']) ?>" readonly>
+        <label for="" class="label-form" ><strong> Folio </strong></label>
+        <input type="text" class="input-form" name="IDMulta" id="IDMulta" value="<?php isset($_GET['IDMulta']) ? print($_GET['IDMulta']): null ?>" readonly>
         <br>
-        <label for="">Fecha</label>
-        <input type="date" id="Fecha" name="Fecha" value="<?php print($_GET['Fecha'])?>">
-        <label for="">Hora</label>
-        <input type="time" id="Hora" name="Hora" value="<?php print($_GET['Hora'])?>">
+        <label for="" class="label-form">Fecha</label>
+        <input type="date" class="input-form" id="Fecha" name="Fecha" value="<?php isset($_GET['Fecha']) ? print($_GET['Fecha']): null ?>">
+        <label for="" class="label-form">Hora</label>
+        <input type="time" class="input-form" id="Hora" name="Hora" value="<?php isset($_GET['Hora']) ? print($_GET['Hora']): null ?>">
         <br>
-        <label for="">Reporte de Seccion II</label>
-        <input type="text" id="ReporteSeccion" name="ReporteSeccion" maxlength="50" value="<?php print($_GET['ReporteSeccion']) ?>" required>
+        <label for="" class="label-form">Reporte de Seccion II</label>
+        <input type="text" class="input-form" id="ReporteSeccion" name="ReporteSeccion" maxlength="50" value="<?php isset($_GET['ReporteSeccion']) ? print($_GET['ReporteSeccion']): null ?>" required>
         <br>
-        <label for="">Nombre de la via</label>
-        <input type="text" id="NombreVia" name="NombreVia" value="<?php print($_GET['NombreVia']) ?>" required>
+        <label for="" class="label-form">Nombre de la via</label>
+        <input type="text" class="input-form" id="NombreVia" name="NombreVia" value="<?php isset($_GET['NombreVia']) ? print($_GET['NombreVia']): null ?>" required>
         <br>
-        <label for="">Kilometro o número</label>
-        <input type="number" id="Kilometro" name="Kilometro" min="0" max="999" size="10" value="<?php print($_GET['Kilometro']) ?>" required>
+        <label for="" class="label-form">Kilometro o número</label>
+        <input type="number" class="input-form" id="Kilometro" name="Kilometro" min="0" max="999" size="10" value="<?php isset($_GET['Kilometro']) ? print($_GET['Kilometro']): null ?>" required>
         <br>
-        <label for="">Direccion o Sentido</label>
-        <select name="DireccionSentido" id="DireccionSentido" required>
+        <label for="" class="label-form">Direccion o Sentido</label>
+        <select name="DireccionSentido" class="input-form" id="DireccionSentido" required>
             <option value=""></option>
             <option value="Norte">Norte</option>
             <option value="Sur">Sur</option>
@@ -43,30 +51,30 @@
             <option value="Oeste">Oeste</option>
         </select>
         <br>
-        <label for="">Referencia del Lugar</label>
-        <input type="text" id="Referencia" name="Referencia" maxlength="30" value="<?php print($_GET['Referencia']) ?>" required>
+        <label for="" class="label-form">Referencia del Lugar</label>
+        <input type="text" class="input-form" id="Referencia" name="Referencia" maxlength="30" value="<?php isset($_GET['Referencia']) ? print($_GET['Referencia']): null ?>" required>
         <br>
-        <label for="">Municipio</label>
-        <input type="text" id="Municipio" name="Municipio" value="<?php print($_GET['Municipio']) ?>" required>
+        <label for="" class="label-form">Municipio</label>
+        <input type="text" class="input-form" id="Municipio" name="Municipio" value="<?php isset($_GET['Municipio']) ? print($_GET['Municipio']): null ?>" required>
         <br>
-        <label for="">NoLicencia</label>
-        <input type="text" id="IDLicencia" name="IDLicencia" maxlength="10" placeholder="Q123456-78" value="<?php print($_GET['IDLicencia']) ?>">
+        <label for="" class="label-form">NoLicencia</label>
+        <input type="text" class="input-form" id="IDLicencia" name="IDLicencia" maxlength="10" placeholder="Q123456-78" value="<?php isset($_GET['IDLicencia']) ? print($_GET['IDLicencia']): null ?>">
         <br>
-        <label for="">IDVehiculo</label>
-        <input type="text" id="IDVehiculo" name="IDVehiculo" value="<?php print($_GET['IDVehiculo']) ?>" maxlength="17" size="20">
+        <label for="" class="label-form">IDVehiculo</label>
+        <input type="text"  class="input-form"id="IDVehiculo" name="IDVehiculo" value="<?php isset($_GET['IDVehiculo']) ? print($_GET['IDVehiculo']): null ?>" maxlength="17" size="20">
         <br>
-        <label for="">ID Tarjeta de Ciruclación</label>
-        <input type="text" id="IDTarjeta" name="IDTarjeta" value="<?php print($_GET['IDTarjeta']) ?>" maxlength="9" size="10">
+        <label for="" class="label-form">ID Tarjeta de Ciruclación</label>
+        <input type="text"  class="input-form"id="IDTarjeta" name="IDTarjeta" value="<?php isset($_GET['IDTarjeta']) ? print($_GET['IDTarjeta']): null ?>" maxlength="9" size="10">
         <br>
-        <label for="">Articulo Fundamento</label>
-        <input type="text" id="Articulo" name="Articulo" value="<?php print($_GET['Articulo']) ?>" required>
+        <label for="" class="label-form">Articulo Fundamento</label>
+        <input type="text"  class="input-form"id="Articulo" name="Articulo" value="<?php isset($_GET['Articulo']) ? print($_GET['Articulo']): null ?>" required>
         <br>
-        <label for="">Motivo</label>
+        <label for="" class="label-form">Motivo</label>
         <br>
-        <textarea id="Motivo" name="Motivo" cols="50" rows="3" maxlength="150" required><?php print($_GET['Motivo']) ?></textarea>
+        <textarea  class="input-form" id="Motivo" name="Motivo" cols="50" rows="3" maxlength="150" required><?php isset($_GET['Motivo']) ? print($_GET['Motivo']): null ?></textarea>
         <br>
-        <label for="">Garantia Retenida</label>
-        <select name="GarantiaRetenida" id="GarantiaRetenida" required>
+        <label for="" class="label-form">Garantia Retenida</label>
+        <select name="GarantiaRetenida" class="input-form" id="GarantiaRetenida" required>
             <option value=""></option>
             <option value="Licencia">Licencia</option>
             <option value="TarjetaCirculacion">Tarjeta Circulación</option>
@@ -74,47 +82,55 @@
             <option value="Vehiculo">Vehiculo</option>
         </select>
         <br>
-        <label for="">No. Partes Accidente</label>
-        <input type="number" id="NoParteAccidente" name="NoParteAccidente" value="<?php print($_GET['NoParteAccidente']) ?>" min="0" max="10">
+        <label for="" class="label-form">No. Partes Accidente</label>
+        <input type="number" class="input-form" id="NoParteAccidente" name="NoParteAccidente" value="<?php isset($_GET['NoParteAccidente']) ? print($_GET['NoParteAccidente']): null ?>" min="0" max="10">
         <br>
-        <laber for="">Convenio</laber>
-        <input type="radio" id="Convenio" name="Convenio" value="SI" <?php if ($_GET['Convenio'] == "SI") echo ' checked' ?>>Si
-        <input type="radio" id="Convenio" name="Convenio" value="NO" <?php if ($_GET['Convenio'] == "NO") echo ' checked' ?>>No
+        <div class="flex justify-center flex-wrap items-center py-2">
+        <laber for="" class="label-form">Convenio</laber>
+        <input type="radio" class="w-4 h-4 mx-1" class="input-form" id="Convenio" name="Convenio" value="SI" <?php if(isset($_GET['Convenio'])){ if ($_GET['Convenio'] == "SI") echo 'checked';}else null ?>>Si
+        <input type="radio" class="w-4 h-4 mx-1" class="input-form" id="Convenio" name="Convenio" value="NO" <?php if(isset($_GET['Convenio'])){ if ($_GET['Convenio'] == "NO") echo 'checked';}else null ?>>No
         <br>
-        <label for="">PuestoADisposicion</label>
-        <input type="radio" id="PuestaDisposicion" name="PuestaDisposicion" value="SI" <?php if($_GET['Convenio'] == "SI") echo 'checked' ?>  required>Si
-        <input type="radio" id="PuestaDisposicion" name="PuestaDisposicion" value="NO" <?php if($_GET['Convenio'] == "NO") echo 'checked' ?> required>No
+        </div>
+        <div class="flex justify-center flex-wrap items-center py-2">
+        <label for="" class="label-form">Puesto A Disposicion</label>
+        <input type="radio" class="w-4 h-4 mx-1" class="input-form" id="PuestaDisposicion" name="PuestaDisposicion" value="SI" <?php if(isset($_GET['PuestaDisposicion'])){ if ($_GET['PuestaDisposicion'] == "SI") echo 'checked';}else null ?>  required>Si
+        <input type="radio" class="w-4 h-4 mx-1" class="input-form" id="PuestaDisposicion" name="PuestaDisposicion" value="NO" <?php if(isset($_GET['PuestaDisposicion'])){ if ($_GET['PuestaDisposicion'] == "NO") echo 'checked';}else null ?> required>No
         <br>
-        <label for="">DepositoOficial</label>
-        <input type="number" id="Deposito" name="Deposito" value="<?php print($_GET['Deposito']) ?>">
+        </div>
+        <label for="" class="label-form">Deposito Oficial</label>
+        <input type="number" class="input-form" id="Deposito" name="Deposito" value="<?php isset($_GET['Deposito']) ? print($_GET['Deposito']): null ?>">
         <br>
-        <label for="">ID Oficial</label>
-        <input type="number" id="IDOficial" name="IDOficial" value="<?php print($_GET['IDOficial']) ?>" min="0" max="9999" required>
+        <label for="" class="label-form">ID Oficial</label>
+        <input type="number" class="input-form" id="IDOficial" name="IDOficial" value="<?php isset($_GET['IDOficial']) ? print($_GET['IDOficial']): null ?>" min="0" max="9999" required>
         <br>
-        <label for="">Observaciones del Personal Operativo</label>
+        <label for="" class="label-form">Observaciones del Personal Operativo</label>
         <br>
-        <textarea id="ObservacionOficial" name="ObservacionOficial" value="" cols="50" rows="2" maxlength="100"><?php print($_GET['ObservacionOficial']) ?></textarea>
+        <textarea class="input-form" id="ObservacionOficial" name="ObservacionOficial" value="" cols="50" rows="2" maxlength="100"><?php isset($_GET['ObservacionOficial']) ? print($_GET['ObservacionOficial']): null ?></textarea>
         <br>
-        <label for="">Calificacion de la boleta de infracción </label>
+        <label for="" class="label-form">Calificacion de la boleta de infracción </label>
         <br>
-        <textarea id="CalificacionBoleta" name="CalificacionBoleta" value="" cols="50" rows="2" maxlength="100"><?php print($_GET['CalificacionBoleta']) ?></textarea>
+        <textarea class="input-form" id="CalificacionBoleta" name="CalificacionBoleta" value="" cols="50" rows="2" maxlength="100"><?php isset($_GET['CalificacionBoleta']) ? print($_GET['CalificacionBoleta']): null ?></textarea>
         <br>
-        <label for="">Observaciones del Conductor</label>
+        <label for="" class="label-form">Observaciones del Conductor</label>
         <br>
-        <textarea id="ObservacionConductor" name="ObservacionConductor" cols="50" rows="2" maxlength="100"><?php print($_GET['ObservacionConductor']) ?></textarea>
-        <br>
-        <input type="submit" value="Enviar">
+        <textarea class="input-form" id="ObservacionConductor" name="ObservacionConductor" cols="50" rows="2" maxlength="100"><?php isset($_GET['ObservacionConductor']) ? print($_GET['ObservacionConductor']): null ?></textarea>
+        <div class="text-center ">
+            <button type="submit" class="bg-neutral-900 hover:bg-black text-neutral-200 active:bg-sky-700 text-sm font-bold uppercase px-6 py-3 
+                      rounded drop-shadow-lg hover:shadow-xl outline-none 
+                      focus:outline-none focus-blue-400 focus:bg-sky-700 hover:text-white mr-1 mb-1 w-full
+                      " style="transition: all 0.15s ease 0s;">
+                Actualizar
+            </button>
+        </div>
+    </div>
     </form>
     <script>
         let direccionSentido = document.getElementById('DireccionSentido');
-        direccionSentido.value = "<?php print($_GET['DireccionSentido']) ?>";
+        direccionSentido.value = "<?php isset($_GET['DireccionSentido']) ? print($_GET['DireccionSentido']): null ?>";
 
         let garantiaRetenida = document.getElementById('GarantiaRetenida');
-        garantiaRetenida.value = "<?php print($_GET['GarantiaRetenida']) ?>";
+        garantiaRetenida.value = "<?php isset($_GET['GarantiaRetenida']) ? print($_GET['GarantiaRetenida']): null ?>";
     </script>
-</body>
-
-</html>
 
 <?php
 if (isset($_REQUEST['IDMulta'])) {
@@ -170,8 +186,13 @@ if (isset($_REQUEST['IDMulta'])) {
     $FilasAfectadas = mysqli_affected_rows($Con);
 
     if ($FilasAfectadas > 0) {
-        echo "Se actualizaron $FilasAfectadas registros";
+        echo "<h1>Se actualizaron $FilasAfectadas registros </h1>";
     }
     Cerrar($Con);
 }
 ?>
+
+</div>
+</body>
+
+</html>

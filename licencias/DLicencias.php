@@ -7,7 +7,7 @@
 <form action="DLicencia.php" method="GET" class="flex justify-center items-end ">
     <div class="mr-3">
         <label for="" class="label-form">ID Licencia</label>
-        <input type="text" name="Criterio" id="Criterio" class="input-form" value="<?php isset($_GET['IDConductor']) ? print($_GET['IDConductor']) : null?>"  required></input>
+        <input type="text" name="Criterio" id="Criterio" class="input-form" value="<?php isset($_GET['IDLicencia']) ? print($_GET['IDLicencia']) : null?>"  required></input>
     </div>
     <div classs="mr3">
         <input type="submit" value="Eliminar" class="bg-neutral-900 hover:bg-black text-neutral-200 active:bg-sky-700 text-sm font-bold uppercase px-6 pt-[0.58rem] pb-[0.58rem] 

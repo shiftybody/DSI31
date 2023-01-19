@@ -12,7 +12,10 @@
     </div>
     <?php
     if (!(isset($_GET['IDLicencia']))) {
-        echo '<div class="flex justify-center flex-col text-center mb-6">
+        echo '<div class="flex justify-center flex-col text-center mb-6" style="    padding: 1.6em;
+    border: 2px solid;
+    border-radius: 5.5px;
+    -webkit-box-shadow: -1px 9px 20px -13px rgb(0 0 0 / 68%);">
         <p>Para asegurarte que la información ingresada</p>
         <p>coincida con algun registro  favor de</p>
         <a  class="font-bold text-red-600 hover:drop-shadow-xl" href="./SLicencias.php"> consultar aquí </a>
@@ -20,7 +23,7 @@
     }
     ?>
     
-    <div style="width: 20%;">
+    <div style="width: 22%;">
     <form method="GET" action="ULicencias.php">
         <label for="" class="label-form">Número de licencia</label>
         <input type="text" name="IDLicencia"  class="input-form"  id="IDLicencia" value="<?php isset($_GET['IDLicencia']) ? print($_GET['IDLicencia']): null ?>" readonly>

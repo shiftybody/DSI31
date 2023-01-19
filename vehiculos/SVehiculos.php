@@ -1,17 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buscar Vehiculo</title>
-</head>
-<body>
-    <form action="SVehiculos.php" method="post">
-        <label for="">Criterio</lable>
-        <input type="text" name="Criterio" id="Criterio" required>
-        <label for=""> Atributos </label>
-        <select name="Atributo" id="Atributo" required>
+<?php include '../menu/MenuA.php' ?>
+
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="stylesheet" href="../node_modules/@fortawesome/fontawesome-free/css/all.css" />
+
+<div class="flex flex-col items-center">
+    <div class="py-8" >
+<form action="SVehiculos.php" method="POST" class="flex items-end">
+    <div class="mr-3">
+        <label for="" class="label-form">Criterio</label>
+        <input type="text" name="Criterio" id="Criterio" class="input-form" required></input>
+    </div>
+    <div class="mr-3">
+        <label for="" class="label-form"> Atributos </label>
+        <select name="Atributo" id="Atributo" class="input-form" required>
             <option value="">Selecciona un atributo</option>
             <option value="IDVehiculo">ID Vehiculo</option>
             <option value="NIV">NIV</option>
@@ -32,12 +33,17 @@
             <option value="NumMotor">Num de Motor</option>
             <option value="NumSerie">Num de Serie</option>      
         </select>
-        <input type="submit" value="Enviar">
+    </div>
+    <div classs="mr-3">
+        <input type="submit" value="Buscar" class="bg-neutral-900 hover:bg-black text-neutral-200 active:bg-sky-700 text-sm font-bold uppercase px-6 pt-[0.58rem] pb-[0.58rem] 
+                      rounded drop-shadow-lg hover:shadow-xl outline-none 
+                      focus:outline-none focus-blue-400 focus:bg-sky-700 hover:text-white mr-1 mb-2 w-full
+                      " style="transition: all 0.15s ease 0s;">
+    </div>
     </form>
-    <br><br>
-</body>
-</html>
-
+    </div>
+</div>
+<div class="flex justify-center text-sm" >
 <?php
 if(isset($_POST['Criterio']) && isset($_POST['Atributo'])){
     $Criterio = $_POST['Criterio'];
@@ -54,28 +60,28 @@ if(isset($_POST['Criterio']) && isset($_POST['Atributo'])){
         echo "No se encontraron resultados";
     }else{
         
-        echo "<table border='1'>";
+        echo '<table class=" mr-4 ml-4 border-separate border-spacing-2 ">';
         echo "<tr>";
-        echo "<th>ID Vehiculo</th>";
-        echo "<th>NIV</th>";
-        echo "<th>Modelo</th>";
-        echo "<th>Marca</th>";
-        echo "<th>Linea</th>";
-        echo "<th>Sublinea</th>";
-        echo "<th>Origen</th>";
-        echo "<th>Color</th>";
-        echo "<th>Clase</th>";
-        echo "<th>Tipo Vehiculo</th>";
-        echo "<th>Numero de Cilindros</th>";
-        echo "<th>Capacidad</th>";
-        echo "<th>Numero de Puertas</th>";
-        echo "<th>Numero de Asientos</th>";
-        echo "<th>Combustible</th>";
-        echo "<th>Transmision</th>";
-        echo "<th>Numero de Motor</th>";
-        echo "<th>Numero de Serie</th>";
-        echo "<th>Eliminar</th>";
-        echo "<th>Actualizar</th>";
+        echo "<th".' class=" border-b-2 border-neutral-400"'.">ID Vehiculo</th>";
+        echo "<th".' class=" border-b-2 border-neutral-400"'.">NIV</th>";
+        echo "<th".' class=" border-b-2 border-neutral-400"'.">Modelo</th>";
+        echo "<th".' class=" border-b-2 border-neutral-400"'.">Marca</th>";
+        echo "<th".' class=" border-b-2 border-neutral-400"'.">Linea</th>";
+        echo "<th".' class=" border-b-2 border-neutral-400"'.">Sublinea</th>";
+        echo "<th".' class=" border-b-2 border-neutral-400"'.">Origen</th>";
+        echo "<th".' class=" border-b-2 border-neutral-400"'.">Color</th>";
+        echo "<th".' class=" border-b-2 border-neutral-400"'.">Clase</th>";
+        echo "<th".' class=" border-b-2 border-neutral-400"'.">Tipo Vehiculo</th>";
+        echo "<th".' class=" border-b-2 border-neutral-400"'.">Numero de Cilindros</th>";
+        echo "<th".' class=" border-b-2 border-neutral-400"'.">Capacidad</th>";
+        echo "<th".' class=" border-b-2 border-neutral-400"'.">Numero de Puertas</th>";
+        echo "<th".' class=" border-b-2 border-neutral-400"'.">Numero de Asientos</th>";
+        echo "<th".' class=" border-b-2 border-neutral-400"'.">Combustible</th>";
+        echo "<th".' class=" border-b-2 border-neutral-400"'.">Transmision</th>";
+        echo "<th".' class=" border-b-2 border-neutral-400"'.">Numero de Motor</th>";
+        echo "<th".' class=" border-b-2 border-neutral-400"'.">Numero de Serie</th>";
+        echo "<th".' class=" border-b-2 border-neutral-400"'.">Eliminar</th>";
+        echo "<th".' class=" border-b-2 border-neutral-400"'.">Actualizar</th>";
         echo "</tr>";
 
 
@@ -99,8 +105,8 @@ if(isset($_POST['Criterio']) && isset($_POST['Atributo'])){
             echo "<td>".$Filas['Transmision']."</td>";
             echo "<td>".$Filas['NumMotor']."</td>";
             echo "<td>".$Filas['NumSerie']."</td>";
-            echo "<td><a href='DVehiculos.php?NIV=".$Filas['NIV']."'>Eliminar</a></td>";
-            echo "<td><a href='UVehiculos.php?IDVehiculo=".$Filas['IDVehiculo'] .
+            echo "<td".' class="icon-center hover:text-red-600 hover:drop-shadow-lg "'."><a href='DVehiculos.php?NIV=".$Filas['NIV']."'>".'<i class="fa-solid fa-trash"></i>'."</a></td>";
+            echo "<td".' class="icon-center hover:text-yellow-500 hover:drop-shadow-lg "'."><a href='UVehiculos.php?IDVehiculo=".$Filas['IDVehiculo'] .
                 "&NIV=".$Filas['NIV'] .
                 "&Modelo=".$Filas['Modelo'] .
                 "&Marca=".$Filas['Marca'] .
@@ -118,7 +124,7 @@ if(isset($_POST['Criterio']) && isset($_POST['Atributo'])){
                 "&Transmision=".$Filas['Transmision'] .
                 "&NumMotor=".$Filas['NumMotor'] .
                 "&NumSerie=".$Filas['NumSerie'] .
-                "'>Actualizar</a></td>";
+                "'>".'<i class="fa-solid fa-pen"></i>'."</a></td>";
             echo "</tr>";
 
             
@@ -127,5 +133,8 @@ if(isset($_POST['Criterio']) && isset($_POST['Atributo'])){
         echo "</table>";
     }
 }
-
 ?>
+</div>
+</body>
+
+</html>

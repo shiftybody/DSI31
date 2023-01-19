@@ -1,17 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buscar Oficial</title>
-</head> 
-<body>
-    <form action="SOficiales.php" method="get">
-        <label for="">Criterio</label>
-        <input type="text" name="Criterio" id="Criterio" required>
-        <label for=""> Atributos </label>
-        <select name="Atributo" class="Atributo" required>
+<?php include '../menu/MenuA.php' ?>
+
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="stylesheet" href="../node_modules/@fortawesome/fontawesome-free/css/all.css" />
+
+<div class="flex flex-col items-center">
+    <div class="py-8" >
+<form action="SOficiales.php" method="POST" class="flex items-end">
+    <div class="mr-3">
+        <label for="" class="label-form">Criterio</label>
+        <input type="text" name="Criterio" id="Criterio" class="input-form" required></input>
+    </div>
+    <div class="mr-3">
+        <label for="" class="label-form"> Atributos </label>
+        <select name="Atributo" id="Atributo" class="input-form" required>
             <option value="">Selecciona un atributo</option>
             <option value="IDOficial">ID Oficial</option>
             <option value="Nombre">Nombre</option>
@@ -19,16 +20,22 @@
             <option value="ApellidoMaterno">Apellido Materno</option>
             <option value="Grupo">Grupo</option>
             <option value="Firma">Firma</option>
-            <input type="submit" value="Enviar">
-            <br><br>
+        </select>
+    </div>
+    <div classs="mr-3">
+        <input type="submit" value="Buscar" class="bg-neutral-900 hover:bg-black text-neutral-200 active:bg-sky-700 text-sm font-bold uppercase px-6 pt-[0.58rem] pb-[0.58rem] 
+                      rounded drop-shadow-lg hover:shadow-xl outline-none 
+                      focus:outline-none focus-blue-400 focus:bg-sky-700 hover:text-white mr-1 mb-2 w-full
+                      " style="transition: all 0.15s ease 0s;">
+    </div>
     </form>
-</body>
-</html>
-
+    </div>
+</div>
+<div class="flex justify-center text-sm" >
 <?php
-if(isset($_GET['Criterio']) && isset($_GET['Atributo'])){
-    $Criterio = $_GET['Criterio'];
-    $Atributo = $_GET['Atributo'];
+if (isset($_POST['Criterio']) && !empty($_POST['Criterio']) && isset($_POST['Atributo']) && !empty($_POST['Atributo'])) {
+    $Criterio = $_POST['Criterio'];
+    $Atributo = $_POST['Atributo'];
     $SQL = "SELECT * FROM Oficiales WHERE $Atributo = '$Criterio'";
     include("../conexion.php");
     $Con = Conectar();
@@ -40,34 +47,34 @@ if(isset($_GET['Criterio']) && isset($_GET['Atributo'])){
     if($Rows == 0){
         echo "No se encontraron resultados";
     }else{
-        echo "<table border='1'>";
+        echo '<table class=" mr-4 ml-4 border-separate border-spacing-2 ">';
         echo "<tr>";
-        echo "<th>ID Oficial</th>";
-        echo "<th>Nombre</th>";
-        echo "<th>Apellido Paterno</th>";
-        echo "<th>Apellido Materno</th>";
-        echo "<th>Grupo</th>";
-        echo "<th>Firma</th>";
-        echo "<th>Eliminar</th>";
-        echo "<th>Actualizar</th>";
+        echo '<th class=" border-b-2 border-neutral-400 drop-shadow-lg" >ID Oficial</th>';
+        echo '<th class=" border-b-2 border-neutral-400 drop-shadow-lg" >Nombre</th>';
+        echo '<th class=" border-b-2 border-neutral-400 drop-shadow-lg" >Apellido Paterno</th>';
+        echo '<th class=" border-b-2 border-neutral-400 drop-shadow-lg" >Apellido Materno</th>';
+        echo '<th class=" border-b-2 border-neutral-400 drop-shadow-lg" >Grupo</th>';
+        echo '<th class=" border-b-2 border-neutral-400 drop-shadow-lg" >Firma</th>';
+        echo '<th class=" border-b-2 border-neutral-400 drop-shadow-lg" >Eliminar</th>';
+        echo '<th class=" border-b-2 border-neutral-400 drop-shadow-lg" >Actualizar</th>';
         echo "</tr>";
     
         for($i = 0; $i < $Rows; $i++){
             echo "<tr>";
-            echo "<td>" . $Filas['IDOficial'] . "</td>";
+            echo '<td class="icon-center" >'. $Filas['IDOficial'] . "</td>";
             echo "<td>" . $Filas['Nombre'] . "</td>";
             echo "<td>" . $Filas['ApellidoPaterno'] . "</td>";
             echo "<td>" . $Filas['ApellidoMaterno'] . "</td>";
             echo "<td>" . $Filas['Grupo'] . "</td>";
             echo "<td>" . $Filas['Firma'] . "</td>";
-            echo "<td><a href='DOficiales.php?IDOficial=" . $Filas['IDOficial'] . "'>Eliminar</a></td>";
-            echo "<td><a href='UOficiales.php?IDOficial=" . $Filas['IDOficial'] . 
-                "&Nombre=" . $Filas['Nombre'] .
-                "&ApellidoPaterno=" . $Filas['ApellidoPaterno'] .
-                "&ApellidoMaterno=" . $Filas['ApellidoMaterno'] .
-                "&Grupo=" . $Filas['Grupo'] .
-                "&Firma=" . $Filas['Firma'] . 
-                "'>Actualizar</a></td>";
+            echo "<td" . ' class="icon-center hover:text-red-600 hover:drop-shadow-lg "  >' ."<a href='DOficiales.php?IDOficial=" . $Filas['IDOficial'] . "'>" . '<i class="fa-solid fa-trash"></i>' . "</a></td>";            
+            echo "<td" . ' class="icon-center hover:text-yellow-500 hover:drop-shadow-lg "  >' ."<a href='UOficiales.php?IDOficial=" . $Filas['IDOficial'] . 
+                '&Nombre=' . $Filas['Nombre'] .
+                '&ApellidoPaterno=' . $Filas['ApellidoPaterno'] .
+                '&ApellidoMaterno=' . $Filas['ApellidoMaterno'] .
+                '&Grupo=' . $Filas['Grupo'] .
+                '&Firma=' . $Filas['Firma'] . 
+                "'>". '<i class="fa-solid fa-pen"></i>' ."</a></td>";
             echo "</tr>";
 
             $Filas = mysqli_fetch_array($Result);
@@ -77,3 +84,7 @@ if(isset($_GET['Criterio']) && isset($_GET['Atributo'])){
 
 }
 ?>
+</div>
+</body>
+
+</html>

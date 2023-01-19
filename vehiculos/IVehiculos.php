@@ -1,5 +1,7 @@
 <?php
 
+    include '../vehiculos/FVehiculos.php';
+
     $NIV = $_GET['NIV'];
     $Marca = $_GET['Modelo'];
     $Modelo = $_GET['Marca'];
@@ -28,7 +30,7 @@
     $Con = Conectar();
     $Result = Ejecutar($Con, $SQL) or die ("Error al insertar datos".mysqli_error($Con));
     if ($Result) {
-        print("Vehiculo con NIV: <strong>" . $NIV . " </strong> agregado correctamente");
+        print("<h1 style='text-align: center; padding-buttom:2em;'>Vehiculo con NIV: <strong>" . $NIV . " </strong> agregado correctamente </h1>");
     }else{
         print("Registro No insertado");
     }

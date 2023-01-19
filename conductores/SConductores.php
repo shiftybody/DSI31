@@ -90,7 +90,7 @@ if (isset($_POST['Criterio']) && !empty($_POST['Criterio']) && isset($_POST['Atr
         echo '<td class="icon-center">' . $Fila[12] . '</td>';
         echo '<td class="icon-center">' . $Fila[13] . '</td>';
 
-        echo '<td class="icon-center hover:text-red-600" hover:drop-shadow-lg " > ' . '<a href="DConductores.php? IDConductor=' . $Fila[0] . '"><i class="fa-solid fa-trash"></i></a>' . '</td>';
+        echo '<td class="icon-center hover:text-red-600 hover:drop-shadow-lg " > ' . '<a href="DConductores.php? IDConductor=' . $Fila[0] . '"><i class="fa-solid fa-trash"></i></a>' . '</td>';
         echo '<td class="icon-center hover:text-yellow-500 hover:drop-shadow-lg " > ' . '<a href="UConductores.php' .
             '?IDConductor=' . $Fila[0] .
             '&Fotografia=' . $Fila[1] .

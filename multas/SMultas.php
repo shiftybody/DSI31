@@ -5,7 +5,7 @@
 
 <div class="flex flex-col items-center">
     <div class="py-8" >
-<form action="SMultas.php" method="POST" class="flex items-end">
+<form action="SMultas.php" method="GET" class="flex items-end">
     <div class="mr-3">
         <label for="" class="label-form">Criterio</label>
         <input type="text" name="Criterio" id="Criterio" class="input-form" required></input>
@@ -80,33 +80,33 @@ if (isset($_GET['Criterio']) && isset($_GET['Atributo'])) {
     $Fila = mysqli_fetch_array($Result);
 
     //show all rows in table
-    echo "<table border='1'>";
+    echo '<table class=" mr-4 ml-4 border-separate border-spacing-2 ">';
     echo "<tr>";
-    echo "<th>ID Multa</th>";
-    echo "<th>Fecha y Hora</th>";
-    echo "<th>Reporte de Sección</th>";
-    echo "<th>Nombre Via</th>";
-    echo "<th>Kilometro</th>";
-    echo "<th>Sentido</th>";
-    echo "<th>Referencia</th>";
-    echo "<th>Municipio</th>";
-    echo "<th>Articulo</th>";
-    echo "<th>Motivo</th>";
-    echo "<th>Garantia Retenida</th>";
-    echo "<th>No. de Partes</th>";
-    echo "<th>Convenio</th>";
-    echo "<th>Puesto a disposicion</th>";
-    echo "<th>Deposito</th>";
-    echo "<th>Observaciones del Conductor</th>";
-    echo "<th>Observaciones del Oficial</th>";
-    echo "<th>Calificacion Boleta</th>";
-    echo "<th>IDLicencia</th>";
-    echo "<th>IDVehiculo</th>";
-    echo "<th>IDTarjeta</th>";
-    echo "<th>IDOficial</th>";
-    echo "<th>Eliminar</th>";
-    echo "<th>Actualizar</th>";
-    echo "</tr>";
+    echo '<th class=" border-b-2 border-neutral-400">ID Multa</th>';
+    echo '<th class=" border-b-2 border-neutral-400">Fecha y Hora</th>';
+    echo '<th class=" border-b-2 border-neutral-400">Reporte de Sección</th>';
+    echo '<th class=" border-b-2 border-neutral-400">Nombre Via</th>';
+    echo '<th class=" border-b-2 border-neutral-400">Kilometro</th>';
+    echo '<th class=" border-b-2 border-neutral-400">Sentido</th>';
+    echo '<th class=" border-b-2 border-neutral-400">Referencia</th>';
+    echo '<th class=" border-b-2 border-neutral-400">Municipio</th>';
+    echo '<th class=" border-b-2 border-neutral-400">Articulo</th>';
+    echo '<th class=" border-b-2 border-neutral-400">Motivo</th>';
+    echo '<th class=" border-b-2 border-neutral-400">Garantia Retenida</th>';
+    echo '<th class=" border-b-2 border-neutral-400">No. de Partes</th>';
+    echo '<th class=" border-b-2 border-neutral-400">Convenio</th>';
+    echo '<th class=" border-b-2 border-neutral-400">Puesto a disposicion</th>';
+    echo '<th class=" border-b-2 border-neutral-400">Deposito</th>';
+    echo '<th class=" border-b-2 border-neutral-400">Observaciones del Conductor</th>';
+    echo '<th class=" border-b-2 border-neutral-400">Observaciones del Oficial</th>';
+    echo '<th class=" border-b-2 border-neutral-400">Calificacion Boleta</th>';
+    echo '<th class=" border-b-2 border-neutral-400">IDLicencia</th>';
+    echo '<th class=" border-b-2 border-neutral-400">IDVehiculo</th>';
+    echo '<th class=" border-b-2 border-neutral-400">IDTarjeta</th>';
+    echo '<th class=" border-b-2 border-neutral-400">IDOficial</th>';
+    echo '<th class=" border-b-2 border-neutral-400">Eliminar</th>';
+    echo '<th class=" border-b-2 border-neutral-400">Actualizar</th>';
+    echo '</tr>';
 
     for($i = 0; $i < $Rows; $i++){
         echo "<tr>";
@@ -132,8 +132,8 @@ if (isset($_GET['Criterio']) && isset($_GET['Atributo'])) {
         echo "<td>" . $Fila[19] . "</td>";
         echo "<td>" . $Fila[20] . "</td>";
         echo "<td>" . $Fila[21] . "</td>";
-        echo "<td><a href='DMultas.php?IDMulta=" . $Fila[0] . "'>Eliminar</a></td>";
-        echo "<td><a href='UMultas.php?IDMulta=" . $Fila[0] .
+        echo '<td class="icon-center hover:text-red-600" hover:drop-shadow-lg "><a href="DMultas.php?IDMulta=' . $Fila[0] . '"><i class="fa-solid fa-trash"></i></a>' . "</td>";
+        echo "<td ><a href='UMultas.php?IDMulta=" . $Fila[0] .
             "&Fecha=" . substr($Fila[1], 0, 10) .
             "&Hora=" . substr($Fila[1], 11, 8) .
             "&ReporteSeccion=" . $Fila[2] .
@@ -156,7 +156,7 @@ if (isset($_GET['Criterio']) && isset($_GET['Atributo'])) {
             "&IDVehiculo=" . $Fila[19] .
             "&IDTarjeta=" . $Fila[20] .
             "&IDOficial=" . $Fila[21] .  
-            "'>Actualizar</a></td>";
+            "'><i class='fa-solid fa-pen'></i></a>" . "</td>";
         echo "</tr>";
         $Fila = mysqli_fetch_array($Result);
     }

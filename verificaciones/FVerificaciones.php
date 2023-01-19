@@ -1,18 +1,24 @@
-<?php include 'MenuA.php' ?>
-<div class="flex flex-col items-center pt-" >
-    <label for="">
-        <h1>
-            Verificaciones
-        </h1>
-    </label>
-    <p></p>
+<?php include '../menu/MenuA.php' ?>
+
+<div class="flex flex-col items-center ">
+    <div class="py-8 uppercase font-bold">
+        <label for="conductores">
+            <h1>
+                ALTA DE VERIFICACIONES
+            </h1>
+        </label>
+    </div>
+    <div class="text-rose-600 text-center px-4 lg:px-10 py-2 pt-0 ">
+        <p id="msg"></p>
+    </div>
+    <div class="mb-6" style="width:22%;">
     <form method="POST" action="IVerificaciones.php">
 
-        <label for="">IDTarjeta</label>
-        <input type="text" id="IDTarjeta" name="IDTarjeta" required>
+        <label for="" class="label-form">IDTarjeta</label>
+        <input type="text"  class="input-form" id="IDTarjeta" name="IDTarjeta" required>
         <br>
-        <label for="">EntidadFederativa</label>
-        <select id="EntidadFederativa" name="EntidadFederativa">
+        <label for="" class="label-form">EntidadFederativa</label>
+        <select  class="input-form" id="EntidadFederativa" name="EntidadFederativa">
             <option value="no"></option>
             <option value="Aguascalientes">Aguascalientes</option>
             <option value="Baja California">Baja California</option>
@@ -48,39 +54,38 @@
             <option value="Zacatecas">Zacatecas</option>
         </select>
         <br>
-        <label for="">Municipio</label>
-        <input type="text" id="Municipio" name="Municipio">
+        <label for="" class="label-form">Municipio</label>
+        <input type="text"  class="input-form" id="Municipio" name="Municipio">
         <br>
-        <label for="">Numero del Centro</label>
-        <input type="text" id="NumCentro" name="NumCentro" required>
+        <label for="" class="label-form">Numero del Centro</label>
+        <input type="text"  class="input-form" id="NumCentro" name="NumCentro" required>
         <br>
-        <label for="">Numero de Linea</label>
-        <input type="number" id="NumLinea" name="NumLinea" min="0" max="99" required>
+        <label for="" class="label-form">Numero de Linea</label>
+        <input type="number"  class="input-form" id="NumLinea" name="NumLinea" min="0" max="99" required>
         <br>
-        <label for="">Nombre del Tecnico</label>
-        <input type="text" id="NombreTecnico" name="NombreTecnico" required>
+        <label for="" class="label-form">Nombre del Tecnico</label>
+        <input type="text"  class="input-form" id="NombreTecnico" name="NombreTecnico" required>
         <br>
-        <label for="">Fecha de Expedicion</label>
-        <input type="date" id="FechaExpedicion" name="FechaExpedicion" required>
+        <label for="" class="label-form">Fecha de Expedicion</label>
+        <input type="date"  class="input-form" id="FechaExpedicion" name="FechaExpedicion" required>
         <br>
-        <label for="">Fecha de Vencimiento</label>
-        <input type="date" id="FechaVencimiento" name="FechaVencimiento">
+        <label for="" class="label-form">Fecha de Vencimiento</label>
+        <input type="date"  class="input-form" id="FechaVencimiento" name="FechaVencimiento">
         <br>
-        <label for="">Motivo de Verificacion</label>
+        <label for="" class="label-form">Motivo de Verificacion</label>
+        <textarea name="MotivoVerificacion"  class="input-form" id="MotivoVerificacion" cols="25" rows="2" required></textarea>
         <br>
-        <textarea name="MotivoVerificacion" id="MotivoVerificacion" cols="25" rows="2" required></textarea>
+        <label for="" class="label-form">Hora de Entrada</label>
+        <input type="time"  class="input-form" id="HoraEntrada" name="HoraEntrada" required>
         <br>
-        <label for="">Hora de Entrada</label>
-        <input type="time" id="HoraEntrada" name="HoraEntrada" required>
+        <label for="" class="label-form">Hora de Salida</label>
+        <input type="time"  class="input-form" id="HoraSalida" name="HoraSalida" required>
         <br>
-        <label for="">Hora de Salida</label>
-        <input type="time" id="HoraSalida" name="HoraSalida" required>
+        <label for="" class="label-form">Semestre</label>
+        <input type="number"  class="input-form" id="Semestre" name="Semestre" min="1" max="2" size="5" required>
         <br>
-        <label for="">Semestre</label>
-        <input type="number" id="Semestre" name="Semestre" min="1" max="2" size="5" required>
-        <br>
-        <label for="">Dictamen</label>
-        <select id="Dictamen" name="Dictamen">
+        <label for="" class="label-form">Dictamen</label>
+        <select  class="input-form" id="Dictamen" name="Dictamen">
             <script>
                 let dictamen = ["", "EXCENTO", "APROBADO", "RECHAZADO"];
                 for (let i = 0; i < dictamen.length; i++) {
@@ -89,8 +94,8 @@
             </script>
         </select>
         <br>
-        <label for="">Holograma</label>
-        <select id="Holograma" name="Holograma" required>
+        <label for="" class="label-form">Holograma</label>
+        <select  class="input-form" id="Holograma" name="Holograma" required>
             <script>
                 let hologramas = ["", "00", "0", "1", "2", "Foraneo"];
                 for (let i = 0; i < hologramas.length; i++) {
@@ -98,13 +103,18 @@
                 }
             </script>
         </select>
-        <br>
-        <input type="submit" value="Enviar">
+            <button type="submit" class="bg-neutral-900 hover:bg-black text-neutral-200 active:bg-sky-700 text-sm font-bold uppercase px-6 py-3 
+                      rounded drop-shadow-lg hover:shadow-xl outline-none 
+                      focus:outline-none focus-blue-400 focus:bg-sky-700 hover:text-white mr-1 mb-1 w-full
+                      " style="transition: all 0.15s ease 0s;">
+                Registrar
+            </button>
+    </div>
     </form>
+</div>
     <script>
         document.getElementById('FechaExpedicion').valueAsDate = new Date();
     </script>
-    </div>
-</body>
 
+</body>
 </html>

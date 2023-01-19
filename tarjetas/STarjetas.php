@@ -1,17 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buscar Tarjeta de Circulación</title>
-</head>
-<body>
-    <form action="STarjetas.php" method="post">
-        <label for="">Criterio</lable>
-        <input type="text" name="Criterio" id="Criterio" required>
-        <label for=""> Atributos </label>
-        <select name="Atributo" id="Atributo" required>
+<?php include '../menu/MenuA.php' ?>
+
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="stylesheet" href="../node_modules/@fortawesome/fontawesome-free/css/all.css" />
+
+<div class="flex flex-col items-center">
+    <div class="py-8" >
+<form action="STarjetas.php" method="POST" class="flex items-end">
+    <div class="mr-3">
+        <label for="" class="label-form">Criterio</label>
+        <input type="text" name="Criterio" id="Criterio" class="input-form" required></input>
+    </div>
+    <div class="mr-3">
+        <label for="" class="label-form"> Atributos </label>
+        <select name="Atributo" id="Atributo" class="input-form" required>
             <option value="">Selecciona un atributo</option>
             <option value="IDTarjeta">ID Tarjeta</option>
             <option value="TipoServicio">Tipo de Servicio</option>
@@ -30,12 +31,17 @@
             <option value="Movimiento">Movimiento</option>
             <option value="FechaExpedicion">Fecha de Expedición</option>      
         </select>
-        <input type="submit" value="Enviar">
+    </div>
+    <div classs="mr-3">
+        <input type="submit" value="Buscar" class="bg-neutral-900 hover:bg-black text-neutral-200 active:bg-sky-700 text-sm font-bold uppercase px-6 pt-[0.58rem] pb-[0.58rem] 
+                      rounded drop-shadow-lg hover:shadow-xl outline-none 
+                      focus:outline-none focus-blue-400 focus:bg-sky-700 hover:text-white mr-1 mb-2 w-full
+                      " style="transition: all 0.15s ease 0s;">
+    </div>
     </form>
-    <br><br>
-</body>
-</html>
-
+    </div>
+</div>
+<div class="flex justify-center text-sm" >
 <?php
 if(isset($_POST['Criterio']) && isset($_POST['Atributo'])){
     $Criterio = $_POST['Criterio'];
@@ -52,32 +58,32 @@ if(isset($_POST['Criterio']) && isset($_POST['Atributo'])){
         echo "No se encontraron resultados";
     }else{
         
-        echo "<table border='1'>";
+        echo '<table class=" mr-4 ml-4 border-separate border-spacing-2 ">';
         echo "<tr>";
-        echo "<th>ID Tarjeta</th>";
-        echo "<th>Tipo de Servicio</th>";
-        echo "<th>Folio</th>";
-        echo "<th>Vigencia</th>";
-        echo "<th>Placa</th>";
-        echo "<th>ID Propietario</th>";
-        echo "<th>ID Vehiculo</th>";
-        echo "<th>Operación</th>";
-        echo "<th>Placa Anterior</th>";
-        echo "<th>NCI</th>";
-        echo "<th>Uso</th>";
-        echo "<th>Rfa</th>";
-        echo "<th>CVE</th>";
-        echo "<th>Oficina Expedidora</th>";
-        echo "<th>Movimiento</th>";
-        echo "<th>Fecha de Expedición</th>";
-        echo "<th>Eliminnar</th>";
-        echo "<th>Actualizar</th>";
+        echo "<th".' class=" border-b-2 border-neutral-400 drop-shadow-lg"'.">ID Tarjeta</th>";
+        echo "<th".' class=" border-b-2 border-neutral-400 drop-shadow-lg"'.">Tipo de Servicio</th>";
+        echo "<th".' class=" border-b-2 border-neutral-400 drop-shadow-lg"'.">Folio</th>";
+        echo "<th".' class=" border-b-2 border-neutral-400 drop-shadow-lg"'.">Vigencia</th>";
+        echo "<th".' class=" border-b-2 border-neutral-400 drop-shadow-lg"'.">Placa</th>";
+        echo "<th".' class=" border-b-2 border-neutral-400 drop-shadow-lg"'.">ID Propietario</th>";
+        echo "<th".' class=" border-b-2 border-neutral-400 drop-shadow-lg"'.">ID Vehiculo</th>";
+        echo "<th".' class=" border-b-2 border-neutral-400 drop-shadow-lg"'.">Operación</th>";
+        echo "<th".' class=" border-b-2 border-neutral-400 drop-shadow-lg"'.">Placa Anterior</th>";
+        echo "<th".' class=" border-b-2 border-neutral-400 drop-shadow-lg"'.">NCI</th>";
+        echo "<th".' class=" border-b-2 border-neutral-400 drop-shadow-lg"'.">Uso</th>";
+        echo "<th".' class=" border-b-2 border-neutral-400 drop-shadow-lg"'.">Rfa</th>";
+        echo "<th".' class=" border-b-2 border-neutral-400 drop-shadow-lg"'.">CVE</th>";
+        echo "<th".' class=" border-b-2 border-neutral-400 drop-shadow-lg"'.">Oficina Expedidora</th>";
+        echo "<th".' class=" border-b-2 border-neutral-400 drop-shadow-lg"'.">Movimiento</th>";
+        echo "<th".' class=" border-b-2 border-neutral-400 drop-shadow-lg"'.">Fecha de Expedición</th>";
+        echo "<th".' class=" border-b-2 border-neutral-400 drop-shadow-lg"'.">Eliminnar</th>";
+        echo "<th".' class=" border-b-2 border-neutral-400 drop-shadow-lg"'.">Actualizar</th>";
         echo "</tr>";
 
 
         for($i = 0; $i < $Rows; $i++){
             echo "<tr>";
-            echo "<td>".$Filas['IDTarjeta']."</td>";
+            echo "<td ".'class="icon-center"'.">".$Filas['IDTarjeta']."</td>";
             echo "<td>".$Filas['TipoServicio']."</td>";
             echo "<td>".$Filas['Folio']."</td>";
             echo "<td>".$Filas['Vigencia']."</td>";
@@ -93,8 +99,8 @@ if(isset($_POST['Criterio']) && isset($_POST['Atributo'])){
             echo "<td>".$Filas['OficinaExpedidora']."</td>";
             echo "<td>".$Filas['Movimiento']."</td>";
             echo "<td>".$Filas['FechaExpedicion']."</td>";
-            echo "<td><a href='DTarjetas.php?IDTarjeta=" . $Filas['IDTarjeta'] . "'>Eliminar</a></td>";
-            echo "<td><a href='UTarjetas.php?IDTarjeta=" . $Filas['IDTarjeta'] . 
+            echo "<td".' class="icon-center hover:text-yellow-500 hover:drop-shadow-lg "'."><a href='DTarjetas.php?IDTarjeta=" . $Filas['IDTarjeta'] . "'>".'<i class="fa-solid fa-trash"></i>'."</a></td>";
+            echo "<td".' class="icon-center hover:text-yellow-500 hover:drop-shadow-lg "'."><a href='UTarjetas.php?IDTarjeta=" . $Filas['IDTarjeta'] . 
                 "&TipoServicio=" . $Filas['TipoServicio'] .
                 "&Folio=" . $Filas['Folio'] .
                 "&Vigencia=" . $Filas['Vigencia'] .
@@ -110,7 +116,7 @@ if(isset($_POST['Criterio']) && isset($_POST['Atributo'])){
                 "&OficinaExpedidora=" . $Filas['OficinaExpedidora'] .
                 "&Movimiento=" . $Filas['Movimiento'] .
                 "&FechaExpedicion=" . $Filas['FechaExpedicion'] .
-                "'>Actualizar</a></td>";
+                "'>".'<i class="fa-solid fa-pen"></i>'."</a></td>";
             echo "</tr>";
 
             $Filas = mysqli_fetch_array($Result);
@@ -120,3 +126,8 @@ if(isset($_POST['Criterio']) && isset($_POST['Atributo'])){
 } 
 
 ?>
+
+</div>
+</body>
+
+</html>

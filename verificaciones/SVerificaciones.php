@@ -1,17 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buscar Verificacion</title>
-</head>
-<body>
-    <form action="SVerificaciones.php" method="post">
-        <label for="">Criterio</lable>
-        <input type="text" name="Criterio" id="Criterio" required>
-        <label for=""> Atributos </label>
-        <select name="Atributo" id="Atributo" required>
+<?php include '../menu/MenuA.php' ?>
+
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="stylesheet" href="../node_modules/@fortawesome/fontawesome-free/css/all.css" />
+
+<div class="flex flex-col items-center">
+    <div class="py-8" >
+<form action="SVerificaciones.php" method="POST" class="flex items-end">
+    <div class="mr-3">
+        <label for="" class="label-form">Criterio</label>
+        <input type="text" name="Criterio" id="Criterio" class="input-form" required></input>
+    </div>
+    <div class="mr-3">
+        <label for="" class="label-form"> Atributos </label>
+        <select name="Atributo" id="Atributo" class="input-form" required>
             <option value="">Selecciona un atributo</option>
             <option value="FolioVerificacion">Folio</option>
             <option value="IDTarjeta">ID Tarjeta Circulacion</option>
@@ -29,12 +30,17 @@
             <option value="Dictamen">Dictamen</option>
             <option value="Holograma">Holograma</option>    
         </select>
-        <input type="submit" value="Enviar">
+    </div>
+    <div classs="mr-3">
+        <input type="submit" value="Buscar" class="bg-neutral-900 hover:bg-black text-neutral-200 active:bg-sky-700 text-sm font-bold uppercase px-6 pt-[0.58rem] pb-[0.58rem] 
+                      rounded drop-shadow-lg hover:shadow-xl outline-none 
+                      focus:outline-none focus-blue-400 focus:bg-sky-700 hover:text-white mr-1 mb-2 w-full
+                      " style="transition: all 0.15s ease 0s;">
+    </div>
     </form>
-    <br><br>
-</body>
-</html>
-
+    </div>
+</div>
+<div class="flex justify-center text-sm" >
 <?php
 if(isset($_POST['Criterio']) && isset($_POST['Atributo'])){
     $Criterio = $_POST['Criterio'];
@@ -51,25 +57,25 @@ if(isset($_POST['Criterio']) && isset($_POST['Atributo'])){
         echo "No se encontraron resultados";
     }else{
         
-        echo "<table border='1'>";
+        echo '<table class=" mr-4 ml-4 border-separate border-spacing-2 ">';
         echo "<tr>";
-        echo "<th>Folio</th>";
-        echo "<th>ID Tarjeta Circulacion</th>";
-        echo "<th>Entidad Federativa</th>";
-        echo "<th>Municipio</th>";
-        echo "<th>Numero de Centro</th>";
-        echo "<th>Numero de Linea</th>";
-        echo "<th>Nombre del Tecnico</th>";
-        echo "<th>Fecha de Expedicion</th>";
-        echo "<th>Fecha de Vencimiento</th>";
-        echo "<th>Hora de Entrada</th>";
-        echo "<th>Hora de Salida</th>";
-        echo "<th>Motivo</th>";
-        echo "<th>Semestre</th>";
-        echo "<th>Dictamen</th>";
-        echo "<th>Holograma</th>";
-        echo "<th>Eliminar</th>";
-        echo "<th>Actualizar</th>";
+        echo "<th".' class=" border-b-2 border-neutral-400 drop-shadow-lg" '.">Folio</th>";
+        echo "<th".' class=" border-b-2 border-neutral-400 drop-shadow-lg" '.">ID Tarjeta Circulacion</th>";
+        echo "<th".' class=" border-b-2 border-neutral-400 drop-shadow-lg" '.">Entidad Federativa</th>";
+        echo "<th".' class=" border-b-2 border-neutral-400 drop-shadow-lg" '.">Municipio</th>";
+        echo "<th".' class=" border-b-2 border-neutral-400 drop-shadow-lg" '.">Numero de Centro</th>";
+        echo "<th".' class=" border-b-2 border-neutral-400 drop-shadow-lg" '.">Numero de Linea</th>";
+        echo "<th".' class=" border-b-2 border-neutral-400 drop-shadow-lg" '.">Nombre del Tecnico</th>";
+        echo "<th".' class=" border-b-2 border-neutral-400 drop-shadow-lg" '.">Fecha de Expedicion</th>";
+        echo "<th".' class=" border-b-2 border-neutral-400 drop-shadow-lg" '.">Fecha de Vencimiento</th>";
+        echo "<th".' class=" border-b-2 border-neutral-400 drop-shadow-lg" '.">Hora de Entrada</th>";
+        echo "<th".' class=" border-b-2 border-neutral-400 drop-shadow-lg" '.">Hora de Salida</th>";
+        echo "<th".' class=" border-b-2 border-neutral-400 drop-shadow-lg" '.">Motivo</th>";
+        echo "<th".' class=" border-b-2 border-neutral-400 drop-shadow-lg" '.">Semestre</th>";
+        echo "<th".' class=" border-b-2 border-neutral-400 drop-shadow-lg" '.">Dictamen</th>";
+        echo "<th".' class=" border-b-2 border-neutral-400 drop-shadow-lg" '.">Holograma</th>";
+        echo "<th".' class=" border-b-2 border-neutral-400 drop-shadow-lg" '.">Eliminar</th>";
+        echo "<th".' class=" border-b-2 border-neutral-400 drop-shadow-lg" '.">Actualizar</th>";
         echo "</tr>";
 
 
@@ -90,8 +96,8 @@ if(isset($_POST['Criterio']) && isset($_POST['Atributo'])){
             echo "<td>" . $Filas['Semestre'] . "</td>";
             echo "<td>" . $Filas['Dictamen'] . "</td>";
             echo "<td>" . $Filas['Holograma'] . "</td>";
-            echo "<td><a href='DVerificaciones.php?FolioVerificacion=" . $Filas['FolioVerificacion'] . "'>Eliminar</a></td>";
-            echo "<td><a href='UVerificaciones.php?FolioVerificacion=" . $Filas['FolioVerificacion'] . 
+            echo "<td".' class="icon-center hover:text-red-600 hover:drop-shadow-lg "'."><a href='DVerificaciones.php?FolioVerificacion=" . $Filas['FolioVerificacion'] . "'>".'<i class="fa-solid fa-trash"></i>'."</a></td>";
+            echo "<td".' class="icon-center hover:text-yellow-500 hover:drop-shadow-lg "'."><a href='UVerificaciones.php?FolioVerificacion=" . $Filas['FolioVerificacion'] . 
                 "&IDTarjeta=" . $Filas['IDTarjeta'] .
                 "&EntidadFederativa=" . $Filas['EntidadFederativa'] .
                 "&Municipio=" . $Filas['Municipio'] .
@@ -105,16 +111,18 @@ if(isset($_POST['Criterio']) && isset($_POST['Atributo'])){
                 "&MotivoVerificacion=" . $Filas['MotivoVerificacion'] .
                 "&Semestre=" . $Filas['Semestre'] .
                 "&Dictamen=" . $Filas['Dictamen'] .
-                "&Holograma=" . $Filas['Holograma'] . "'>Actualizar</a></td>";
-                "'>Actualizar</a></td>";
+                "&Holograma=" . $Filas['Holograma'] . "'>".'<i class="fa-solid fa-pen"></i>'."</a></td>";
+    
             echo "</tr>";
             
             $Filas = mysqli_fetch_array($Result);
         }
         echo "</table>";
     }
-} else {
-    echo "No se han recibido datos";
-}
+} 
 
 ?>
+</div>
+</body>
+
+</html>

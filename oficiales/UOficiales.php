@@ -1,42 +1,58 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php include '../menu/MenuA.php'; ?>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Oficiales</title>
-</head>
+<link rel="stylesheet" href="../assets/css/styles.css">
 
-<body>
-    <label for="">
-        <h1>
-            Oficiales
-        </h1>
-    </label>
-    <p></p>
+<div class="flex flex-col items-center">
+    <div class="py-8 uppercase font-bold">
+        <label for="Oficial">
+            <h1>
+                Modificar Oficial
+            </h1>
+        </label>
+    </div>
+    <?php
+    if (!(isset($_GET['IDConductor']))) {
+        echo '<div class="flex justify-center flex-col text-center mb-6" style="    padding: 1.6em;
+    border: 2px solid;
+    border-radius: 5.5px;
+    -webkit-box-shadow: -1px 9px 20px -13px rgb(0 0 0 / 68%);">
+        <p>Para asegurarte que la información ingresada</p>
+        <p>coincida con algun registro  favor de</p>
+        <a  class="font-bold text-red-600 hover:drop-shadow-xl" href="./SOficiales.php"> consultar aquí </a>
+    </div>';
+    }
+    ?>
+    
+    <div style="width:22%;">
     <form method="GET" action="UOficiales.php">
 
-        <label for=""><strong> ID del Oficial</strong></label>
-        <input type="text" name="IDOficial" id="IDOficial" value="<?php print($_GET['IDOficial']) ?>" readonly>
+        <label for="" class="label-form"><strong> ID del Oficial</strong></label>
+        <input type="text" class="input-form"  name="IDOficial" id="IDOficial" value="<?php isset($_GET['IDOficial']) ? print($_GET['IDOficial']): null ?>" readonly>
         <br>
-        <label for="">Nombre</label>
-        <input type="text" id="Nombre" name="Nombre" value="<?php print($_GET['Nombre']) ?>" required maxlength="50">
+        <label for="" class="label-form">Nombre</label>
+        <input type="text" class="input-form"  id="Nombre" name="Nombre" value="<?php isset($_GET['Nombre']) ? print($_GET['Nombre']): null ?>" required maxlength="50">
         <br>
-        <label for="">ApellidoPaterno</label>
-        <input type="text" id="ApellidoPaterno" name="ApellidoPaterno" value="<?php print($_GET['ApellidoPaterno']) ?>" required>
+        <label for="" class="label-form">ApellidoPaterno</label>
+        <input type="text" class="input-form"  id="ApellidoPaterno" name="ApellidoPaterno" value="<?php isset($_GET['ApellidoPaterno']) ? print($_GET['ApellidoMaterno']): null ?>" required>
         <br>
-        <label for="">ApellidoMaterno</label>
-        <input type="text" id="ApellidoMaterno" name="ApellidoMaterno" value="<?php print($_GET['ApellidoMaterno']) ?>" required>
+        <label for="" class="label-form">ApellidoMaterno</label>
+        <input type="text" class="input-form"  id="ApellidoMaterno" name="ApellidoMaterno" value="<?php isset($_GET['ApellidoMaterno']) ? print($_GET['ApellidoMaterno']): null ?>" required>
         <br>
-        <label for="">Grupo</label>
-        <input type="text" id="Grupo" name="Grupo" value="<?php print($_GET['Grupo']) ?>" required>
+        <label for="" class="label-form">Grupo</label>
+        <input type="text" class="input-form"  id="Grupo" name="Grupo" value="<?php isset($_GET['Grupo']) ? print($_GET['Grupo']): null ?>" required>
         <br>
-        <label for="">Firma</label>
-        <input type="text" id="Firma" name="Firma" value="<?php print($_GET['Firma']) ?>" required>
+        <label for="" class="label-form">Firma</label>
+        <input type="text" class="input-form"  id="Firma" name="Firma" value="<?php isset($_GET['Firma']) ? print($_GET['Firma']): null ?>" required>
         <br>
-        <input type="submit" value="Enviar">
-        <br>
+                <div class="text-center ">
+            <button type="submit" class="bg-neutral-900 hover:bg-black text-neutral-200 active:bg-sky-700 text-sm font-bold uppercase px-6 py-3 
+                      rounded drop-shadow-lg hover:shadow-xl outline-none 
+                      focus:outline-none focus-blue-400 focus:bg-sky-700 hover:text-white mr-1 mb-1 w-full
+                      " style="transition: all 0.15s ease 0s;">
+                Actualizar
+            </button>
+        </div>
+    </div>
     </form>
 
 </body>

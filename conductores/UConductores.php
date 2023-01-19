@@ -6,13 +6,16 @@
     <div class="py-8 uppercase font-bold">
         <label for="conductores">
             <h1>
-                Modificar conductor
+                Modificar Conductor
             </h1>
         </label>
     </div>
     <?php
     if (!(isset($_GET['IDConductor']))) {
-        echo '<div class="flex justify-center flex-col text-center mb-6">
+        echo '<div class="flex justify-center flex-col text-center mb-6" style="    padding: 1.6em;
+    border: 2px solid;
+    border-radius: 5.5px;
+    -webkit-box-shadow: -1px 9px 20px -13px rgb(0 0 0 / 68%);">
         <p>Para asegurarte que la información ingresada</p>
         <p>coincida con algun registro  favor de</p>
         <a  class="font-bold text-red-600 hover:drop-shadow-xl" href="./SConductores.php"> consultar aquí </a>
@@ -23,7 +26,7 @@
     <div >
     <form method="GET" action="UConductores.php" enctype="multipart/form-data">
         <label for="" class="label-form">ID del conductor</label>
-        <input type="text" class="input-form" name="IDConductor" id="IDConductor" value=" <?php isset($_GET['IDConductor']) ? print($_GET['IDConductor']): null ?>" required readonly>
+        <input type="text" class="input-form" name="IDConductor" id="IDConductor" value="<?php isset($_GET['IDConductor']) ? print($_GET['IDConductor']): null ?>" required readonly>
         <br>
         <label for="" class="label-form">Fotografia</label>
         <input type="file" class="input-file mb-2 " id="Fotografia" name="Fotografia" value="<?php isset($_GET['Fotografia']) ? print($_GET['Fotografia']) : null ?>" required>
@@ -91,7 +94,7 @@
     </form>
     <script>
         let GrupoSanguineo = document.getElementById("GrupoSanguineo");
-        GrupoSanguineo.value = "<?php print($_GET['GrupoSanguineo']) ?>";
+        GrupoSanguineo.value = "<?php isset($_GET['GrupoSanguineo']) ? print($_GET['GrupoSanguineo']) : null?>";
     </script>
 
 

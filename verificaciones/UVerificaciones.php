@@ -1,31 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php include '../menu/MenuA.php'; ?>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Verificaciones</title>
-</head>
+<link rel="stylesheet" href="../assets/css/styles.css">
 
-<body>
-    <label for="">
-        <h1>
-            Verificaciones
-        </h1>
-    </label>
-    <p></p>
-    <!-- from POST to GET -->
+<div class="flex flex-col items-center">
+    <div class="py-8 uppercase font-bold">
+        <label for="verificaciones">
+            <h1>
+                Modificar Verificacion
+            </h1>
+        </label>
+    </div>
+    <?php
+    if (!(isset($_GET['FolioVerificacion']))) {
+        echo '<div class="flex justify-center flex-col text-center mb-6" style="    padding: 1.6em;
+    border: 2px solid;
+    border-radius: 5.5px;
+    -webkit-box-shadow: -1px 9px 20px -13px rgb(0 0 0 / 68%);">
+        <p>Para asegurarte que la información ingresada</p>
+        <p>coincida con algun registro  favor de</p>
+        <a  class="font-bold text-red-600 hover:drop-shadow-xl" href="./SVerificaciones.php"> consultar aquí </a>
+    </div>';
+    }
+    ?>
+    
+    <div style="width:20%;">
     <form method="GET" action="UVerificaciones.php">
 
-        <label for=""><strong> Folio Verificacion</strong></label>
-        <input type="text" name="FolioVerificacion" id="FolioVerificacion" value="<?php print($_GET['FolioVerificacion'])?>" readonly>
+        <label for="" class="label-form"><strong> Folio Verificacion</strong></label>
+        <input type="text" name="FolioVerificacion"  class="input-form" id="FolioVerificacion" value="<?php isset($_GET['FolioVerificacion']) ? print($_GET['FolioVerificacion']): null ?>"  readonly>
         <br>
-        <label for="">IDTarjeta</label>
-        <input type="text" id="IDTarjeta" name="IDTarjeta" value="<?php print($_GET['IDTarjeta'])?>" required>
+        <label for="" class="label-form">IDTarjeta</label>
+        <input type="text" class="input-form" id="IDTarjeta" name="IDTarjeta" value="<?php isset($_GET['IDTarjeta']) ? print($_GET['IDTarjeta']): null ?>" required>
         <br>
-        <label for="">EntidadFederativa</label>
-        <select id="EntidadFederativa" name="EntidadFederativa">
+        <label for="" class="label-form">EntidadFederativa</label>
+        <select class="input-form" id="EntidadFederativa" name="EntidadFederativa">
             <option value="no"></option>
             <option value="Aguascalientes">Aguascalientes</option>
             <option value="Baja California">Baja California</option>
@@ -61,66 +69,72 @@
             <option value="Zacatecas">Zacatecas</option>
         </select>
         <br>
-        <label for="">Municipio</label>
-        <input type="text" id="Municipio" name="Municipio" value="<?php print($_GET['Municipio'])?>" >
+        <label for="" class="label-form">Municipio</label>
+        <input type="text"  class="input-form"id="Municipio" name="Municipio" value="<?php isset($_GET['Municipio']) ? print($_GET['Municipio']): null ?>" >
         <br>
-        <label for="">Numero del Centro</label>
-        <input type="text" id="NumCentro" name="NumCentro" value="<?php print($_GET['NumCentro'])?>" required>
+        <label for="" class="label-form">Numero del Centro</label>
+        <input type="text"  class="input-form"id="NumCentro" name="NumCentro" value="<?php isset($_GET['NumCentro']) ? print($_GET['NumCentro']): null ?>" required>
         <br>
-        <label for="">Numero de Linea</label>
-        <input type="number" id="NumLinea" name="NumLinea" value="<?php print($_GET['NumLinea'])?>" min="0" max="99" required>
+        <label for="" class="label-form">Numero de Linea</label>
+        <input type="number"  class="input-form"id="NumLinea" name="NumLinea" value="<?php isset($_GET['NumLinea']) ? print($_GET['NumLinea']): null ?>" min="0" max="99" required>
         <br>
-        <label for="">Nombre del Tecnico</label>
-        <input type="text" id="NombreTecnico" name="NombreTecnico" value="<?php print($_GET['NombreTecnico'])?>" required>
+        <label for="" class="label-form">Nombre del Tecnico</label>
+        <input type="text"  class="input-form"id="NombreTecnico" name="NombreTecnico" value="<?php isset($_GET['NombreTecnico']) ? print($_GET['NombreTecnico']): null ?>" required>
         <br>
-        <label for="">Fecha de Expedicion</label>
-        <input type="date" id="FechaExpedicion" name="FechaExpedicion" value="<?php print($_GET['FechaExpedicion'])?>" required>
+        <label for="" class="label-form">Fecha de Expedicion</label>
+        <input type="date" class="input-form" id="FechaExpedicion" name="FechaExpedicion" value="<?php isset($_GET['FechaExpedicion']) ? print($_GET['FechaExpedicion']): null ?>" required>
         <br>
-        <label for="">Fecha de Vencimiento</label>
-        <input type="date" id="FechaVencimiento" name="FechaVencimiento" value="<?php print($_GET['FechaVencimiento'])?>">
+        <label for="" class="label-form">Fecha de Vencimiento</label>
+        <input type="date"  class="input-form"id="FechaVencimiento" name="FechaVencimiento" value="<?php isset($_GET['FechaVencimiento']) ? print($_GET['FechaVencimiento']): null ?>">
         <br>
-        <label for="">Motivo de Verificacion</label>
+        <label for="" class="label-form">Motivo de Verificacion</label>
+        <textarea name="MotivoVerificacion"  class="input-form"id="MotivoVerificacion" cols="25" rows="2" required><?php isset($_GET['MotivoVerificacion']) ? print($_GET['MotivoVerificacion']): null ?>"</textarea>
         <br>
-        <textarea name="MotivoVerificacion" id="MotivoVerificacion" cols="25" rows="2" required><?php print($_GET['MotivoVerificacion'])?></textarea>
+        <label for="" class="label-form">Hora de Entrada</label>
+        <input type="time"  class="input-form"id="HoraEntrada" name="HoraEntrada" value="<?php isset($_GET['HoraEntrada']) ? print($_GET['HoraEntrada']): null ?>" required>
         <br>
-        <label for="">Hora de Entrada</label>
-        <input type="time" id="HoraEntrada" name="HoraEntrada" value="<?php print($_GET['HoraEntrada'])?>" required>
+        <label for="" class="label-form">Hora de Salida</label>
+        <input type="time"  class="input-form"id="HoraSalida" name="HoraSalida" value="<?php isset($_GET['HoraSalida']) ? print($_GET['HoraSalida']): null ?>" required>
         <br>
-        <label for="">Hora de Salida</label>
-        <input type="time" id="HoraSalida" name="HoraSalida" value="<?php print($_GET['HoraSalida'])?>" required>
+        <label for="" class="label-form">Semestre</label>
+        <input type="number"  class="input-form"id="Semestre" name="Semestre" value="<?php isset($_GET['Semestre']) ? print($_GET['Semestre']): null ?>" min="1" max="2" size="5" required>
         <br>
-        <label for="">Semestre</label>
-        <input type="number" id="Semestre" name="Semestre" value="<?php print($_GET['Semestre'])?>"value="<?php print($_GET['Municipio'])?>" min="1" max="2" size="5" required>
-        <br>
-        <label for="">Dictamen</label>
-        <select id="Dictamen" name="Dictamen">
+        <label for="" class="label-form">Dictamen</label>
+        <select  class="input-form"id="Dictamen" name="Dictamen">
             <script>
                 let dictamen = ["", "EXCENTO", "APROBADO", "RECHAZADO"];
                 for (let i = 0; i < dictamen.length; i++) {
                     document.write("<option value=" + dictamen[i] + ">" + dictamen[i] + "</option>");
                 }
 
-                let Dictamen = "<?php print($_GET['Dictamen'])?>";
+                let Dictamen = "<?php isset($_GET['Dictamen']) ? print($_GET['Dictamen']): null ?>";
                 document.getElementById("Dictamen").value = Dictamen;
 
             </script>
         </select>
         <br>
-        <label for="">Holograma</label>
-        <select id="Holograma" name="Holograma" required>
+        <label for="" class="label-form">Holograma</label>
+        <select  class="input-form"id="Holograma" name="Holograma" required>
             <script>
                 let hologramas = ["", "00", "0", "1", "2", "Foraneo"];
                 for (let i = 0; i < hologramas.length; i++) {
                     document.write("<option value='" + hologramas[i] + "'>" + hologramas[i] + "</option>");
                 }
 
-                let Holograma = "<?php print($_GET['Holograma']) ?>";
+                let Holograma = "<?php isset($_GET['Holograma']) ? print($_GET['Holograma']): null ?>";
                 document.getElementById("Holograma").value = Holograma;
                 
             </script>
         </select>
-        <br>
-        <input type="submit" value="Enviar">
+        <div class="text-center ">
+            <button type="submit" class="bg-neutral-900 hover:bg-black text-neutral-200 active:bg-sky-700 text-sm font-bold uppercase px-6 py-3 
+                      rounded drop-shadow-lg hover:shadow-xl outline-none 
+                      focus:outline-none focus-blue-400 focus:bg-sky-700 hover:text-white mr-1 mb-1 w-full
+                      " style="transition: all 0.15s ease 0s;">
+                Actualizar
+            </button>
+        </div>
+    </div>
     </form>
     <script>
 
@@ -128,10 +142,6 @@
         document.getElementById("EntidadFederativa").value = EntidadFederativa;
 
     </script>
-</body>
-
-</html>
-
 <?php
 
 if(isset($_REQUEST['FolioVerificacion'])){
@@ -170,3 +180,8 @@ if(isset($_REQUEST['FolioVerificacion'])){
 }
 
 ?>
+
+</div>
+</body>
+
+</html>

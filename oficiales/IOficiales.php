@@ -1,5 +1,7 @@
 <?php
 
+    include '../oficiales/FOficiales.php';
+
     $Nombre = $_REQUEST['Nombre'];
     $ApellidoPaterno = $_REQUEST['ApellidoPaterno'];
     $ApellidoMaterno = $_REQUEST['ApellidoMaterno'];
@@ -16,7 +18,7 @@
     if ($Result) {
 
         $last_sql_id = mysqli_insert_id($Con);
-        print("Oficial agregado correctamente ID: <strong> " . $last_sql_id . "</strong>");
+        print("<h1 style='text-align: center; padding-buttom:2em;'>Oficial agregado correctamente ID: <strong> " . $last_sql_id . "</strong> </h1>");
 
     }else{
         print("Registro No insertado");

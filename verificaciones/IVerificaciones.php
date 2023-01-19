@@ -1,4 +1,5 @@
 <?php
+    include '../verificaciones/FVerificaciones.php';
 
     $IDTarjeta = $_REQUEST['IDTarjeta'];
     $EntidadFederativa = $_REQUEST['EntidadFederativa'];
@@ -27,7 +28,7 @@
     $Con = Conectar();
     $Result = Ejecutar($Con, $SQL) or die ("Error al insertar datos".mysqli_error($Con));
     if ($Result) {
-        print("Registro insertado correctamente con Folio: <strong>" . mysqli_insert_id($Con) . "</strong>");
+        print("<h1 style='text-align: center; padding-buttom:2em;'>Registro insertado correctamente con Folio: <strong>" . mysqli_insert_id($Con) . "</strong></h1>");
     }else{
         print("Registro No insertado");
     }
