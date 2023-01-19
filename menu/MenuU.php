@@ -70,7 +70,7 @@
         <div class="iocn-link">
           <a href="#">
             <i class="fa-solid fa-user"></i>
-            <span class="link_name">Conductores</span>
+            <span class="link_name" href="../conductores/SConductores.php"">Conductores</span>
           </a>
         </div>
         <ul class="sub-menu">

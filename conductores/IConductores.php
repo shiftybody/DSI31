@@ -46,36 +46,30 @@
         $ArchivoPermitido = array("image/gif","image/png","image/jpg");
         $limite = 500 * 1024;
 
-        if(in_array($FotografiaTipo, $ArchivoPermitido) 
-            && in_array($FirmaTipo, $ArchivoPermitido)
-            && $FotografiaSize <= $limite 
-            && $FirmaSize <= $limite){
+        $RutaFotografia =$_SERVER['DOCUMENT_ROOT'].'/DSI31/uploads/fotos/'.$ID.'/';
+        $ArchivoFotografia = $RutaFotografia.$Fotografia;
 
-            
-            $RutaFotografia =$_SERVER['DOCUMENT_ROOT'].'/DSI31/uploaded/fotos/'.$ID.'/';
-            $ArchivoFotografia = $RutaFotografia.$Fotografia;
+        $RutaFirma = $_SERVER['DOCUMENT_ROOT'].'/DSI31/uploads/firmas/'.$ID.'/'; 
+        $ArchivoFirma = $RutaFirma.$Firma;
 
-            $RutaFirma = $_SERVER['DOCUMENT_ROOT'].'/DSI31/uploaded/firmas/'.$ID.'/'; 
-            $ArchivoFirma = $RutaFirma.$Firma;
+        if(!file_exists($RutaFotografia)){
+            mkdir($RutaFotografia);
+        } 
+            
+        if(!file_exists($RutaFirma)){
+           mkdir($RutaFirma);
+        };
+            
+        $UploadFotografia = @move_uploaded_file($FotografiaTmp_name, $ArchivoFotografia);
+        $UploadFirma = @move_uploaded_file($FirmaTmp_name, $ArchivoFirma);
 
-            if(!file_exists($RutaFotografia)){
-                mkdir($RutaFotografia);
-            } 
-            
-            if(!file_exists($RutaFirma)){
-                mkdir($RutaFirma);
-            };
-            
-            $UploadFotografia = @move_uploaded_file($FotografiaTmp_name, $ArchivoFotografia);
-            $UploadFirma = @move_uploaded_file($FirmaTmp_name, $ArchivoFirma);
-
-            if($UploadFotografia && $UploadFirma){
-                echo "<h1 style='text-align: center; padding-buttom:2em;'>Archivos almacenados correctamente</h1>";
-            } else {
-                echo "<h1 style='text-align: center; padding-buttom:2em;'>Problema al guardar los archivos</h1>";
-            }
-            
+        if($UploadFotografia && $UploadFirma){
+            echo "<h1 style='text-align: center; padding-buttom:2em;'>Archivos almacenados correctamente</h1>";
+        } else {
+             echo "<h1 style='text-align: center; padding-buttom:2em;'>Problema al guardar los archivos</h1>";
         }
+            
+    
     } 
 
 

@@ -1,4 +1,21 @@
-<?php include '../menu/MenuA.php' ?>
+
+
+<?php 
+
+ session_start(); 
+
+    if($_SESSION['rol'] == 'user'){
+      include '../menu/MenuU.php';
+      
+    } else if ($_SESSION['rol'] == 'admin') {
+      include '../menu/MenuA.php';
+    } else {
+    session_destroy();
+    header("Location: ../index.php");
+  }
+
+
+?>
 
   <link rel="stylesheet" href="../assets/css/styles.css">
   <link rel="stylesheet" href="../node_modules/@fortawesome/fontawesome-free/css/all.css" />

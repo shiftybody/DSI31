@@ -1,0 +1,19 @@
+<XML>
+<NumLicencia>A</NumLicencia> 
+<Fotografia>foto.jpg</Fotografia> 
+<Nombre>DAVID</Nombre>
+<ApellidoPaterno>Cano</ApellidoPaterno> 
+<ApellidoMaterno>Perez</ApellidoMaterno> 
+<Observaciones>A</Observaciones> 
+<FechaNacimiento>DAVID</FechaNacimiento> 
+<FechaExpedicion>Cano</FechaExpedicion> 
+<FechaVencimiento>Perez</FechaVencimiento> 
+<Antiguedad>2026-01-19</Antiguedad> 
+<Firma>2023-01-20</Firma> 
+<Tipo>12345678987</Tipo> 
+<Domicilio>no aplica</Domicilio> 
+<GrupoSanguineo>2023-01-19</GrupoSanguineo> 
+<Donador>firma.jpg</Donador> 
+<Restriccion>4</Restriccion>
+<Foto>Av. Bandera Nacional 185 Col San Agustin</Foto>
+</XML> 
