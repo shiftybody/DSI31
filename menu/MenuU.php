@@ -81,77 +81,77 @@
         <div class="iocn-link">
           <a href="#">
             <i class="fa-solid fa-address-card"></i>
-            <span class="link_name">Licencias</span>
+            <span class="link_name" href="../licenncias/SLicencias.php">Licencias</span>
           </a>
         </div>
         <ul class="sub-menu">
-          <li><a class="link_name" href="#">Licencias</a></li>
+          <li><a class="link_name" href="../licencias/Slicencias.php">Licencias</a></li>
         </ul>
       </li>
       <li>
         <div class="iocn-link">
           <a href="#">
             <i class="fa-solid fa-square-parking"></i>
-            <span class="link_name">Multas</span>
+            <span class="link_name" href="../multas/SMultas.php" >Multas</span>
           </a>
         </div>
         <ul class="sub-menu">
-          <li><a class="link_name" href="#">Multas</a></li>
+          <li><a class="link_name" href="../multas/SMultas.php">Multas</a></li>
         </ul>
       </li>
       <li>
         <div class="iocn-link">
           <a href="#">
             <i class="fa-solid fa-shield-halved"></i>
-            <span class="link_name">Oficiales</span>
+            <span class="link_name" href="../oficiales/SOficiales.php">Oficiales</span>
           </a>
         </div>
         <ul class="sub-menu">
-          <li><a class="link_name" href="#">Oficiales</a></li>
+          <li><a class="link_name" href="../oficiales/SOficiales.php">Oficiales</a></li>
         </ul>
       </li>
       <li>
         <div class="iocn-link">
           <a href="#">
             <i class="fa-solid fa-key"></i>
-            <span class="link_name">Propietarios</span>
+            <span class="link_name" href="../propietarios/SPropietarios.php">Propietarios</span>
           </a>
         </div>
         <ul class="sub-menu">
-          <li><a class="link_name" href="#">Propietarios</a></li>
+          <li><a class="link_name" href="../propietarios/SPropietarios.php">Propietarios</a></li>
         </ul>
       </li>
       <li>
         <div class="iocn-link">
           <a href="#">
             <i class="fa-solid fa-chalkboard"></i>
-            <span class="link_name">Tarjetas</span>
+            <span class="link_name" href="../tarjetas/Starjetas.php">Tarjetas</span>
           </a>
         </div>
         <ul class="sub-menu">
-          <li><a class="link_name" href="#">Tarjetas</a></li>
+          <li><a class="link_name" href="../tarjetas/STarjetas.php">Tarjetas</a></li>
         </ul>
       </li>
       <li>
         <div class="iocn-link">
           <a href="#">
             <i class="fa-solid fa-car"></i>
-            <span class="link_name">Vehiculos</span>
+            <span class="link_name" href="../vehiculos/SVehiculos.php">Vehiculos</span>
           </a>
         </div>
         <ul class="sub-menu">
-          <li><a class="link_name" href="#">Vehiculos</a></li>
+          <li><a class="link_name" href="../vehiculos/SVehiculos.php">Vehiculos</a></li>
         </ul>
       </li>
       <li>
         <div class="iocn-link">
           <a href="#">
           <i class="fa-solid fa-circle-check"></i>
-            <span class="link_name">Verificaciones</span>
+            <span class="link_name" href="../verificaciones/SVerificaciones.php">Verificaciones</span>
           </a>
         </div>
         <ul class="sub-menu">
-          <li><a class="link_name" href="#">Verificaciones</a></li>
+          <li><a class="link_name" href="../verificaciones/SVerificaciones.php">Verificaciones</a></li>
         </ul>
       </li>
     </ul>

@@ -88,8 +88,13 @@ if (isset($_POST['Criterio']) && isset($_POST['Atributo'])) {
     echo '<th class=" border-b-2 border-neutral-400 drop-shadow-lg" >Fecha de Vencimiento</th>';
     echo '<th class=" border-b-2 border-neutral-400 drop-shadow-lg" >Atributo Desconocido</th>';
     echo '<th class=" border-b-2 border-neutral-400 drop-shadow-lg" >Restricciones</th>';
-    echo '<th class=" border-b-2 border-neutral-400 drop-shadow-lg" >Eliminar</th>';
-    echo '<th class=" border-b-2 border-neutral-400 drop-shadow-lg" >Actualizar</th>';
+    if($_SESSION['rol'] == 'user'){     
+      
+    } else if ($_SESSION['rol'] == 'admin') {
+    echo '<th class=" border-b-2 border-neutral-400">Eliminar</th>';
+    echo '<th class=" border-b-2 border-neutral-400">Actualizar</th>';
+    }
+    
     echo "</tr>";
 
     for ($i = 0; $i < $Rows; $i++) {
@@ -101,6 +106,12 @@ if (isset($_POST['Criterio']) && isset($_POST['Atributo'])) {
         echo "<td>" . $Fila[4] . "</td>";
         echo "<td>" . $Fila[5] . "</td>";
         echo "<td>" . $Fila[6] . "</td>";
+    
+
+        if($_SESSION['rol'] == 'user'){
+      
+      
+        } else if ($_SESSION['rol'] == 'admin') {
         echo '<td class="icon-center hover:text-red-600" hover:drop-shadow-lg "><a href="DLicencias.php?IDLicencia=' . ParseID($Fila[0]) . '"><i class="fa-solid fa-trash"></i></a></td>';
         echo '<td class="icon-center hover:text-yellow-500 hover:drop-shadow-lg"><a href="ULicencias.php?IDLicencia=' . ParseID($Fila[0]) .
             "&IDConductor=" . $Fila[1] .
@@ -110,6 +121,8 @@ if (isset($_POST['Criterio']) && isset($_POST['Atributo'])) {
             "&AtributoD=" . $Fila[5] .
             '&Restricciones=' . $Fila[6] . '"><i class="fa-solid fa-pen"></i></a>' . '</td>';
             "'>Actualizar</a></td>";
+        }
+        
         echo "</tr>";
 
         $Fila = mysqli_fetch_row($Result);

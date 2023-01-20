@@ -1,8 +1,8 @@
-
-
-<?php 
-
- session_start(); 
+<?php
+    
+    if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+    }
 
     if($_SESSION['rol'] == 'user'){
       include '../menu/MenuU.php';
@@ -13,7 +13,6 @@
     session_destroy();
     header("Location: ../index.php");
   }
-
 
 ?>
 
@@ -86,8 +85,15 @@ if (isset($_POST['Criterio']) && !empty($_POST['Criterio']) && isset($_POST['Atr
     echo '<th class=" border-b-2 border-neutral-400">Sexo</th>';
     echo '<th class=" border-b-2 border-neutral-400">Antiguedad</th>';
     echo '<th class=" border-b-2 border-neutral-400">Observaciones</th>';
+
+    if($_SESSION['rol'] == 'user'){
+      
+      
+    } else if ($_SESSION['rol'] == 'admin') {
     echo '<th class=" border-b-2 border-neutral-400">Eliminar</th>';
     echo '<th class=" border-b-2 border-neutral-400">Actualizar</th>';
+    }
+
     echo "</tr>";
 
     for ($i = 0; $i < $Rows; $i++) {
@@ -107,6 +113,10 @@ if (isset($_POST['Criterio']) && !empty($_POST['Criterio']) && isset($_POST['Atr
         echo '<td class="icon-center">' . $Fila[12] . '</td>';
         echo '<td class="icon-center">' . $Fila[13] . '</td>';
 
+        if($_SESSION['rol'] == 'user'){
+      
+      
+    } else if ($_SESSION['rol'] == 'admin') {
         echo '<td class="icon-center hover:text-red-600 hover:drop-shadow-lg " > ' . '<a href="DConductores.php? IDConductor=' . $Fila[0] . '"><i class="fa-solid fa-trash"></i></a>' . '</td>';
         echo '<td class="icon-center hover:text-yellow-500 hover:drop-shadow-lg " > ' . '<a href="UConductores.php' .
             '?IDConductor=' . $Fila[0] .
@@ -123,6 +133,7 @@ if (isset($_POST['Criterio']) && !empty($_POST['Criterio']) && isset($_POST['Atr
             '&Sexo=' . $Fila[11] .
             '&Antiguedad=' . $Fila[12] .
             '&Observaciones=' . $Fila[13] . '"><i class="fa-solid fa-pen"></i></a>' . '</td>';
+    }
         echo "</tr>";
 
         $Fila = mysqli_fetch_row($Result);
